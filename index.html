@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>American Leverage | Access the American Financial System</title>
+  <meta name="description" content="Non-U.S. business owners: access 6-figure 0% credit lines and 95% off 5-star travel. 2056 non-US businesses served, $12M+ saved, 97.3% client satisfaction.">
+
+  <!-- Fonts: Inter Tight (headings) + Poppins (body) + Playfair Display (italic accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Meta Pixel (id: 953868717628214) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '953868717628214');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=953868717628214&ev=PageView&noscript=1"/></noscript>
+  <!-- Meta CAPI bridge: fires server-side events with the same event_id for dedupe -->
+  <script src="/js/meta-capi.js"></script>
+
+
+  <!-- Tailwind (CDN runtime so the page renders standalone) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            heading: ['"Inter Tight"', 'sans-serif'],
+            accent: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            al: {
+              dark:  '#04152B',   // deep navy panels
+              navy:  '#041428',   // gradient top
+              blue:  '#0042A9',   // brand blue
+              ink:   '#2C2C2C',   // dark headings
+              body:  '#262626',   // body text
+              slate: '#5D5D5D',   // muted labels
+              gold:  '#E4D30F',   // review stars
+              line:  '#C1C1C1',   // card borders
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { -webkit-font-smoothing: antialiased; }
+    .font-light-300 { font-weight: 300; }
+
+    /* Italic serif accent used throughout the design */
+    .accent { font-family: '"Playfair Display"', serif; font-style: italic; font-weight: 500; }
+
+    /* Hero gradient + concentric rings */
+    .hero-gradient { background: linear-gradient(180deg, #041428 0%, #0042A9 100%); }
+    .panel-gradient { background: linear-gradient(0deg, #041428 0%, #0042A9 100%); }
+    .rings { position: absolute; border-radius: 9999px; border: 1px solid #fff; transform: translate(-50%, -50%); pointer-events: none; }
+
+    /* Range slider */
+    input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: #4D4D4D; border-radius: 50px; }
+    input[type=range]::-moz-range-track { width: 100%; height: 8px; cursor: pointer; background: #4D4D4D; border-radius: 50px; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #FFFFFF; border: 8px solid #FFFFFF; box-shadow: inset 0 0 0 8px #0042A9; cursor: pointer; margin-top: -10px; transition: transform .1s; }
+    input[type=range]::-moz-range-thumb { height: 12px; width: 12px; border-radius: 50%; background: #0042A9; border: 8px solid #FFFFFF; cursor: pointer; box-shadow: 0 0 0 0 #fff; }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+    input[type=range]:focus { outline: none; }
+
+    /* FAQ accordion */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .faq-plus { transform: rotate(45deg); }
+    .faq-plus { transition: transform .25s ease; }
+
+    .grid-lines { background-image: linear-gradient(to right, rgba(241,241,241,.6) 1px, transparent 1px); background-size: 275px 100%; }
+  </style>
+</head>
+<body class="bg-white text-al-body font-sans">
+
+  <!-- ================= 1. TOP BAR ================= -->
+  <div class="hero-gradient text-white text-[15px] font-light-300">
+    <div class="max-w-[1680px] mx-auto px-6 py-3 flex items-center justify-between border-b border-white/15">
+      <div class="flex items-center gap-8">
+        <a href="mailto:support@americanleverage.org" class="flex items-center gap-2 hover:opacity-80 transition">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">support@americanleverage.org</span>
+        </a>
+        <a href="tel:+17869474975" class="flex items-center gap-2 hover:opacity-80 transition">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <span>+1 786-947-4975</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="#" aria-label="Skool" class="hover:opacity-80 transition"><i data-lucide="graduation-cap" class="w-[18px] h-[18px]"></i></a>
+        <a href="#" aria-label="Instagram" class="hover:opacity-80 transition"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
+        <a href="#" aria-label="YouTube" class="hover:opacity-80 transition"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 2. HERO ================= -->
+  <header class="hero-gradient text-white relative overflow-hidden">
+    <!-- concentric rings on the right -->
+    <div class="absolute top-[55%] right-[2%] hidden md:block" aria-hidden="true">
+      <div class="rings" style="width:486px;height:486px;opacity:.5;"></div>
+      <div class="rings" style="width:628px;height:628px;border-color:rgba(255,255,255,.2);"></div>
+      <div class="rings" style="width:754px;height:754px;border-color:rgba(255,255,255,.1);"></div>
+      <div class="rings" style="width:886px;height:886px;border-color:rgba(255,255,255,.05);"></div>
+    </div>
+    <!-- soft white glow -->
+    <div class="absolute top-[40%] right-[12%] w-[290px] h-[290px] rounded-full bg-white/40 blur-[117px] pointer-events-none" aria-hidden="true"></div>
+
+    <!-- nav -->
+    <nav class="relative z-20 max-w-[1680px] mx-auto px-6 py-5 flex items-center justify-between border-b border-white/15">
+      <a href="#" class="flex items-center gap-2">
+        <span class="font-heading font-extrabold text-2xl tracking-tight">American<span class="text-white/70">Leverage</span></span>
+      </a>
+      <ul class="hidden lg:flex items-center gap-9 text-[17px] font-light-300">
+        <li><a href="#" class="hover:opacity-80 transition">Home</a></li>
+        <li><a href="#help" class="hover:opacity-80 transition">How We Help</a></li>
+        <li><a href="#" class="flex items-center gap-1 hover:opacity-80 transition">Company <i data-lucide="chevron-down" class="w-4 h-4"></i></a></li>
+        <li><a href="#itin" class="hover:opacity-80 transition">Get Your ITIN</a></li>
+        <li><a href="#faq" class="flex items-center gap-1 hover:opacity-80 transition">Resources <i data-lucide="chevron-down" class="w-4 h-4"></i></a></li>
+      </ul>
+      <a href="#apply" class="group inline-flex items-center gap-2">
+        <span class="bg-al-blue rounded-[10px] px-6 py-3 text-[16px] font-light-300">Apply for Services</span>
+        <span class="bg-al-blue rounded-[10px] w-[50px] h-[50px] grid place-items-center group-hover:translate-x-1 transition">
+          <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+        </span>
+      </a>
+    </nav>
+
+    <!-- hero content -->
+    <div class="relative z-10 max-w-[1680px] mx-auto px-6 pt-16 pb-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <!-- attention pill -->
+        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full pl-1.5 pr-6 py-1.5 mb-10">
+          <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-al-blue">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+          </span>
+          <span class="text-[16px] font-light-300">Attention All Non-U.S. Business Owners…</span>
+        </div>
+
+        <h1 class="font-heading font-bold text-[clamp(44px,6vw,80px)] leading-[1.02] tracking-[-0.01em] mb-7">
+          Access 6 Figure 0% Credit Lines &amp; <span class="accent font-normal">95% Off</span> <span class="accent font-normal">5-Star Travel</span>
+        </h1>
+
+        <p class="max-w-xl text-[17px] leading-[26px] font-light-300 text-white/90 mb-9">
+          Unlocks access to the Premier US Banks for 6 figure 0% interest funding and turns Business
+          Spend into 4x points for Luxury Travel, saving up to 95% on Five-Star Travel.
+        </p>
+
+        <!-- search-style CTA -->
+        <form action="#apply" class="flex items-center gap-2 max-w-[480px]">
+          <div class="flex-1 bg-white rounded-[10px] px-6 h-[50px] flex items-center">
+            <input type="text" placeholder="Unlock The American Financial System"
+                   class="w-full bg-transparent text-[#353535] placeholder-[#353535] text-[16px] font-light-300 outline-none">
+          </div>
+          <button type="submit" class="bg-white rounded-[10px] w-[50px] h-[50px] grid place-items-center hover:-translate-y-0.5 transition" aria-label="Submit">
+            <i data-lucide="arrow-up-right" class="w-5 h-5 text-[#353535]"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- floating credit cards -->
+      <div class="relative h-[380px] hidden lg:block">
+        <div class="absolute top-2 right-24 w-[480px] h-[300px] rounded-2xl shadow-2xl rotate-[-28deg]
+                    bg-gradient-to-br from-[#e5e7eb] via-[#c7ccd1] to-[#9aa0a6] border border-white/40 overflow-hidden">
+          <div class="p-7 h-full flex flex-col justify-between text-[#1b1b1b]">
+            <div class="flex items-center justify-between">
+              <span class="font-heading font-bold tracking-[.2em] text-sm">AMERICAN EXPRESS</span>
+              <i data-lucide="globe" class="w-7 h-7 opacity-40"></i>
+            </div>
+            <div class="w-12 h-9 rounded-md bg-gradient-to-br from-yellow-200 to-yellow-500/80"></div>
+            <div>
+              <div class="tracking-[.18em] text-lg font-medium">•••• •••• •••• 1881</div>
+              <div class="mt-2 text-[11px] uppercase tracking-widest opacity-70">Platinum</div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 right-2 w-[480px] h-[300px] rounded-2xl shadow-2xl rotate-[10deg]
+                    bg-gradient-to-br from-[#0a3a8f] via-[#0042A9] to-[#04152B] border border-white/20 overflow-hidden">
+          <div class="p-7 h-full flex flex-col justify-between text-white">
+            <div class="flex items-center justify-between">
+              <span class="font-heading font-bold tracking-[.18em] text-sm">SAPPHIRE RESERVE</span>
+              <i data-lucide="globe" class="w-7 h-7 opacity-50"></i>
+            </div>
+            <div class="w-12 h-9 rounded-md bg-gradient-to-br from-yellow-200 to-yellow-500/80"></div>
+            <div>
+              <div class="tracking-[.18em] text-lg font-medium">•••• •••• •••• 4242</div>
+              <div class="mt-2 text-[11px] uppercase tracking-widest opacity-70">Business</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. PREMIER PRODUCTS / BANK LOGOS ================= -->
+  <section class="max-w-[1680px] mx-auto px-6 -mt-16 relative z-20">
+    <div class="grid md:grid-cols-[420px_1fr] gap-6">
+      <div class="bg-white border border-al-line rounded-[20px] p-8 flex items-center">
+        <h3 class="font-heading font-bold text-[35px] leading-[40px] tracking-[-0.01em] text-al-ink">
+          Access Premier US <span class="accent font-normal">Financial Products</span>
+        </h3>
+      </div>
+      <div class="bg-white border border-al-line rounded-[20px] p-8 flex items-center overflow-hidden">
+        <div class="flex items-center justify-between gap-10 w-full opacity-60 grayscale">
+          <span class="font-heading font-bold text-xl text-[#1b3a6b]">Capital<span class="font-light">One</span></span>
+          <span class="font-heading font-bold text-xl text-[#1b3a6b] italic">citi</span>
+          <span class="font-heading font-bold text-lg text-[#1b3a6b] hidden sm:inline">U.S. Bank</span>
+          <span class="font-heading font-bold text-xl text-[#1b3a6b] hidden md:inline">CHASE</span>
+          <span class="font-heading font-bold text-lg text-[#1b3a6b] hidden lg:inline">Bank of America</span>
+          <span class="font-heading font-bold text-xl text-[#1b3a6b] hidden lg:inline">WF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. STATS ================= -->
+  <section class="max-w-[1680px] mx-auto px-6 py-20 text-center">
+    <h2 class="font-heading font-bold text-[35px] leading-[40px] tracking-[-0.01em] text-al-ink mb-10">
+      Delivering Results To <span class="accent font-normal">Non US Business Owners</span>
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto divide-x divide-[#AFB4B5]/40">
+      <div class="px-4">
+        <div class="font-heading font-bold text-[42px] leading-none text-al-slate">5.6M+</div>
+        <div class="mt-3 text-[17px] font-light-300 text-[#353535]">US Credit Funded</div>
+      </div>
+      <div class="px-4">
+        <div class="font-heading font-bold text-[42px] leading-none text-al-slate">97.3%</div>
+        <div class="mt-3 text-[17px] font-light-300 text-[#353535]">Client Satisfaction Rate</div>
+      </div>
+      <div class="px-4">
+        <div class="font-heading font-bold text-[42px] leading-none text-al-slate">2056</div>
+        <div class="mt-3 text-[17px] font-light-300 text-[#353535]">Non US Business Served</div>
+      </div>
+      <div class="px-4">
+        <div class="font-heading font-bold text-[42px] leading-none text-al-slate">$12 M+</div>
+        <div class="mt-3 text-[17px] font-light-300 text-[#353535]">Saved With US Credit</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. HOW WE HELP ================= -->
+  <section id="help" class="max-w-[1680px] mx-auto px-6 py-12 grid lg:grid-cols-2 gap-16 items-center">
+    <!-- layered feature card -->
+    <div class="relative">
+      <div class="bg-white border border-al-line rounded-[20px] overflow-hidden">
+        <div class="px-8 py-8 text-center">
+          <div class="font-heading font-bold text-[30px] leading-[40px] text-al-slate">30+ Countries Served</div>
+          <div class="mt-3 flex items-center justify-center gap-1"><span class="w-7 h-7 border-[1.5px] border-[#D4D4D4] rotate-45"></span><span class="h-[1.5px] w-16 bg-[#D4D4D4]"></span></div>
+        </div>
+        <div class="bg-al-blue px-8 py-8 text-center">
+          <div class="font-heading font-bold text-[30px] leading-[40px] text-white">Maximize Expenses</div>
+          <div class="mt-3 flex items-center justify-center gap-1"><span class="w-7 h-7 border-[1.5px] border-white/40 rotate-45"></span><span class="h-[1.5px] w-16 bg-white/40"></span></div>
+        </div>
+        <div class="bg-[#04162D] m-0 px-8 py-8 text-center rounded-b-[20px]">
+          <div class="font-heading font-bold text-[30px] leading-[40px] text-white">Access US Capital</div>
+          <div class="mt-3 flex items-center justify-center gap-1"><span class="w-7 h-7 border-[1.5px] border-[#D4D4D4] rotate-45"></span><span class="h-[1.5px] w-16 bg-[#D4D4D4]"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="inline-flex items-center gap-3 bg-al-blue/[.08] backdrop-blur rounded-full pl-1.5 pr-5 py-1.5 mb-7">
+        <span class="flex -space-x-3">
+          <img src="images/headshot-1.jpeg" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="" onerror="this.style.display='none'">
+          <img src="images/headshot-2.jpeg" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="" onerror="this.style.display='none'">
+          <img src="images/headshot-3.jpeg" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="" onerror="this.style.display='none'">
+        </span>
+        <span class="text-[16px] font-light-300 text-al-slate">Trusted By 500+ Business Owners</span>
+      </div>
+
+      <h2 class="font-heading font-bold text-[clamp(36px,4.5vw,60px)] leading-[1.12] tracking-[-0.01em] text-al-ink mb-6">
+        Access the U.S. Financial System <span class="accent font-normal">Without Living in America.</span>
+      </h2>
+      <p class="max-w-[650px] text-[17px] leading-[26px] font-light-300 text-al-body mb-8">
+        Leverage our banking introductions to get U.S. credit cards that give you 0% financing, and 4–5
+        redemptions on every dollar spent — no SSN or relocation required.
+      </p>
+      <a href="#calculator" class="group inline-flex items-center gap-2">
+        <span class="bg-al-blue text-white rounded-[10px] px-6 py-3 text-[16px] font-light-300 capitalize">how we help</span>
+        <span class="bg-al-blue text-white rounded-[10px] w-[50px] h-[50px] grid place-items-center group-hover:translate-x-1 transition">
+          <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= 6. CALCULATOR ================= -->
+  <section id="calculator" class="max-w-[1680px] mx-auto px-6 py-12">
+    <div class="panel-gradient rounded-[70px] px-6 sm:px-12 lg:px-20 py-16 text-white relative overflow-hidden">
+      <div class="relative max-w-[1151px] mx-auto text-center">
+        <h2 class="font-heading font-bold text-[clamp(36px,4.5vw,60px)] leading-[1.17] tracking-[-0.01em] mb-4">
+          American Credit <span class="accent font-normal">Calculator</span>
+        </h2>
+        <p class="text-[17px] leading-[26px] font-light-300 text-white/90 max-w-3xl mx-auto mb-10">
+          Calculate your U.S. funding opportunity and how much money you're losing without U.S. credit cards.
+        </p>
+
+        <!-- tabs -->
+        <div class="grid sm:grid-cols-3 gap-4 mb-12 text-left">
+          <button data-type="us" class="calc-btn rounded-[20px] border border-al-line px-6 py-4 bg-white">
+            <div class="font-heading font-bold text-[20px] tracking-[-0.01em] text-al-slate text-center">American Credit</div>
+            <div class="mt-1 text-[14px] font-light-300 text-al-body text-center">Utilizing American Credit Cards (3–4x)</div>
+          </button>
+          <button data-type="foreign" class="calc-btn rounded-[20px] border border-al-line px-6 py-4">
+            <div class="font-heading font-bold text-[20px] tracking-[-0.01em] text-white text-center">Credit Outside the U.S.</div>
+            <div class="mt-1 text-[14px] font-light-300 text-white/80 text-center">Using foreign Credit Cards for your business</div>
+          </button>
+          <button data-type="debit" class="calc-btn rounded-[20px] border border-al-line px-6 py-4">
+            <div class="font-heading font-bold text-[20px] tracking-[-0.01em] text-white text-center">Using a Debit Card</div>
+            <div class="mt-1 text-[14px] font-light-300 text-white/80 text-center">Don't make this mistake… It's costing you.</div>
+          </button>
+        </div>
+
+        <!-- big value -->
+        <div class="text-center mb-2">
+          <div id="calc-spend-display" class="font-heading font-bold text-[clamp(40px,5vw,60px)] leading-none tracking-[-0.01em]">$20,000.00</div>
+          <div class="mt-3 text-[17px] font-light-300 text-white/90">Your Combined Monthly Spend (Business &amp; Lifestyle)</div>
+        </div>
+
+        <!-- slider -->
+        <div class="max-w-[1151px] mx-auto mt-8 mb-12">
+          <input type="range" id="calc-slider" min="0" max="500000" step="1000" value="20000" class="w-full">
+          <div class="flex justify-between text-[17px] font-light-300 text-white/90 mt-3">
+            <span>$0</span><span>$500,000</span>
+          </div>
+        </div>
+
+        <!-- results -->
+        <div class="rounded-[20px] border border-white/10 bg-white/[.02] backdrop-blur px-6 sm:px-12 py-8 text-left">
+          <div class="flex items-center justify-between py-3">
+            <span id="lbl-1" class="font-heading font-bold text-[20px] tracking-[-0.01em]">Monthly Points:</span>
+            <span id="val-1" class="font-heading font-bold text-[clamp(28px,3vw,40px)] tracking-[-0.01em]">80,000</span>
+          </div>
+          <hr class="border-[#717171]">
+          <div class="flex items-center justify-between py-3">
+            <span id="lbl-2" class="font-heading font-bold text-[20px] tracking-[-0.01em]">Annual Points:</span>
+            <span id="val-2" class="font-heading font-bold text-[clamp(28px,3vw,40px)] tracking-[-0.01em]">960,000</span>
+          </div>
+          <hr class="border-[#717171]">
+          <div class="flex items-center justify-between py-3">
+            <span id="lbl-3" class="font-heading font-bold text-[20px] tracking-[-0.01em]">Annual Cash Value:</span>
+            <span id="val-3" class="font-heading font-bold text-[clamp(28px,3vw,40px)] tracking-[-0.01em]">$28,800.00</span>
+          </div>
+          <hr class="border-[#717171]">
+          <div class="flex items-center justify-between py-3">
+            <span id="lbl-4" class="font-heading font-bold text-[20px] tracking-[-0.01em]">U.S. Funding Potential:</span>
+            <span id="val-4" class="font-heading font-bold text-[clamp(28px,3vw,40px)] tracking-[-0.01em]">6 Figures+ (USD)</span>
+          </div>
+        </div>
+
+        <!-- footnote + cta -->
+        <div class="mt-10 flex justify-center">
+          <a href="#apply" class="group inline-flex items-center gap-2">
+            <span class="bg-white text-[#353535] rounded-[10px] px-6 py-3 text-[16px] font-light-300">Start Your Application Today</span>
+            <span class="bg-white text-[#353535] rounded-[10px] w-[50px] h-[50px] grid place-items-center group-hover:translate-x-1 transition">
+              <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+            </span>
+          </a>
+        </div>
+        <p class="mt-8 text-[15px] font-light-300 text-white/80">
+          *Rates Based on Real Credit Statistics: US valued at 3¢/pt (4x). Outside US valued at 1¢/pt (1x). Debit = $0.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. CLIENT RESULTS ================= -->
+  <section class="max-w-[1680px] mx-auto px-6 py-16">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-3 bg-al-blue/[.08] backdrop-blur rounded-full pl-1.5 pr-6 py-1.5 mb-6">
+          <span class="w-10 h-10 rounded-full bg-al-blue grid place-items-center text-white"><i data-lucide="star" class="w-5 h-5 fill-white"></i></span>
+          <span class="text-[16px] font-light-300 text-al-slate">Excellent Based On Dozen Reviews</span>
+        </div>
+        <h2 class="font-heading font-bold text-[clamp(36px,4.5vw,60px)] leading-[1.17] tracking-[-0.01em] text-al-ink">
+          Browse through <span class="accent font-normal">Our Client Results</span>
+        </h2>
+        <p class="mt-4 max-w-md text-[17px] leading-[26px] font-light-300 text-al-body">
+          At American Leverage, we pride ourselves on our 97.3% Client Satisfaction Rates.
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <button class="w-[60px] h-[60px] rounded-[10px] border border-[#C9C9C9] grid place-items-center text-[#C9C9C9] hover:bg-gray-50 transition" aria-label="Previous"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+        <button class="w-[60px] h-[60px] rounded-[10px] bg-al-blue grid place-items-center text-white hover:opacity-90 transition" aria-label="Next"><i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- review card -->
+      <article class="bg-white border border-al-line rounded-[20px] shadow-[0_4px_50px_rgba(0,0,0,0.1)] p-8">
+        <div class="flex gap-1 mb-5">
+          <i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i>
+        </div>
+        <h3 class="font-heading font-bold text-[20px] leading-[24px] tracking-[-0.01em] text-al-slate uppercase mb-3">Got American Credit in Less Than Two Months</h3>
+        <p class="text-[14px] leading-[21px] font-light-300 text-al-body">"Very professional team, they walked me through the whole entire process step by step. Without Team American Leverage I don't know where I would be."</p>
+      </article>
+      <!-- video card -->
+      <article class="relative rounded-[20px] overflow-hidden shadow-[0_4px_50px_rgba(0,0,0,0.1)] min-h-[238px] group">
+        <img src="images/yt-thumb-1.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Client result" onerror="this.style.background='#04152C'">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <button class="absolute inset-0 grid place-items-center" aria-label="Play"><span class="w-14 h-14 rounded-full bg-white/90 grid place-items-center group-hover:scale-110 transition"><i data-lucide="play" class="w-6 h-6 text-[#04152C] fill-current ml-1"></i></span></button>
+      </article>
+      <!-- review card -->
+      <article class="bg-white border border-al-line rounded-[20px] shadow-[0_4px_50px_rgba(0,0,0,0.1)] p-8">
+        <div class="flex gap-1 mb-5">
+          <i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i>
+        </div>
+        <h3 class="font-heading font-bold text-[20px] leading-[24px] tracking-[-0.01em] text-al-slate uppercase mb-3">Got American Credit in Less Than Two Months</h3>
+        <p class="text-[14px] leading-[21px] font-light-300 text-al-body">"Very professional team, they walked me through the whole entire process step by step. Without Team American Leverage I don't know where I would be."</p>
+      </article>
+      <!-- video card -->
+      <article class="relative rounded-[20px] overflow-hidden shadow-[0_4px_50px_rgba(0,0,0,0.1)] min-h-[238px] group">
+        <img src="images/yt-thumb-2.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Client result" onerror="this.style.background='#04152C'">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <button class="absolute inset-0 grid place-items-center" aria-label="Play"><span class="w-14 h-14 rounded-full bg-white/90 grid place-items-center group-hover:scale-110 transition"><i data-lucide="play" class="w-6 h-6 text-[#04152C] fill-current ml-1"></i></span></button>
+      </article>
+      <!-- review card -->
+      <article class="bg-white border border-al-line rounded-[20px] shadow-[0_4px_50px_rgba(0,0,0,0.1)] p-8">
+        <div class="flex gap-1 mb-5">
+          <i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i><i data-lucide="star" class="w-5 h-5 text-al-gold fill-current"></i>
+        </div>
+        <h3 class="font-heading font-bold text-[20px] leading-[24px] tracking-[-0.01em] text-al-slate uppercase mb-3">Got American Credit in Less Than Two Months</h3>
+        <p class="text-[14px] leading-[21px] font-light-300 text-al-body">"Very professional team, they walked me through the whole entire process step by step. Without Team American Leverage I don't know where I would be."</p>
+      </article>
+      <!-- video card -->
+      <article class="relative rounded-[20px] overflow-hidden shadow-[0_4px_50px_rgba(0,0,0,0.1)] min-h-[238px] group">
+        <img src="images/yt-thumb-3.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Client result" onerror="this.style.background='#04152C'">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <button class="absolute inset-0 grid place-items-center" aria-label="Play"><span class="w-14 h-14 rounded-full bg-white/90 grid place-items-center group-hover:scale-110 transition"><i data-lucide="play" class="w-6 h-6 text-[#04152C] fill-current ml-1"></i></span></button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 8. ITIN STEPS ================= -->
+  <section id="itin" class="max-w-[1680px] mx-auto px-6 py-16 text-center">
+    <h2 class="font-heading font-bold text-[clamp(36px,4.5vw,60px)] leading-[1.17] tracking-[-0.01em] text-al-ink">
+      Ready To Take the First Step? <span class="accent font-normal">Get Your ITIN.</span>
+    </h2>
+    <p class="mt-6 max-w-4xl mx-auto text-[17px] leading-[26px] font-light-300 text-al-body">
+      Here's what most non-U.S. business owners don't realize: you can't build real American credit without an
+      ITIN. It's your identifier in the U.S. system, the foundation that lets you open bank accounts, apply for
+      credit cards, and access the same 0% financing your American competitors use daily. Without it, you're
+      locked out. With it, you're in.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-14 max-w-6xl mx-auto">
+      <div class="rounded-[400px] md:rounded-[400px] bg-[#F0F4FA] border border-[#B4B7B5] aspect-square grid place-items-center p-12">
+        <div class="max-w-[372px]">
+          <div class="w-20 h-20 rounded-full bg-al-blue grid place-items-center text-white font-heading font-bold text-[32px] mx-auto mb-6">01</div>
+          <h3 class="font-heading font-bold text-[24px] tracking-[-0.01em] text-al-slate mb-3">Open Your Client File</h3>
+          <p class="text-[14px] leading-[21px] font-light-300 text-al-body">Fill out the quick form so we can open a request from the ITIN team to begin the process. We'll ask for info such as: Full Name, Address, Passport Scan, etc. Within 24–72 hours you'll get a call from an onboarding specialist ensuring accurate document submission.</p>
+        </div>
+      </div>
+      <div class="rounded-[400px] bg-white border border-[#B4B7B5] aspect-square grid place-items-center p-12">
+        <div class="max-w-[372px]">
+          <div class="w-20 h-20 rounded-full bg-al-blue grid place-items-center text-white font-heading font-bold text-[32px] mx-auto mb-6">02</div>
+          <h3 class="font-heading font-bold text-[24px] tracking-[-0.01em] text-al-slate mb-3">Document Processing</h3>
+          <p class="text-[14px] leading-[21px] font-light-300 text-al-body">The Certified Acceptance Agent notarizes your documents and sends back one last file to sign. Once complete we will directly mail the Texas IRS location with your details so we can get your ITIN.</p>
+        </div>
+      </div>
+      <div class="rounded-[400px] bg-white border border-[#B4B7B5] aspect-square grid place-items-center p-12">
+        <div class="max-w-[372px]">
+          <div class="w-20 h-20 rounded-full bg-al-blue grid place-items-center text-white font-heading font-bold text-[32px] mx-auto mb-6">03</div>
+          <h3 class="font-heading font-bold text-[24px] tracking-[-0.01em] text-al-slate mb-3">Receive Your ITIN</h3>
+          <p class="text-[14px] leading-[21px] font-light-300 text-al-body">Get emails &amp; nuggets from the American Leverage team so you can establish a good banking score while you wait for your ITIN. Receive the ITIN within 6–12 weeks of the processing date. (IRS processing times vary)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col items-center gap-4">
+      <a href="#apply" class="group inline-flex items-center gap-2">
+        <span class="bg-al-blue text-white rounded-[10px] px-6 py-3 text-[16px] font-light-300">Learn More About The ITIN</span>
+        <span class="bg-al-blue text-white rounded-[10px] w-[50px] h-[50px] grid place-items-center group-hover:translate-x-1 transition"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></span>
+      </a>
+      <p class="text-[17px] font-light-300 text-al-body">Already have an ITIN? (Keep Scrolling)</p>
+    </div>
+  </section>
+
+  <!-- ================= 9. FAQ ================= -->
+  <section id="faq" class="max-w-[1680px] mx-auto px-6 py-12">
+    <div class="bg-al-dark rounded-[70px] px-6 sm:px-12 lg:px-20 py-16 text-white">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-bold text-[clamp(36px,4.5vw,60px)] leading-[1.17] tracking-[-0.01em]">
+          Frequently Asked <span class="accent font-normal">Questions</span>
+        </h2>
+        <p class="mt-4 text-[17px] font-light-300 text-white/90">Everything you need to know about American Leverage</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 max-w-[1310px] mx-auto">
+        <!-- column 1 -->
+        <div class="space-y-4">
+          <details open class="bg-white text-al-slate rounded-[20px] border border-al-line shadow-[0_4px_50px_rgba(0,0,0,0.1)] p-6">
+            <summary class="flex items-start justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-al-slate">Is it legal for non-U.S. citizens to access American credit?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] bg-al-blue grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-al-body">Yes. It is completely legal for non-U.S. citizens to access U.S. credit as long as the proper process is followed. U.S. banks and credit issuers welcome international business owners.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">Do I need to live in the U.S. to qualify?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">No. You do not need to live in or relocate to the United States. The entire process is designed to work remotely for international business owners.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">Do I need to pay U.S. taxes?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Having an ITIN does not automatically create a U.S. tax liability. Your obligations depend on your specific situation — we recommend consulting a qualified tax professional.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">How long does it take to get results?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">ITINs are typically issued within 6–12 weeks of processing. From there, many clients begin accessing U.S. credit within the following months.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">Do I need to travel to the U.S.?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Travel is optional. The core process can be completed remotely, though some clients choose to travel to strengthen their banking relationships.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">What is American Leverage Platinum?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Our premium done-for-you tier, where our specialists handle the heavy lifting end-to-end — from ITIN to premium card placement and funding strategy.</p>
+          </details>
+        </div>
+
+        <!-- column 2 -->
+        <div class="space-y-4">
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">What are your offers?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">We help you secure a U.S. ITIN, establish American credit, and unlock 0% interest funding and premium travel rewards — without relocating.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">What do you help non-U.S. business owners achieve?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Access to 6-figure 0% credit lines, 4x points on business spend, and up to 95% savings on five-star travel — the same tools American competitors use daily.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">What are the minimum requirements to qualify?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">A valid passport, a business or strong intent to build one, and a willingness to follow the process. We guide you through every step.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">Do I need an existing U.S. LLC or business entity before working with you?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Not necessarily. Many clients start without one — we'll advise on the right structure for your goals as part of the process.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">How is my personal information protected?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">Your documents are handled through secure, encrypted channels and shared only with the certified agents required to process your ITIN.</p>
+          </details>
+          <details class="rounded-[20px] border border-[#717171] p-6">
+            <summary class="flex items-center justify-between gap-4">
+              <span class="font-heading font-bold text-[24px] tracking-[-0.01em] text-white">How do you support clients in the process?</span>
+              <span class="faq-plus shrink-0 w-9 h-9 rounded-[10px] border border-white grid place-items-center text-white"><i data-lucide="plus" class="w-5 h-5"></i></span>
+            </summary>
+            <p class="mt-4 text-[17px] leading-[26px] font-light-300 text-white/90">You're assigned an onboarding specialist and receive ongoing guidance — from document submission to credit-building strategy — every step of the way.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 10. FINAL CTA ================= -->
+  <section id="apply" class="max-w-[1680px] mx-auto px-6 py-20 text-center">
+    <h2 class="font-heading font-bold text-[clamp(34px,4.5vw,60px)] leading-[1.17] tracking-[-0.01em] text-al-ink max-w-5xl mx-auto">
+      Unlocks access to the Premier US Banks for 6 figure 0% interest funding and Turns Business Spend into
+      <span class="accent font-normal">4x points for Luxury Travel, saving up to 95% on Five-Star Travel.</span>
+    </h2>
+    <div class="mt-12 flex justify-center">
+      <a href="#" class="group inline-flex items-center gap-2">
+        <span class="bg-al-blue text-white rounded-[10px] px-6 py-3 text-[16px] font-light-300">Apply For a Specialist Call</span>
+        <span class="bg-al-blue text-white rounded-[10px] w-[50px] h-[50px] grid place-items-center group-hover:translate-x-1 transition"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></span>
+      </a>
+    </div>
+    <p class="mt-8 max-w-3xl mx-auto text-[17px] leading-[26px] font-light-300 text-al-body">
+      Click to Apply for a call with a Credit Specialist. (15 Min) Your Specialist will go over how you can take
+      advantage of this system yourself and how the process looks like.
+    </p>
+  </section>
+
+  <!-- ================= 11. FOOTER ================= -->
+  <footer class="max-w-[1680px] mx-auto px-6 pb-12">
+    <div class="bg-al-dark rounded-[70px] px-8 sm:px-16 py-14 text-white">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-[#585858] pb-10">
+        <span class="font-heading font-extrabold text-2xl tracking-tight">American<span class="text-white/70">Leverage</span></span>
+        <nav class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[17px] font-light-300">
+          <a href="#" class="hover:opacity-80 transition">Privacy and Policy</a><span class="text-white/40">|</span>
+          <a href="#" class="hover:opacity-80 transition">Terms of Use</a><span class="text-white/40">|</span>
+          <a href="#" class="hover:opacity-80 transition">Fulfillment Policy</a><span class="text-white/40">|</span>
+          <a href="#" class="hover:opacity-80 transition">Cancellation Policy</a>
+        </nav>
+      </div>
+      <p class="text-center text-[17px] font-light-300 text-white/90 mt-8">© americanleverage 2026, All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    lucide.createIcons();
+
+    // ---- Calculator ----
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider  = document.getElementById('calc-slider');
+      const display = document.getElementById('calc-spend-display');
+      const val1 = document.getElementById('val-1'), val2 = document.getElementById('val-2');
+      const val3 = document.getElementById('val-3'), val4 = document.getElementById('val-4');
+      const lbl1 = document.getElementById('lbl-1'), lbl2 = document.getElementById('lbl-2');
+      const lbl3 = document.getElementById('lbl-3'), lbl4 = document.getElementById('lbl-4');
+      const btns = document.querySelectorAll('.calc-btn');
+      let mode = 'us';
+
+      const money = n => n.toLocaleString('en-US', { style:'currency', currency:'USD', maximumFractionDigits:2 });
+      const num   = n => n.toLocaleString('en-US');
+
+      function setActive(btn) {
+        btns.forEach(b => {
+          b.classList.remove('bg-white');
+          b.querySelector('div:first-child').classList.remove('text-al-slate');
+          b.querySelector('div:first-child').classList.add('text-white');
+          b.querySelector('div:last-child').classList.remove('text-al-body');
+          b.querySelector('div:last-child').classList.add('text-white/80');
+        });
+        btn.classList.add('bg-white');
+        btn.querySelector('div:first-child').classList.remove('text-white');
+        btn.querySelector('div:first-child').classList.add('text-al-slate');
+        btn.querySelector('div:last-child').classList.remove('text-white/80');
+        btn.querySelector('div:last-child').classList.add('text-al-body');
+      }
+
+      function calculate() {
+        const spend = parseInt(slider.value, 10);
+        display.textContent = money(spend);
+        const usMulti = 4, usVal = 0.03, fMulti = 1, fVal = 0.01;
+
+        if (mode === 'us') {
+          const ptsM = spend * usMulti, ptsY = ptsM * 12, cash = ptsY * usVal;
+          lbl1.textContent = 'Monthly Points:'; lbl2.textContent = 'Annual Points:';
+          lbl3.textContent = 'Annual Cash Value:'; lbl4.textContent = 'U.S. Funding Potential:';
+          val1.textContent = num(ptsM); val2.textContent = num(ptsY); val3.textContent = money(cash);
+          let funding = '5 Figures (USD)';
+          if (spend >= 100000) funding = '7 Figures+ (USD)';
+          else if (spend >= 20000) funding = '6 Figures+ (USD)';
+          else if (spend >= 5000) funding = '6 Figures (USD)';
+          val4.textContent = funding;
+        } else if (mode === 'foreign') {
+          const ptsM = spend * fMulti, ptsY = ptsM * 12, cash = ptsY * fVal;
+          const loss = (spend * usMulti * 12 * usVal) - cash;
+          lbl1.textContent = 'Monthly Points:'; lbl2.textContent = 'Annual Cash Value:';
+          lbl3.textContent = 'Money Left on Table:'; lbl4.textContent = 'Funding Potential:';
+          val1.textContent = num(ptsM); val2.textContent = money(ptsY * fVal);
+          val3.textContent = '-' + money(loss); val4.textContent = 'Limited';
+        } else {
+          const loss = spend * usMulti * 12 * usVal;
+          lbl1.textContent = 'Monthly Points:'; lbl2.textContent = 'Annual Points:';
+          lbl3.textContent = 'Money Left on Table:'; lbl4.textContent = 'Funding Potential:';
+          val1.textContent = '0'; val2.textContent = '0';
+          val3.textContent = '-' + money(loss); val4.textContent = '$0';
+        }
+      }
+
+      slider.addEventListener('input', calculate);
+      btns.forEach(btn => btn.addEventListener('click', () => { mode = btn.getAttribute('data-type'); setActive(btn); calculate(); }));
+      calculate();
+    });
+
+    // ---- FAQ: swap +/- icon styling is handled by CSS rotation ----
+  </script>
+
+  <script>
+    // Track primary conversion intent (Pixel + CAPI deduped via metaTrack)
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href="#apply"], a[href^="#apply"]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (typeof window.metaTrack === 'function') {
+            window.metaTrack('Lead', { content_name: 'Apply for Services' });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
