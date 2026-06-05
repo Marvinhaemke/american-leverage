@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+<!-- Video hosts: YouTube testimonials + Wistia founder story -->
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+<link rel="preconnect" href="https://www.youtube-nocookie.com" />
+<link rel="preconnect" href="https://fast.wistia.net" />
+
 <!-- Meta Pixel (id: 953868717628214) -->
 <script>
   !function(f,b,e,v,n,t,s)
@@ -360,7 +365,17 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .hero3 .display { font-size: clamp(38px, 4.6vw, 60px); line-height: 1.12; margin-top: 22px; max-width: 15ch; }
 .hero3 .lede { margin-top: 60px; max-width: 44ch; }
 .hero3 .cta-row { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
-@media (max-width: 880px) { .hero3-grid { grid-template-columns: 1fr; } }
+@media (max-width: 880px) {
+  .hero3 { padding: 26px 0 46px; }
+  .hero3-grid { grid-template-columns: 1fr; row-gap: 0; }
+  /* Reorder so the video sits above the CTA, with tightened spacing */
+  .hero3-copy { display: contents; }
+  .hero3 .eyebrow { order: 1; }
+  .hero3 .display { order: 2; margin-top: 14px; font-size: clamp(32px, 8.2vw, 46px); }
+  .hero3 .lede { order: 3; margin-top: 16px; }
+  .hero3-video { order: 4; margin-top: 26px; }
+  .hero3 .cta-row { order: 5; margin-top: 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
+}
 
 /* Vault video */
 .hero3-video { position: relative; }
@@ -442,6 +457,9 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .testi .thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(150deg, var(--navy-700), var(--navy-900)); display: flex; align-items: center; justify-content: center; cursor: pointer; }
 .testi .thumb .play { width: 60px; height: 60px; }
 .testi .thumb .play::before { border-width: 9px 0 9px 15px; }
+.testi .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.testi .thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,13,28,0.35), rgba(6,13,28,0.6)); z-index: 1; }
+.testi .thumb .cap, .testi .thumb .play { z-index: 2; }
 .testi .cap { position: absolute; top: 14px; left: 14px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); display: flex; gap: 8px; align-items: center; }
 .testi .body { padding: 26px 28px 30px; }
 .testi .quote { font-family: var(--serif); font-size: 21px; line-height: 1.34; color: var(--ivory); margin: 0; }
@@ -453,6 +471,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .proof-row { display: flex; justify-content: center; margin-top: 64px; }
 .proof-row .av { width: 58px; height: 58px; border-radius: 50%; margin-left: -14px; border: 2px solid var(--navy-900); background: linear-gradient(135deg,var(--navy-600),var(--navy-800)); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 19px; color: var(--silver); }
 .proof-row .av:first-child { margin-left: 0; }
+.proof-row .av { overflow: hidden; }
+.proof-row .av img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------------- QUALIFY ---------------- */
 .qualify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px,5vw,80px); align-items: start; }
@@ -497,7 +517,12 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .form-success .check { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 22px; background: linear-gradient(180deg, var(--accent-1), var(--accent-2)); display: flex; align-items: center; justify-content: center; color: var(--accent-text); font-size: 30px; }
 .form-success h3 { font-size: 30px; margin-bottom: 12px; }
 .form-success p { color: var(--silver); margin: 0 auto; max-width: 42ch; }
-@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .field-row { grid-template-columns: 1fr; }
+  .steps .step { flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 16px 6px; }
+  .steps .step .sn { width: 28px; height: 28px; font-size: 13px; }
+  .steps .step .st { font-size: 11.5px; letter-spacing: 0.02em; white-space: nowrap; }
+}
 
 /* ---------------- REVIEWS ---------------- */
 .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 54px; }
@@ -559,7 +584,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   <div class="hero-dir hero3 active" data-hero="3">
     <div class="wrap">
       <div class="hero3-grid">
-        <div>
+        <div class="hero3-copy">
           <p class="eyebrow">American Infrastructure, Earned Properly</p>
           <h1 class="display">The same leverage American founders take for granted.</h1>
           <p class="lede">Banking at Chase, Bank of America, and Amex. A structure that holds up under review. The credibility to scale into the US market on your own merits. We build the foundation, you operate on it.</p>
@@ -569,7 +594,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
           </div>
         </div>
         <div class="hero3-video">
-          <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video">
+          <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video" data-wistia="zgdan6g9l8">
             <span class="vsl-tag">Founder Story &middot; 3 min</span>
             <div class="play"></div>
             <span class="sound">Make sure your sound is on</span>
@@ -690,19 +715,19 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 
     <div class="testi-grid">
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127466;&#127480;</span> Chase business banking in ~1 month</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="QGtfxH7uKVE"><img class="thumb-img" src="https://i.ytimg.com/vi/QGtfxH7uKVE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127466;&#127480;</span> Chase business banking in ~1 month</div><div class="play"></div></div>
         <div class="body"><p class="quote">"Doing it myself was hard. Hiring the American Leverage team saved me real time and money by being there with me through the whole process."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127464;&#127462;</span> Full US banking in under 2 weeks</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="iAkc5KYuWLM"><img class="thumb-img" src="https://i.ytimg.com/vi/iAkc5KYuWLM/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127464;&#127462;</span> Full US banking in under 2 weeks</div><div class="play"></div></div>
         <div class="body"><p class="quote">"A very professional team. They walked me through the entire process step by step. Without them I do not know where I would be."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127470;&#127481;</span> US Amex &amp; banking for high volume</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="9KqTgVRQXf4"><img class="thumb-img" src="https://i.ytimg.com/vi/9KqTgVRQXf4/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127470;&#127481;</span> US Amex &amp; banking for high volume</div><div class="play"></div></div>
         <div class="body"><p class="quote">"Running five-figure monthly volume without proper US banking was leaving real money on the table. American Leverage fixed that."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127467;&#127479;</span> Complete US setup in ~2 months</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="6P_GJtq3qFQ"><img class="thumb-img" src="https://i.ytimg.com/vi/6P_GJtq3qFQ/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127467;&#127479;</span> Complete US setup in ~2 months</div><div class="play"></div></div>
         <div class="body"><p class="quote">"I am a French business owner and thought US banking was off limits for non-residents. It turns out Europeans can run on the same infrastructure as Americans."</p></div>
       </div>
     </div>
@@ -715,7 +740,10 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     <p class="eyebrow center" style="justify-content:center;">The Window Is Closing</p>
     <h2 class="h2" style="margin-top:24px;">US banks tighten non-resident onboarding every quarter. Get plugged in the right way, before the door closes.</h2>
     <div class="proof-row">
-      <div class="av">JP</div><div class="av">MK</div><div class="av">CR</div><div class="av">OH</div><div class="av">OF</div><div class="av">DP</div>
+      <div class="av"><img src="/images/headshot-1.jpeg" alt="" loading="lazy" onerror="this.parentNode.textContent='JP'" /></div>
+      <div class="av"><img src="/images/headshot-2.jpeg" alt="" loading="lazy" onerror="this.parentNode.textContent='MK'" /></div>
+      <div class="av"><img src="/images/headshot-3.jpeg" alt="" loading="lazy" onerror="this.parentNode.textContent='CR'" /></div>
+      <div class="av">OH</div><div class="av">OF</div><div class="av">DP</div>
     </div>
     <div style="margin-top:38px;"><a href="#apply" class="btn btn-platinum" data-cta="urgency">Apply for a Specialist Call <span class="arrow">&rarr;</span></a></div>
   </div>
@@ -1061,6 +1089,39 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
         }, user);
       }
       showStep(4);
+    });
+  }
+
+  /* ---------- Click-to-play videos (YouTube testimonials + Wistia hero) ---------- */
+  function fillFrame(host, src, title) {
+    if (host.dataset.played) return;
+    host.dataset.played = '1';
+    var f = document.createElement('iframe');
+    f.src = src;
+    f.title = title;
+    f.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    f.allowFullscreen = true;
+    f.setAttribute('frameborder', '0');
+    f.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
+    host.appendChild(f);
+    host.style.cursor = 'default';
+  }
+  function wireVideo(el, build) {
+    function go() { build(el); }
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  }
+  document.querySelectorAll('.thumb[data-yt]').forEach(function (t) {
+    wireVideo(t, function (el) {
+      fillFrame(el, 'https://www.youtube-nocookie.com/embed/' + el.getAttribute('data-yt') + '?autoplay=1&rel=0', 'Video testimonial');
+    });
+  });
+  var heroVsl = document.querySelector('.vsl[data-wistia]');
+  if (heroVsl) {
+    wireVideo(heroVsl, function (el) {
+      fillFrame(el, 'https://fast.wistia.net/embed/iframe/' + el.getAttribute('data-wistia') + '?autoPlay=true', 'Founder story video');
     });
   }
 
