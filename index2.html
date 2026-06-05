@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>American Leverage — The same leverage American founders take for granted</title>
+<meta name="description" content="Real US banking (Chase, Bank of America, Amex), LLC structure, and the credit foundation for international founders to operate and scale inside the US financial system — without living there." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel (id: 953868717628214) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '953868717628214');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=953868717628214&ev=PageView&noscript=1"/></noscript>
+<!-- Meta CAPI bridge: fires server-side events with the same event_id for dedupe -->
+<script src="/js/meta-capi.js"></script>
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — Premium brand system
+   Navy + Platinum, editorial Didone display, refined grotesque body
+   (styles.css inlined; Amber accent locked in as default)
+   ============================================================ */
+
+:root {
+  /* Navy depths */
+  --navy-1000: #060d1c;
+  --navy-900:  #0a1428;
+  --navy-850:  #0d1a35;
+  --navy-800:  #122347;   /* base brand navy (logo bg) */
+  --navy-700:  #18305c;
+  --navy-600:  #21406f;
+
+  /* Light + metal */
+  --ivory:     #f3f1ea;
+  --ivory-dim: #d9d6cc;
+  --silver:    #c6cedb;
+  --silver-dim:#9aa4b5;
+  --slate:     #7e889a;
+
+  /* Platinum metallic gradients */
+  --platinum: linear-gradient(105deg, #8c97a8 0%, #eef2f7 28%, #c4cdd9 50%, #f6f8fb 70%, #97a2b3 100%);
+  --platinum-soft: linear-gradient(100deg, #aeb8c6 0%, #f2f5f9 40%, #b8c2cf 100%);
+  --silver-text: linear-gradient(100deg, #b6bfce 0%, #ffffff 45%, #a9b3c2 100%);
+
+  /* Champagne — used sparingly */
+  --champagne: #c8a96a;
+  --champagne-dim: #a98f55;
+
+  /* Clickable accent (CTA) — Amber locked in as the default for this build. */
+  --accent-1:   #f2b13a;   /* button gradient top */
+  --accent-2:   #e0931c;   /* button gradient bottom */
+  --accent-deep:#c47a10;   /* hover gradient bottom */
+  --accent-glow: rgba(240,170,50,0.5);
+  --accent-ink: #3a2606;
+  --accent-text:#3a2606;   /* dark brown text/icons ON amber for contrast */
+
+  /* Hairlines + glass */
+  --line:        rgba(231, 236, 245, 0.12);
+  --line-strong: rgba(231, 236, 245, 0.22);
+  --glass:       rgba(255, 255, 255, 0.035);
+  --glass-2:     rgba(255, 255, 255, 0.06);
+
+  /* Type */
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans:  "Hanken Grotesk", system-ui, sans-serif;
+
+  /* Rhythm */
+  --maxw: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--navy-800);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Layout helpers ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: clamp(72px, 9vw, 140px) 0; position: relative; }
+
+/* ---------- Type primitives ---------- */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--silver-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 34px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--silver-dim));
+}
+.eyebrow.center::after {
+  content: "";
+  width: 34px; height: 1px;
+  background: linear-gradient(90deg, var(--silver-dim), transparent);
+}
+.eyebrow.center::before {
+  background: linear-gradient(90deg, transparent, var(--silver-dim));
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; line-height: 1.09; letter-spacing: -0.01em; }
+
+.display {
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.h2 { font-size: clamp(32px, 4.4vw, 60px); line-height: 1.1; }
+.h3 { font-size: clamp(22px, 2.4vw, 30px); }
+
+.lede {
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.66;
+  color: var(--silver);
+  font-weight: 350;
+}
+
+/* Metallic text */
+.metal {
+  background: var(--silver-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gold { color: var(--champagne); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn .arrow { transition: transform .25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.btn-platinum {
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+  color: var(--accent-text);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.22) inset, 0 14px 36px -12px var(--accent-glow);
+}
+.btn-platinum:hover { transform: translateY(-2px); background: linear-gradient(180deg, var(--accent-1), var(--accent-deep)); box-shadow: 0 1px 0 rgba(255,255,255,0.28) inset, 0 22px 50px -12px var(--accent-glow); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid var(--line-strong);
+}
+.btn-ghost:hover { border-color: var(--silver); background: var(--glass-2); }
+
+.btn-block { width: 100%; justify-content: center; }
+
+/* ---------- Accent themes (swap on body[data-accent]) ---------- */
+body[data-accent="azure"]  { --accent-1:#3f86ff; --accent-2:#2563ec; --accent-deep:#1d4fcc; --accent-glow: rgba(63,134,255,0.55); --accent-ink:#05122e; --accent-text:#ffffff; }
+body[data-accent="amber"]  { --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow: rgba(240,170,50,0.5); --accent-ink:#3a2606; --accent-text:#3a2606; }
+body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-deep:#0e7b49; --accent-glow: rgba(31,176,110,0.55); --accent-ink:#052012; --accent-text:#ffffff; }
+
+/* ---------- Wordmark ---------- */
+.wordmark {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  line-height: 1;
+  display: inline-block;
+}
+.wordmark .am { color: var(--ivory); }
+.wordmark .lev {
+  background: var(--silver-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Hairline rule ---------- */
+.rule { height: 1px; background: var(--line); border: 0; }
+
+/* ---------- Decorative textures ---------- */
+.grain::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+.vignette { position: relative; }
+.vignette::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 80% at 50% 0%, rgba(40,72,130,0.35), transparent 60%);
+}
+
+/* ============================================================
+   AMERICAN LEVERAGE — section + component styles
+   (sections.css inlined)
+   ============================================================ */
+
+/* ---------------- NAV ---------------- */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(10, 20, 40, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 78px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav .wordmark { font-size: 25px; }
+.nav-links { display: flex; gap: 38px; align-items: center; }
+.nav-links a {
+  font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--silver); transition: color .2s;
+}
+.nav-links a:hover { color: var(--ivory); }
+.nav-right { display: flex; align-items: center; gap: 26px; }
+.nav-cta {
+  position: relative;
+  font-size: 13px !important;
+  padding: 11px 22px 11px 38px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.14) inset, 0 10px 26px -10px var(--accent-glow);
+}
+.nav-cta::before {
+  content: ""; position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-text);
+  animation: navpulse 2.4s ease-out infinite;
+}
+@keyframes navpulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+/* Mobile menu toggle (hamburger) — not in prototype; added for < 900px */
+.nav-toggle {
+  display: none;
+  background: transparent; border: 1px solid var(--line-strong);
+  border-radius: 6px; width: 42px; height: 38px; cursor: pointer;
+  padding: 0; align-items: center; justify-content: center;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: ""; display: block; width: 18px; height: 1.5px; background: var(--silver);
+  position: relative; transition: .25s;
+}
+.nav-toggle span::before { position: absolute; top: -6px; }
+.nav-toggle span::after  { position: absolute; top: 6px; }
+
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute; top: 78px; left: 0; right: 0;
+    flex-direction: column; gap: 0; align-items: stretch;
+    background: rgba(10,20,40,0.96); backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .3s ease;
+  }
+  .nav-links.open { max-height: 320px; }
+  .nav-links a { padding: 18px var(--gutter); font-size: 15px; border-bottom: 1px solid var(--line); }
+  .nav-toggle { display: inline-flex; order: 3; }
+  .nav-right .nav-cta { display: none; }
+}
+
+/* ---------------- HERO SHARED ---------------- */
+.hero { position: relative; overflow: hidden; }
+.hero-dir { display: none; }
+.hero-dir.active { display: block; }
+
+/* video frame placeholder */
+.vsl {
+  position: relative; width: 100%; aspect-ratio: 16/9;
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(40,74,134,0.5), transparent 60%),
+    linear-gradient(160deg, var(--navy-700), var(--navy-900));
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.vsl::after {
+  content: ""; position: absolute; inset: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 5px 5px; opacity: .6; pointer-events: none;
+}
+.play {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--platinum);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 50px -18px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.3) inset;
+  position: relative; z-index: 2;
+  transition: transform .25s ease;
+}
+.vsl:hover .play, .thumb:hover .play { transform: scale(1.06); }
+.play::before {
+  content: ""; border-style: solid; border-width: 13px 0 13px 21px;
+  border-color: transparent transparent transparent var(--navy-900);
+  margin-left: 5px;
+}
+.vsl .sound {
+  position: absolute; bottom: 18px; left: 0; right: 0; text-align: center;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver-dim);
+  z-index: 2;
+}
+.vsl-tag {
+  position: absolute; top: 18px; left: 18px; z-index: 2;
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--silver-dim); border: 1px solid var(--line-strong);
+  padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,0.25);
+}
+
+/* HERO 3 — The Vault (dark, metal card motif) */
+.hero3 { background: radial-gradient(120% 90% at 70% -10%, #16294f 0%, var(--navy-1000) 70%); padding: clamp(64px,8vw,128px) 0; }
+.hero3-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(36px,4vw,64px); align-items: center; }
+.hero3 .display { font-size: clamp(38px, 4.6vw, 60px); line-height: 1.12; margin-top: 22px; max-width: 15ch; }
+.hero3 .lede { margin-top: 60px; max-width: 44ch; }
+.hero3 .cta-row { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+@media (max-width: 880px) { .hero3-grid { grid-template-columns: 1fr; } }
+
+/* Vault video */
+.hero3-video { position: relative; }
+.hero3-video .vsl { border-radius: 6px; box-shadow: 0 50px 90px -40px rgba(0,0,0,0.85); }
+.float-stat {
+  background: rgba(10,20,40,0.85); backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong); padding: 18px 24px; border-radius: 4px;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,0.9);
+}
+.hero3-video .float-stat {
+  position: absolute; right: -16px; top: -22px; left: auto; bottom: auto;
+  background: rgba(10,20,40,0.9); padding: 16px 22px; border-radius: 6px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero3-video .float-stat .n { font-family: var(--serif); font-size: 30px; line-height: 1; }
+.hero3-video .float-stat .l { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); max-width: 14ch; line-height: 1.3; }
+@media (max-width: 880px) { .hero3-video .float-stat { position: static; margin-top: 16px; display: inline-flex; } }
+
+/* ---------------- WHAT WE DO ---------------- */
+.lead-statement .h2 { max-width: 24ch; font-size: clamp(30px, 3.6vw, 48px); }
+.lead-statement > .lede { margin-top: 30px !important; }
+.value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin-top: 64px; border: 1px solid var(--line); }
+.value-cell { background: var(--navy-800); padding: 44px clamp(28px,3vw,48px); position: relative; }
+.value-cell .vc-num { font-family: var(--serif); font-size: 17px; color: var(--silver-dim); }
+.value-cell .h3 { margin: 22px 0 14px; max-width: 18ch; }
+.value-cell p { color: var(--silver); font-size: 15.5px; line-height: 1.62; margin: 0; }
+.value-cell.wide { grid-column: 1 / -1; }
+@media (max-width: 760px) { .value-grid { grid-template-columns: 1fr; } .value-cell.wide { grid-column: auto; } }
+
+/* ---------------- STAT BAND ---------------- */
+.statband { background: linear-gradient(180deg, var(--navy-900), var(--navy-850)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.statband .h2 { text-align: center; max-width: 24ch; margin: 0 auto; }
+.stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 60px; }
+.stat .n { font-family: var(--serif); font-size: clamp(46px,5vw,68px); line-height: 1; }
+.stat .l { font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); margin-top: 12px; }
+.stat { text-align: center; }
+@media (max-width: 700px) { .stat-row { grid-template-columns: 1fr; gap: 36px; } }
+
+/* ---------------- CALCULATOR ---------------- */
+.calc-shell { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(32px,4vw,64px); margin-top: 56px; align-items: stretch; }
+.calc-panel { background: var(--glass); border: 1px solid var(--line); border-radius: 6px; padding: clamp(28px,3vw,42px); }
+.calc-label { font-size: 13px; letter-spacing: 0.04em; color: var(--silver-dim); }
+.calc-value { font-family: var(--serif); font-size: 52px; line-height: 1; margin: 10px 0 26px; }
+
+/* Real range input, styled to match the prototype's visual slider */
+.slider { position: relative; height: 24px; display: flex; align-items: center; }
+.slider .track { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); height: 6px; border-radius: 999px; background: rgba(255,255,255,0.1); }
+.slider .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 32%; border-radius: 999px; background: var(--platinum-soft); }
+.slider .knob { position: absolute; top: 50%; left: 32%; width: 24px; height: 24px; border-radius: 50%; background: var(--platinum); transform: translate(-50%,-50%); box-shadow: 0 6px 16px -4px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.4) inset; pointer-events: none; }
+.slider input[type="range"] { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 24px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.slider input[type="range"]:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 4px; border-radius: 999px; }
+.slider input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: transparent; }
+.slider input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; border: 0; border-radius: 50%; background: transparent; }
+.slider-ends { display: flex; justify-content: space-between; margin-top: 16px; font-size: 12px; color: var(--slate); }
+.opt-row { display: flex; flex-direction: column; gap: 12px; margin-top: 34px; }
+.opt { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 4px; background: rgba(255,255,255,0.015); cursor: pointer; transition: border-color .2s, background .2s; width: 100%; text-align: left; font-family: inherit; color: inherit; }
+.opt:hover { border-color: var(--line-strong); }
+.opt.sel { border-color: var(--silver); background: var(--glass-2); }
+.opt .flag { font-size: 20px; }
+.opt .ot { font-weight: 600; font-size: 14.5px; }
+.opt .os { font-size: 12.5px; color: var(--silver-dim); margin-top: 2px; }
+.opt .mult { margin-left: auto; font-family: var(--serif); font-size: 22px; color: var(--silver); }
+
+.calc-results { display: flex; flex-direction: column; justify-content: center; gap: 2px; background: linear-gradient(160deg, var(--navy-700), var(--navy-900)); border: 1px solid var(--line-strong); border-radius: 6px; padding: clamp(30px,3.4vw,48px); }
+.res-row { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.res-row:last-of-type { border-bottom: 0; }
+.res-row .rk { color: var(--silver-dim); font-size: 14px; letter-spacing: 0.02em; }
+.res-row .rv { font-family: var(--serif); font-size: 30px; }
+.res-hero { padding: 26px 0 14px; }
+.res-hero .rk { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; }
+.res-hero .rv { font-size: clamp(44px,5vw,64px); }
+.calc-foot { font-size: 11.5px; color: var(--slate); margin-top: 22px; line-height: 1.5; }
+@media (max-width: 860px) { .calc-shell { grid-template-columns: 1fr; } }
+
+/* ---------------- TESTIMONIALS ---------------- */
+.testi-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 26px; margin-top: 56px; }
+.testi { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--glass); }
+.testi .thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(150deg, var(--navy-700), var(--navy-900)); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.testi .thumb .play { width: 60px; height: 60px; }
+.testi .thumb .play::before { border-width: 9px 0 9px 15px; }
+.testi .cap { position: absolute; top: 14px; left: 14px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); display: flex; gap: 8px; align-items: center; }
+.testi .body { padding: 26px 28px 30px; }
+.testi .quote { font-family: var(--serif); font-size: 21px; line-height: 1.34; color: var(--ivory); margin: 0; }
+@media (max-width: 760px) { .testi-grid { grid-template-columns: 1fr; } }
+
+/* ---------------- URGENCY ---------------- */
+.urgency { background: radial-gradient(100% 120% at 50% 0%, #142a52, var(--navy-1000)); text-align: center; }
+.urgency .h2 { max-width: 22ch; margin: 0 auto; }
+.proof-row { display: flex; justify-content: center; margin-top: 64px; }
+.proof-row .av { width: 58px; height: 58px; border-radius: 50%; margin-left: -14px; border: 2px solid var(--navy-900); background: linear-gradient(135deg,var(--navy-600),var(--navy-800)); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 19px; color: var(--silver); }
+.proof-row .av:first-child { margin-left: 0; }
+
+/* ---------------- QUALIFY ---------------- */
+.qualify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px,5vw,80px); align-items: start; }
+.notlist { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-direction: column; gap: 16px; }
+.notlist li { display: flex; gap: 16px; align-items: flex-start; font-size: 16px; color: var(--silver); padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.notlist .x { color: var(--champagne); flex: 0 0 auto; margin-top: 2px; }
+.qualify-note { background: var(--glass); border: 1px solid var(--line); border-left: 2px solid var(--silver); padding: 30px 32px; border-radius: 4px; }
+.qualify-note p { color: var(--silver); margin: 0; }
+@media (max-width: 800px) { .qualify-grid { grid-template-columns: 1fr; } }
+
+/* ---------------- APPLY FORM ---------------- */
+.apply { background: linear-gradient(180deg, var(--navy-850), var(--navy-900)); border-top: 1px solid var(--line); }
+.form-card { max-width: 720px; margin: 50px auto 0; background: var(--navy-800); border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; box-shadow: 0 50px 100px -50px rgba(0,0,0,0.9); }
+.steps { display: flex; border-bottom: 1px solid var(--line); }
+.step { flex: 1; padding: 22px; display: flex; align-items: center; gap: 14px; border-right: 1px solid var(--line); }
+.step:last-child { border-right: 0; }
+.step .sn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--silver-dim); flex: 0 0 auto; }
+.step.on .sn { background: linear-gradient(180deg, var(--accent-1), var(--accent-2)); color: var(--accent-text); border-color: transparent; }
+.step .st { font-size: 13px; letter-spacing: 0.04em; }
+.step.on .st { color: var(--ivory); }
+.step:not(.on) .st { color: var(--slate); }
+.form-body { padding: clamp(28px,3.4vw,44px); }
+.form-step { display: none; }
+.form-step.active { display: block; }
+.field { margin-bottom: 22px; }
+.field label { display: block; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--silver-dim); margin-bottom: 9px; }
+.field .inp,
+.field input,
+.field select {
+  width: 100%; background: rgba(0,0,0,0.22); border: 1px solid var(--line-strong); border-radius: 4px;
+  padding: 15px 16px; color: var(--ivory); font-family: var(--sans); font-size: 15px;
+}
+.field input::placeholder { color: var(--slate); }
+.field input:focus, .field select:focus { outline: none; border-color: var(--silver); }
+.field input.err, .field select.err { border-color: #d98a8a; }
+.field select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-nav { display: flex; gap: 14px; margin-top: 8px; }
+.form-nav .btn-ghost { flex: 0 0 auto; }
+.form-nav .btn-platinum { flex: 1; }
+.form-success { text-align: center; padding: 20px 0; }
+.form-success .check { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 22px; background: linear-gradient(180deg, var(--accent-1), var(--accent-2)); display: flex; align-items: center; justify-content: center; color: var(--accent-text); font-size: 30px; }
+.form-success h3 { font-size: 30px; margin-bottom: 12px; }
+.form-success p { color: var(--silver); margin: 0 auto; max-width: 42ch; }
+@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+/* ---------------- REVIEWS ---------------- */
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 54px; }
+.review { border: 1px solid var(--line); border-radius: 6px; padding: 30px 28px; background: var(--glass); display: flex; flex-direction: column; }
+.stars { color: var(--champagne); letter-spacing: 2px; font-size: 14px; }
+.review p { font-size: 15.5px; line-height: 1.6; color: var(--ivory); margin: 18px 0 24px; flex: 1; }
+.review .who { display: flex; align-items: center; gap: 13px; }
+.review .who .av { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg,var(--navy-600),var(--navy-800)); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 16px; color: var(--silver); border: 1px solid var(--line); }
+.review .who .nm { font-size: 14.5px; font-weight: 600; }
+.review .who .loc { font-size: 12.5px; color: var(--slate); }
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+/* ---------------- FOOTER ---------------- */
+.footer { background: var(--navy-1000); border-top: 1px solid var(--line); padding: 72px 0 40px; }
+.foot-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.foot-social { display: flex; gap: 14px; }
+.foot-social a { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; color: var(--silver-dim); transition: .2s; }
+.foot-social a:hover { color: var(--ivory); border-color: var(--silver); }
+.foot-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 13px; color: var(--silver-dim); margin-top: 40px; }
+.foot-links a:hover { color: var(--silver); }
+.foot-legal { font-size: 12px; color: var(--slate); line-height: 1.7; margin-top: 26px; max-width: 90ch; }
+.foot-copy { font-size: 12.5px; color: var(--silver-dim); margin-top: 24px; }
+.disclaimer-box { margin-top: 36px; border: 1px solid var(--line); border-radius: 6px; padding: 26px 30px; background: var(--glass); }
+.disclaimer-box h4 { font-family: var(--serif); font-weight: 500; font-size: 20px; margin: 0 0 12px; }
+.disclaimer-box p { font-size: 13.5px; color: var(--silver-dim); margin: 0 0 10px; line-height: 1.6; }
+.disclaimer-box strong { color: var(--silver); }
+
+/* ---------------- REDUCED MOTION ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav-cta::before { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body data-accent="amber">
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="wordmark"><span class="am">American</span><span class="lev">Leverage</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#what">What We Do</a>
+      <a href="#calculator">The Math</a>
+      <a href="#results">Results</a>
+      <a href="#qualify">Who It's For</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#apply" class="btn btn-platinum nav-cta" data-cta="nav">Apply for a Call</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO — The Vault ============ -->
+<section class="hero vignette grain" id="hero">
+  <div class="hero-dir hero3 active" data-hero="3">
+    <div class="wrap">
+      <div class="hero3-grid">
+        <div>
+          <p class="eyebrow">American Infrastructure, Earned Properly</p>
+          <h1 class="display">The same leverage American founders take for granted.</h1>
+          <p class="lede">Banking at Chase, Bank of America, and Amex. A structure that holds up under review. The credibility to scale into the US market on your own merits. We build the foundation, you operate on it.</p>
+          <div class="cta-row">
+            <a href="#apply" class="btn btn-platinum" data-cta="hero">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
+            <a href="#results" class="btn btn-ghost">See the Results</a>
+          </div>
+        </div>
+        <div class="hero3-video">
+          <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video">
+            <span class="vsl-tag">Founder Story &middot; 3 min</span>
+            <div class="play"></div>
+            <span class="sound">Make sure your sound is on</span>
+          </div>
+          <div class="float-stat">
+            <div class="n metal">500+</div>
+            <div class="l">Founders onboarded</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="section" id="what">
+  <div class="wrap lead-statement">
+    <p class="eyebrow">What American Leverage Does</p>
+    <h2 class="h2" style="margin-top:24px;">We help international entrepreneurs run and scale their business inside the US financial system, without living there.</h2>
+    <p class="lede" style="margin-top:26px;max-width:62ch;">US bank accounts, business infrastructure, and the credit foundation to operate like a real American company. Normally none of this is open to you if you are not a US citizen or resident. We show you the legitimate path in, set everything up correctly, and make sure your setup holds up over the long term.</p>
+
+    <div class="value-grid">
+      <div class="value-cell">
+        <span class="vc-num">01</span>
+        <h3 class="h3">Built for founders with a business, not borrowers</h3>
+        <p>This is not about borrowing money. It is about giving your company a real operational base in the US: proper banking relationships, the right LLC structure, payment processing, and the financial credibility to scale into the American market.</p>
+      </div>
+      <div class="value-cell">
+        <span class="vc-num">02</span>
+        <h3 class="h3">Run your business from the US, without moving</h3>
+        <p>Once your setup is in place, you operate through US infrastructure. Accept USD cleanly, work with US clients without friction, run ads through US ad accounts, and reach tools and platforms normally closed to international founders.</p>
+      </div>
+      <div class="value-cell">
+        <span class="vc-num">03</span>
+        <h3 class="h3">Set up and actually use your LLC the right way</h3>
+        <p>Most people form an LLC and then have no idea what to do with it. We walk you through real usage: opening accounts at Chase, Bank of America, and Amex, building business credibility, and making the structure work for you instead of sitting on paper.</p>
+      </div>
+      <div class="value-cell">
+        <span class="vc-num">04</span>
+        <h3 class="h3">Built to last, not a workaround that gets shut down</h3>
+        <p>Many providers use fake addresses, sketchy shortcuts, or nominee setups that get frozen within months. We do it properly, with real US banking relationships, so your accounts stay open, grow over time, and survive a bank review.</p>
+      </div>
+      <div class="value-cell wide">
+        <span class="vc-num">05</span>
+        <h3 class="h3">Best for scaling companies, not beginners</h3>
+        <p>This works for founders running a real business who want to expand operationally into the US. If you are spending on paid ads, selling to US customers, or building a brand that needs American infrastructure, this was built for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT BAND ============ -->
+<section class="section statband">
+  <div class="wrap">
+    <h2 class="h2">500+ international founders plugged into real US banking, LLC infrastructure, and the credit foundation to scale.</h2>
+    <div class="stat-row">
+      <div class="stat"><div class="n metal">500+</div><div class="l">Founders onboarded</div></div>
+      <div class="stat"><div class="n metal">&lt;90 days</div><div class="l">To an operating US presence</div></div>
+      <div class="stat"><div class="n metal">Tier-1</div><div class="l">Chase &middot; BoA &middot; Amex</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section class="section" id="calculator">
+  <div class="wrap">
+    <p class="eyebrow">US Business Infrastructure Calculator</p>
+    <h2 class="h2" style="margin-top:22px;max-width:20ch;">See what operating inside the US system is worth, and what running without it costs you.</h2>
+
+    <div class="calc-shell">
+      <div class="calc-panel">
+        <div class="calc-label">Your combined monthly spend (business &amp; lifestyle)</div>
+        <div class="calc-value metal" id="calcValue">$10,000</div>
+        <div class="slider">
+          <div class="track"><div class="fill" id="calcFill"></div></div>
+          <div class="knob" id="calcKnob"></div>
+          <input type="range" id="calcSlider" min="0" max="500000" step="1000" value="10000"
+                 aria-label="Combined monthly spend" />
+        </div>
+        <div class="slider-ends"><span>$0</span><span>$500k</span></div>
+
+        <div class="opt-row" role="radiogroup" aria-label="Credit type">
+          <button type="button" class="opt sel" data-mult="4" role="radio" aria-checked="true">
+            <span class="flag">&#127482;&#127480;</span>
+            <div><div class="ot">American Credit</div><div class="os">US business cards, 3 to 4x rewards</div></div>
+            <span class="mult">4x</span>
+          </button>
+          <button type="button" class="opt" data-mult="1" role="radio" aria-checked="false">
+            <span class="flag">&#127758;</span>
+            <div><div class="ot">Credit Outside the US</div><div class="os">Foreign credit cards, 1x rewards</div></div>
+            <span class="mult">1x</span>
+          </button>
+          <button type="button" class="opt" data-mult="0" role="radio" aria-checked="false">
+            <span class="flag">&#128542;</span>
+            <div><div class="ot">Debit Card</div><div class="os">Do not make this mistake</div></div>
+            <span class="mult">0x</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="res-row"><span class="rk">Monthly points</span><span class="rv metal" id="resMonthly">40,000</span></div>
+        <div class="res-row"><span class="rk">Annual points</span><span class="rv metal" id="resAnnual">480,000</span></div>
+        <div class="res-row res-hero"><span class="rk gold">Annual cash value</span></div>
+        <div class="res-row res-hero" style="border:0;padding-top:0;"><span class="rv metal" id="resCash" style="font-size:clamp(48px,5.5vw,72px);">$14,400</span></div>
+        <div class="res-row"><span class="rk">US funding potential</span><span class="rv metal" id="resFunding">Six figures</span></div>
+        <p class="calc-foot">Rates based on real credit statistics. US valued at 3&cent; per point at 4x. Outside the US valued at 1&cent; per point at 1x. Debit equals $0. For educational purposes only, not a guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="results" style="background:linear-gradient(180deg,var(--navy-850),var(--navy-800));border-top:1px solid var(--line);">
+  <div class="wrap">
+    <p class="eyebrow">In Their Words</p>
+    <h2 class="h2" style="margin-top:22px;max-width:18ch;">Founders who plugged in, in their own words.</h2>
+
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127466;&#127480;</span> Chase business banking in ~1 month</div><div class="play"></div></div>
+        <div class="body"><p class="quote">"Doing it myself was hard. Hiring the American Leverage team saved me real time and money by being there with me through the whole process."</p></div>
+      </div>
+      <div class="testi">
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127464;&#127462;</span> Full US banking in under 2 weeks</div><div class="play"></div></div>
+        <div class="body"><p class="quote">"A very professional team. They walked me through the entire process step by step. Without them I do not know where I would be."</p></div>
+      </div>
+      <div class="testi">
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127470;&#127481;</span> US Amex &amp; banking for high volume</div><div class="play"></div></div>
+        <div class="body"><p class="quote">"Running five-figure monthly volume without proper US banking was leaving real money on the table. American Leverage fixed that."</p></div>
+      </div>
+      <div class="testi">
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><div class="cap"><span>&#127467;&#127479;</span> Complete US setup in ~2 months</div><div class="play"></div></div>
+        <div class="body"><p class="quote">"I am a French business owner and thought US banking was off limits for non-residents. It turns out Europeans can run on the same infrastructure as Americans."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ URGENCY ============ -->
+<section class="section urgency vignette">
+  <div class="wrap">
+    <p class="eyebrow center" style="justify-content:center;">The Window Is Closing</p>
+    <h2 class="h2" style="margin-top:24px;">US banks tighten non-resident onboarding every quarter. Get plugged in the right way, before the door closes.</h2>
+    <div class="proof-row">
+      <div class="av">JP</div><div class="av">MK</div><div class="av">CR</div><div class="av">OH</div><div class="av">OF</div><div class="av">DP</div>
+    </div>
+    <div style="margin-top:38px;"><a href="#apply" class="btn btn-platinum" data-cta="urgency">Apply for a Specialist Call <span class="arrow">&rarr;</span></a></div>
+  </div>
+</section>
+
+<!-- ============ QUALIFY ============ -->
+<section class="section" id="qualify">
+  <div class="wrap qualify-grid">
+    <div>
+      <p class="eyebrow">Read This Before Applying</p>
+      <h2 class="h2" style="margin-top:22px;">This is not for you if</h2>
+      <p class="lede" style="margin-top:20px;">We would rather tell you upfront than waste your time on a call.</p>
+    </div>
+    <div>
+      <ul class="notlist">
+        <li><span class="x">&#10005;</span> You do not have a running business yet</li>
+        <li><span class="x">&#10005;</span> You are looking for a personal loan or quick cash</li>
+        <li><span class="x">&#10005;</span> You want to hide income or avoid taxes</li>
+        <li><span class="x">&#10005;</span> You are not willing to follow a proper setup process</li>
+        <li><span class="x">&#10005;</span> Your business does under $5K per month in revenue</li>
+      </ul>
+      <div class="qualify-note" style="margin-top:28px;">
+        <p>If none of the above describe you, and you are running a real business ready to operate inside the US financial system, keep going.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY FORM ============ -->
+<section class="section apply" id="apply">
+  <div class="wrap" style="text-align:center;">
+    <p class="eyebrow center" style="justify-content:center;">Apply for a US Setup Specialist Call</p>
+    <h2 class="h2" style="margin-top:22px;">Start with a single conversation.</h2>
+    <p class="lede" style="margin:20px auto 0;max-width:56ch;">All calls are currently conducted in English. Please make sure you are comfortable speaking English before booking.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="form-card">
+      <div class="steps">
+        <div class="step on" data-step="1"><span class="sn">1</span><span class="st">Details</span></div>
+        <div class="step" data-step="2"><span class="sn">2</span><span class="st">Business</span></div>
+        <div class="step" data-step="3"><span class="sn">3</span><span class="st">Book Call</span></div>
+      </div>
+      <form class="form-body" id="applyForm" novalidate>
+        <!-- Step 1 -->
+        <div class="form-step active" data-step="1">
+          <div class="field-row">
+            <div class="field"><label>Full Name *</label><input type="text" name="name" placeholder="Jane Founder" autocomplete="name" required /></div>
+            <div class="field"><label>Email Address *</label><input type="email" name="email" placeholder="you@company.com" autocomplete="email" required /></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Phone / WhatsApp *</label><input type="tel" name="phone" placeholder="+1 786 000 0000" autocomplete="tel" required /></div>
+            <div class="field"><label>Website URL</label><input type="url" name="website" placeholder="https://" autocomplete="url" /></div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-platinum btn-block" data-next>Continue to Step 2 <span class="arrow">&rarr;</span></button>
+          </div>
+          <p style="text-align:center;font-size:12px;color:var(--slate);margin-top:18px;">&#128274; Your information is 100% secure and is never shared.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+          <div class="field-row">
+            <div class="field"><label>Business Name *</label><input type="text" name="business" placeholder="Acme Holdings LLC" autocomplete="organization" required /></div>
+            <div class="field"><label>Country of Residence *</label><input type="text" name="country" placeholder="Germany" autocomplete="country-name" required /></div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Monthly Revenue *</label>
+              <select name="revenue" required>
+                <option value="">Select a range</option>
+                <option value="5-15k">$5K – $15K</option>
+                <option value="15-50k">$15K – $50K</option>
+                <option value="50-150k">$50K – $150K</option>
+                <option value="150k+">$150K+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>What do you need most? *</label>
+              <select name="goal" required>
+                <option value="">Select a focus</option>
+                <option value="banking">US business banking</option>
+                <option value="structure">LLC structure &amp; setup</option>
+                <option value="credit">Credit &amp; funding</option>
+                <option value="processing">Payment processing</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>&larr; Back</button>
+            <button type="button" class="btn btn-platinum" data-next>Continue to Step 3 <span class="arrow">&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
+          <div class="field">
+            <label>Preferred Call Time *</label>
+            <select name="time" required>
+              <option value="">Select a window</option>
+              <option value="morning">Mornings (your local time)</option>
+              <option value="afternoon">Afternoons (your local time)</option>
+              <option value="evening">Evenings (your local time)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Anything we should know? (optional)</label>
+            <input type="text" name="notes" placeholder="A sentence about your goals" />
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>&larr; Back</button>
+            <button type="submit" class="btn btn-platinum">Book My Specialist Call <span class="arrow">&rarr;</span></button>
+          </div>
+          <p style="text-align:center;font-size:12px;color:var(--slate);margin-top:18px;">&#128274; Your information is 100% secure and is never shared.</p>
+        </div>
+
+        <!-- Success -->
+        <div class="form-step" data-step="4">
+          <div class="form-success">
+            <div class="check">&#10003;</div>
+            <h3 class="h3">Application received.</h3>
+            <p>Thank you. A US setup specialist will reach out shortly to confirm your call. Please keep an eye on your email and WhatsApp.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section" style="background:linear-gradient(180deg,var(--navy-800),var(--navy-850));border-top:1px solid var(--line);">
+  <div class="wrap">
+    <p class="eyebrow">Member Reviews</p>
+    <h2 class="h2" style="margin-top:22px;max-width:20ch;">What members say about American Leverage.</h2>
+
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I did not know US credit was even possible for me. I was approved for Amex Platinum and Chase Sapphire Reserve. Clear, fast, and professional."</p>
+        <div class="who"><span class="av">LM</span><div><div class="nm">Leo Müller</div><div class="loc">Berlin, Germany</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"They fixed the basics first, clarified the right US entity and address setup, then got me banking with two business accounts and a clean processor stack."</p>
+        <div class="who"><span class="av">CR</span><div><div class="nm">Charlotte Reid</div><div class="loc">London, UK</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I stopped juggling prepaid workarounds. They set a simple spend strategy and moved me onto real US business cards. Ad spend now cycles smoothly."</p>
+        <div class="who"><span class="av">JW</span><div><div class="nm">James Whitaker</div><div class="loc">Toronto, Canada</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We focused on funding, not hype. After tightening my profile and docs, I secured a little over $100k across a line and two business cards."</p>
+        <div class="who"><span class="av">OH</span><div><div class="nm">Oliver Hartley</div><div class="loc">Sydney, Australia</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Underwriting used to trip me up. They prepped my file, coached me for the bank calls, and I opened with a tier-1 bank plus a relationship manager."</p>
+        <div class="who"><span class="av">OF</span><div><div class="nm">Omar Farooq</div><div class="loc">Dubai, UAE</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Cash flow was the choke point. They helped me add vendor terms and a secondary checking account for payouts. My reserve is not constantly drained."</p>
+        <div class="who"><span class="av">DP</span><div><div class="nm">Daniel Preston</div><div class="loc">Singapore</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#top" class="wordmark" style="font-size:30px;"><span class="am">American</span><span class="lev">Leverage</span></a>
+        <p class="lede" style="margin-top:18px;max-width:42ch;font-size:15px;">Real US banking, structure, and credibility for international founders. Built to last, not to be shut down.</p>
+      </div>
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Website">WW</a>
+      </div>
+    </div>
+
+    <hr class="rule" style="margin:40px 0;" />
+
+    <p style="font-size:14px;color:var(--silver-dim);">Need help? Contact us at <a href="mailto:hello@americanleverage.com" style="color:var(--silver);">hello@americanleverage.com</a> or +1 786 628 7370</p>
+
+    <div class="foot-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Fulfillment Policy</a>
+      <a href="#">Cancellation Policy</a>
+    </div>
+
+    <div class="disclaimer-box">
+      <h4>Just so we are on the same page</h4>
+      <p><strong>We do not give loans, credit, or financial products.</strong></p>
+      <p>We guide international entrepreneurs through the process of building a legitimate US business presence: banking, structure, and credibility with established US financial institutions. Once that foundation is in place, you become eligible to apply for credit and funding through real US banks on your own merits. The loan itself is never something we issue or guarantee.</p>
+    </div>
+
+    <p class="foot-legal">The American Leverage calculator is for educational and illustrative use only. Points, rewards, and funding figures are estimates based on past client outcomes, not predictions or guarantees for you. This is not financial, legal, or tax advice. Verify independently. American Leverage assumes no liability.</p>
+    <p class="foot-copy">© 2025 American Leverage LLC. Empowering entrepreneurs with capital access.</p>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Mobile nav ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- Calculator ---------- */
+  var slider = document.getElementById('calcSlider');
+  var fill = document.getElementById('calcFill');
+  var knob = document.getElementById('calcKnob');
+  var valueEl = document.getElementById('calcValue');
+  var resMonthly = document.getElementById('resMonthly');
+  var resAnnual = document.getElementById('resAnnual');
+  var resCash = document.getElementById('resCash');
+  var resFunding = document.getElementById('resFunding');
+  var opts = Array.prototype.slice.call(document.querySelectorAll('.opt-row .opt'));
+
+  // cents per point by credit type (README: US 3¢, foreign 1¢, debit $0)
+  var RATE = { '4': 0.03, '1': 0.01, '0': 0 };
+  var multiplier = 4;
+
+  var nf = new Intl.NumberFormat('en-US');
+  var cf = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+  function fundingLabel(spend) {
+    if (multiplier === 0) return '—';
+    if (spend >= 50000) return 'Multi six figures';
+    if (spend >= 10000) return 'Six figures';
+    if (spend >= 3000) return 'Five figures';
+    return 'Building';
+  }
+
+  function recompute() {
+    var spend = parseInt(slider.value, 10) || 0;
+    var pct = (spend / parseInt(slider.max, 10)) * 100;
+    if (fill) fill.style.width = pct + '%';
+    if (knob) knob.style.left = pct + '%';
+
+    var monthlyPoints = spend * multiplier;
+    var annualPoints = monthlyPoints * 12;
+    var cash = annualPoints * RATE[String(multiplier)];
+
+    if (valueEl) valueEl.textContent = cf.format(spend);
+    if (resMonthly) resMonthly.textContent = nf.format(monthlyPoints);
+    if (resAnnual) resAnnual.textContent = nf.format(annualPoints);
+    if (resCash) resCash.textContent = cf.format(cash);
+    if (resFunding) resFunding.textContent = fundingLabel(spend);
+  }
+
+  if (slider) {
+    slider.addEventListener('input', recompute);
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        opts.forEach(function (o) { o.classList.remove('sel'); o.setAttribute('aria-checked', 'false'); });
+        opt.classList.add('sel');
+        opt.setAttribute('aria-checked', 'true');
+        multiplier = parseInt(opt.getAttribute('data-mult'), 10);
+        recompute();
+      });
+    });
+    recompute();
+  }
+
+  /* ---------- Multi-step apply form ---------- */
+  var form = document.getElementById('applyForm');
+  if (form) {
+    var stepHeaders = Array.prototype.slice.call(document.querySelectorAll('.steps .step'));
+    var stepPanels = Array.prototype.slice.call(form.querySelectorAll('.form-step'));
+    var current = 1;
+
+    function showStep(n) {
+      current = n;
+      stepPanels.forEach(function (p) {
+        p.classList.toggle('active', parseInt(p.getAttribute('data-step'), 10) === n);
+      });
+      stepHeaders.forEach(function (h) {
+        h.classList.toggle('on', parseInt(h.getAttribute('data-step'), 10) <= n);
+      });
+    }
+
+    function validateStep(n) {
+      var panel = stepPanels.filter(function (p) { return parseInt(p.getAttribute('data-step'), 10) === n; })[0];
+      if (!panel) return true;
+      var fields = Array.prototype.slice.call(panel.querySelectorAll('input[required], select[required]'));
+      var ok = true;
+      fields.forEach(function (f) {
+        var valid = f.checkValidity() && f.value.trim() !== '';
+        f.classList.toggle('err', !valid);
+        if (!valid && ok) { f.focus(); ok = false; }
+      });
+      return ok;
+    }
+
+    form.addEventListener('click', function (e) {
+      var nextBtn = e.target.closest('[data-next]');
+      var prevBtn = e.target.closest('[data-prev]');
+      if (nextBtn) {
+        if (validateStep(current)) showStep(current + 1);
+      } else if (prevBtn) {
+        showStep(Math.max(1, current - 1));
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateStep(3)) return;
+
+      var data = new FormData(form);
+      var user = {
+        name: data.get('name') || '',
+        email: data.get('email') || '',
+        phone: data.get('phone') || '',
+        country: data.get('country') || ''
+      };
+      if (typeof window.metaTrack === 'function') {
+        window.metaTrack('Lead', {
+          content_name: 'Specialist Call Application',
+          content_category: 'apply',
+          currency: 'USD'
+        }, user);
+      }
+      showStep(4);
+    });
+  }
+
+  /* ---------- CTA tracking (Lead intent on click) ---------- */
+  document.querySelectorAll('[data-cta]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (typeof window.metaTrack === 'function') {
+        window.metaTrack('Lead', {
+          content_name: 'Apply CTA',
+          content_category: el.getAttribute('data-cta'),
+          currency: 'USD'
+        });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
