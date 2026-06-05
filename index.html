@@ -337,6 +337,9 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 5px 5px; opacity: .6; pointer-events: none;
 }
+.vsl-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.vsl-thumb + .vsl-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(6,13,28,0.15), rgba(6,13,28,0.45)); }
 .play {
   width: 88px; height: 88px; border-radius: 50%;
   background: var(--platinum);
@@ -515,6 +518,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .field input:focus, .field select:focus { outline: none; border-color: var(--silver); }
 .field input.err, .field select.err { border-color: #d98a8a; }
 .field select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+.field select option { background: var(--navy-800); color: var(--ivory); }
+.field select option:disabled { color: var(--slate); }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-nav { display: flex; gap: 14px; margin-top: 8px; }
 .form-nav .btn-ghost { flex: 0 0 auto; }
@@ -548,7 +553,14 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .iti__tel-input::placeholder { color: var(--slate) !important; }
 .iti__tel-input:focus { outline: none !important; border-color: var(--silver) !important; }
 .iti__selected-dial-code { color: var(--ivory) !important; }
-.iti__dropdown-content { z-index: 100 !important; }
+/* Dark-theme dropdown so country names/dial codes stay readable */
+.iti__dropdown-content { z-index: 100 !important; background: var(--navy-800) !important; border: 1px solid var(--line-strong) !important; }
+.iti__search-input { background: var(--navy-850) !important; color: var(--ivory) !important; border: none !important; border-bottom: 1px solid var(--line-strong) !important; }
+.iti__search-input::placeholder { color: var(--slate) !important; }
+.iti__country { color: var(--ivory) !important; }
+.iti__country-name { color: var(--ivory) !important; }
+.iti__dial-code { color: var(--silver-dim) !important; }
+.iti__country.iti__highlight { background: var(--navy-700) !important; }
 #phone-error { display: none; color: #d98a8a; font-size: 12px; margin-top: 8px; }
 #phone-error.visible { display: block; }
 
@@ -668,6 +680,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
         </div>
         <div class="hero3-video">
           <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video" data-wistia="zgdan6g9l8">
+            <img class="vsl-thumb" src="images/vsl-thumbnail.jpg" alt="The financial system is your real ceiling." onerror="this.remove()" />
+            <span class="vsl-shade"></span>
             <span class="vsl-tag">Founder Story &middot; 3 min</span>
             <div class="play"></div>
             <span class="sound">Make sure your sound is on</span>
