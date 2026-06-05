@@ -374,7 +374,9 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   .hero3 .display { order: 2; margin-top: 14px; font-size: clamp(32px, 8.2vw, 46px); }
   .hero3 .lede { order: 3; margin-top: 16px; }
   .hero3-video { order: 4; margin-top: 26px; }
-  .hero3 .cta-row { order: 5; margin-top: 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero3-video .float-stat { display: none; }
+  .hero3 .cta-row { order: 5; margin-top: 22px; flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero3 .cta-row .btn { width: 100%; justify-content: center; }
 }
 
 /* Vault video */
@@ -522,6 +524,10 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   .steps .step { flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 16px 6px; }
   .steps .step .sn { width: 28px; height: 28px; font-size: 13px; }
   .steps .step .st { font-size: 11.5px; letter-spacing: 0.02em; white-space: nowrap; }
+  /* Mobile: drop the small round avatars on written reviews */
+  .review .who .av { display: none; }
+  /* Mobile: remove the avatar proof row in the urgency section */
+  .urgency .proof-row { display: none; }
 }
 
 /* ---------------- REVIEWS ---------------- */
