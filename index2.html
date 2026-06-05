@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+<!-- Video hosts: YouTube testimonials + Wistia founder story -->
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+<link rel="preconnect" href="https://www.youtube-nocookie.com" />
+<link rel="preconnect" href="https://fast.wistia.net" />
+
 <!-- Meta Pixel (id: 953868717628214) -->
 <script>
   !function(f,b,e,v,n,t,s)
@@ -589,7 +594,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
           </div>
         </div>
         <div class="hero3-video">
-          <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video">
+          <div class="vsl" role="button" tabindex="0" aria-label="Play founder story video" data-wistia="zgdan6g9l8">
             <span class="vsl-tag">Founder Story &middot; 3 min</span>
             <div class="play"></div>
             <span class="sound">Make sure your sound is on</span>
@@ -710,19 +715,19 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 
     <div class="testi-grid">
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><img class="thumb-img" src="/images/yt-thumb-1.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127466;&#127480;</span> Chase business banking in ~1 month</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="QGtfxH7uKVE"><img class="thumb-img" src="https://i.ytimg.com/vi/QGtfxH7uKVE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127466;&#127480;</span> Chase business banking in ~1 month</div><div class="play"></div></div>
         <div class="body"><p class="quote">"Doing it myself was hard. Hiring the American Leverage team saved me real time and money by being there with me through the whole process."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><img class="thumb-img" src="/images/yt-thumb-2.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127464;&#127462;</span> Full US banking in under 2 weeks</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="iAkc5KYuWLM"><img class="thumb-img" src="https://i.ytimg.com/vi/iAkc5KYuWLM/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127464;&#127462;</span> Full US banking in under 2 weeks</div><div class="play"></div></div>
         <div class="body"><p class="quote">"A very professional team. They walked me through the entire process step by step. Without them I do not know where I would be."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><img class="thumb-img" src="/images/yt-thumb-3.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127470;&#127481;</span> US Amex &amp; banking for high volume</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="9KqTgVRQXf4"><img class="thumb-img" src="https://i.ytimg.com/vi/9KqTgVRQXf4/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127470;&#127481;</span> US Amex &amp; banking for high volume</div><div class="play"></div></div>
         <div class="body"><p class="quote">"Running five-figure monthly volume without proper US banking was leaving real money on the table. American Leverage fixed that."</p></div>
       </div>
       <div class="testi">
-        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video"><img class="thumb-img" src="/images/yt-thumb-1.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127467;&#127479;</span> Complete US setup in ~2 months</div><div class="play"></div></div>
+        <div class="thumb" role="button" tabindex="0" aria-label="Play testimonial video" data-yt="6P_GJtq3qFQ"><img class="thumb-img" src="https://i.ytimg.com/vi/6P_GJtq3qFQ/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" /><div class="cap"><span>&#127467;&#127479;</span> Complete US setup in ~2 months</div><div class="play"></div></div>
         <div class="body"><p class="quote">"I am a French business owner and thought US banking was off limits for non-residents. It turns out Europeans can run on the same infrastructure as Americans."</p></div>
       </div>
     </div>
@@ -1084,6 +1089,39 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
         }, user);
       }
       showStep(4);
+    });
+  }
+
+  /* ---------- Click-to-play videos (YouTube testimonials + Wistia hero) ---------- */
+  function fillFrame(host, src, title) {
+    if (host.dataset.played) return;
+    host.dataset.played = '1';
+    var f = document.createElement('iframe');
+    f.src = src;
+    f.title = title;
+    f.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    f.allowFullscreen = true;
+    f.setAttribute('frameborder', '0');
+    f.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
+    host.appendChild(f);
+    host.style.cursor = 'default';
+  }
+  function wireVideo(el, build) {
+    function go() { build(el); }
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  }
+  document.querySelectorAll('.thumb[data-yt]').forEach(function (t) {
+    wireVideo(t, function (el) {
+      fillFrame(el, 'https://www.youtube-nocookie.com/embed/' + el.getAttribute('data-yt') + '?autoplay=1&rel=0', 'Video testimonial');
+    });
+  });
+  var heroVsl = document.querySelector('.vsl[data-wistia]');
+  if (heroVsl) {
+    wireVideo(heroVsl, function (el) {
+      fillFrame(el, 'https://fast.wistia.net/embed/iframe/' + el.getAttribute('data-wistia') + '?autoPlay=true', 'Founder story video');
     });
   }
 
