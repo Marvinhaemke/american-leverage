@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Confirm Your Booking | American Leverage</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel (id: 784167687515569) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '784167687515569');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=784167687515569&ev=PageView&noscript=1"/></noscript>
+<!-- Meta CAPI bridge -->
+<script src="/js/meta-capi.js"></script>
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — funnel page system (shared core)
+   ============================================================ */
+:root{
+  --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
+  --ivory:#f3f1ea; --ivory-dim:#d9d6cc; --silver:#c6cedb; --silver-dim:#9aa4b5; --slate:#7e889a;
+  --silver-text: linear-gradient(100deg,#b6bfce 0%,#ffffff 45%,#a9b3c2 100%);
+  --champagne:#c8a96a; --champagne-dim:#a98f55;
+  --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow:rgba(240,170,50,0.5); --accent-text:#3a2606;
+  --line:rgba(231,236,245,0.12); --line-strong:rgba(231,236,245,0.22);
+  --glass:rgba(255,255,255,0.035); --glass-2:rgba(255,255,255,0.06);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --maxw:1240px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--navy-800);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+::selection{background:var(--champagne);color:var(--navy-1000);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;letter-spacing:-0.01em;}
+.h1{font-size:clamp(30px,4.4vw,46px);} .h2{font-size:clamp(24px,3vw,34px);} .h3{font-size:clamp(19px,2vw,24px);}
+.lede{font-size:clamp(15px,1.2vw,18px);line-height:1.66;color:var(--silver);font-weight:350;}
+.gold{color:var(--champagne);}
+.wordmark{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em;white-space:nowrap;line-height:1;display:inline-block;font-size:26px;}
+.wordmark .am{color:var(--ivory);}
+.wordmark .lev{background:var(--silver-text);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.topbar{border-bottom:1px solid var(--line);padding:16px var(--gutter);display:flex;justify-content:center;align-items:center;position:relative;z-index:20;background:var(--navy-900);}
+.shell{position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(36px,6vw,72px) var(--gutter);overflow:hidden;background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
+.shell::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;opacity:.55;z-index:0;}
+.glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;}
+.glow-a{top:30%;left:50%;transform:translate(-50%,-50%);width:680px;height:480px;background:rgba(40,74,134,0.3);}
+.glow-b{bottom:0;right:10%;width:340px;height:340px;background:rgba(240,170,50,0.06);}
+.glow-c{top:14%;left:5%;width:220px;height:220px;background:rgba(46,160,110,0.05);}
+.card{position:relative;z-index:1;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);overflow:hidden;}
+.funnel-footer{background:var(--navy-1000);border-top:1px solid var(--line);text-align:center;padding:26px var(--gutter);}
+.funnel-footer .foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--silver-dim);margin-bottom:10px;}
+.funnel-footer a:hover{color:var(--ivory);}
+.funnel-footer p{font-size:12px;color:var(--slate);margin:0;}
+
+/* ---------- Confirmation specifics ---------- */
+.conf-wrap{max-width:660px;width:100%;position:relative;z-index:1;}
+.conf-card{padding:clamp(24px,4vw,44px);}
+.gold-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+
+@keyframes scale-in{0%{transform:scale(0);opacity:0;}60%{transform:scale(1.12);opacity:1;}100%{transform:scale(1);opacity:1;}}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.ring{animation:scale-in .5s ease-out forwards;}
+.draw{animation:draw .5s ease-out .4s forwards;}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;animation:fade-up .6s ease-out forwards;}
+.d1{animation-delay:.15s;} .d2{animation-delay:.3s;} .d3{animation-delay:.45s;} .d4{animation-delay:.6s;} .d5{animation-delay:.75s;}
+
+.banner{display:flex;align-items:flex-start;gap:12px;border-radius:10px;padding:14px 16px;}
+.banner .b-ic{width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.banner p{margin:0;font-size:13.5px;line-height:1.5;}
+.banner-amber{background:rgba(245,197,66,0.09);border:1px solid rgba(245,197,66,0.24);}
+.banner-amber .b-ic{background:rgba(245,197,66,0.18);} .banner-amber strong{color:#f3cf7e;} .banner-amber p{color:#e8d6a6;}
+.banner-red{background:rgba(216,138,138,0.1);border:1px solid rgba(216,138,138,0.3);}
+.banner-red .b-ic{background:rgba(216,138,138,0.2);} .banner-red strong{color:#f0b9b9;} .banner-red p{color:#e7b9b9;}
+
+.wa-label{text-align:center;font-size:12.5px;font-weight:700;color:var(--champagne);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
+@keyframes wa-pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}50%{box-shadow:0 0 0 18px rgba(37,211,102,0);}}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;padding:20px 24px;background:#25D366;color:#fff;font-family:var(--sans);font-weight:700;font-size:clamp(17px,2.2vw,20px);border-radius:14px;border-bottom:6px solid #1a9e4a;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;animation:wa-pulse 2.2s ease-in-out infinite;}
+.wa-btn:hover{background:#20bd5a;transform:translateY(-2px);box-shadow:0 15px 40px rgba(37,211,102,0.35);}
+.wa-btn:active{transform:translateY(3px);border-bottom-width:0;}
+.wa-btn svg{width:28px;height:28px;flex-shrink:0;}
+.wa-btn .lbl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;}
+.wa-btn .lbl .sub{font-size:12px;font-weight:500;opacity:.85;margin-top:2px;}
+.wa-note{text-align:center;font-size:12.5px;color:var(--silver-dim);margin:14px auto 0;max-width:46ch;line-height:1.55;}
+
+.divider{height:1px;background:var(--line);border:0;margin:30px 0;}
+
+.steps-h{font-family:var(--serif);font-size:22px;text-align:center;margin-bottom:22px;color:var(--ivory);}
+.step-row{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.step-row .num{width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;background:rgba(200,169,106,0.15);color:var(--champagne);}
+.step-row.green .num{background:rgba(37,211,102,0.15);color:#3ddc7f;}
+.step-row .st-title{font-weight:700;font-size:14.5px;color:var(--ivory);margin:0 0 2px;}
+.step-row .st-body{font-size:13.5px;color:var(--silver-dim);margin:0;line-height:1.5;}
+.step-row.dim{opacity:.5;}
+.here{color:var(--champagne);font-size:12px;font-weight:500;margin-left:6px;}
+
+.community{text-align:center;}
+.community p{font-size:13.5px;color:var(--silver-dim);margin:0 0 16px;}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:8px;border:1px solid rgba(200,169,106,0.4);color:var(--champagne);font-weight:600;font-size:14px;transition:background .25s ease,border-color .25s ease;}
+.btn-outline:hover{background:rgba(200,169,106,0.1);border-color:rgba(200,169,106,0.6);}
+
+.trust{text-align:center;font-size:12px;color:var(--slate);margin-top:18px;display:flex;align-items:center;justify-content:center;gap:7px;}
+
+/* Late-night confirm modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal.show{display:flex;}
+.modal-bg{position:absolute;inset:0;background:rgba(6,13,28,0.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.modal-card{position:relative;z-index:1;max-width:440px;width:100%;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:18px;padding:clamp(24px,4vw,34px);text-align:center;box-shadow:0 40px 90px -30px rgba(0,0,0,0.85);}
+.modal-card .bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#d98a8a,transparent);}
+.modal-card .m-ic{width:64px;height:64px;border-radius:999px;background:rgba(216,138,138,0.15);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;}
+.modal-card h2{font-family:var(--serif);font-size:26px;margin-bottom:8px;}
+.modal-card .m-time{color:var(--ivory);font-weight:700;font-size:18px;margin:6px 0 12px;}
+.modal-card .m-body{color:var(--silver);font-size:14px;line-height:1.55;margin-bottom:22px;}
+.modal-card .m-actions{display:flex;flex-direction:column;gap:12px;}
+.btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 22px;background:#d05a5a;color:#fff;font-weight:700;font-size:15px;border-radius:12px;border:none;cursor:pointer;transition:background .2s ease;}
+.btn-red:hover{background:#bd4a4a;}
+.btn-text{width:100%;padding:12px;background:transparent;border:none;color:var(--silver-dim);font-family:var(--sans);font-weight:600;font-size:13.5px;cursor:pointer;transition:color .2s ease;}
+.btn-text:hover{color:var(--ivory);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="wordmark"><span class="am">American</span><span class="lev">Leverage</span></a>
+</header>
+
+<!-- ===== FORCED LATE-NIGHT CONFIRM MODAL (shown via JS for 22:00–06:00 bookings) ===== -->
+<div id="night-modal" class="modal">
+  <div class="modal-bg"></div>
+  <div class="modal-card">
+    <div class="bar"></div>
+    <div class="m-ic">&#127769;</div>
+    <h2>That's the middle of the night</h2>
+    <p class="m-body" style="margin-bottom:4px;color:var(--silver);">Your call is booked for</p>
+    <p id="night-modal-time" class="m-time">your selected time</p>
+    <p class="m-body">in your local timezone. Most people sleep through late-night calls and miss them. Want to pick a time you'll actually be awake for?</p>
+    <div class="m-actions">
+      <a id="night-modal-reschedule" href="#" target="_blank" rel="noopener" class="btn-red">&#128197;&nbsp; Pick a Better Time</a>
+      <button id="night-modal-keep" type="button" class="btn-text">No thanks, keep my late-night call</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONFIRMATION CONTENT ===== -->
+<main class="shell">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="glow glow-c"></div>
+
+  <div class="conf-wrap">
+    <div class="card conf-card">
+      <div class="gold-bar"></div>
+
+      <!-- Animated pending clock -->
+      <div class="fade-up" style="display:flex;justify-content:center;margin-bottom:22px;">
+        <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle class="ring" cx="44" cy="44" r="42" stroke="#c8a96a" stroke-width="4" fill="rgba(200,169,106,0.06)"/>
+          <circle cx="44" cy="44" r="20" stroke="#c8a96a" stroke-width="3.5" fill="none" class="draw" style="stroke-dasharray:126;stroke-dashoffset:126;"/>
+          <line x1="44" y1="44" x2="44" y2="33" stroke="#c8a96a" stroke-width="3.5" stroke-linecap="round" class="draw" style="stroke-dasharray:11;stroke-dashoffset:11;animation-delay:0.6s;"/>
+          <line x1="44" y1="44" x2="53" y2="48" stroke="#c8a96a" stroke-width="3.5" stroke-linecap="round" class="draw" style="stroke-dasharray:10;stroke-dashoffset:10;animation-delay:0.8s;"/>
+        </svg>
+      </div>
+
+      <!-- Headline -->
+      <div class="fade-up d1" style="text-align:center;margin-bottom:6px;">
+        <h1 class="h1" style="margin-bottom:12px;">Almost There! <span class="gold">Confirm Your Slot.</span></h1>
+        <p class="lede" style="max-width:48ch;margin:0 auto;">Your time slot has been <strong style="color:var(--ivory);font-weight:600;">reserved but is not yet confirmed.</strong> Send a quick WhatsApp message to your specialist to lock in your booking.</p>
+      </div>
+
+      <!-- Late-night in-page warning (JS reveals when booked 22:00–06:00) -->
+      <div id="night-warning" class="banner banner-red fade-up d1" style="display:none;margin-top:20px;">
+        <div class="b-ic">&#127769;</div>
+        <div>
+          <p style="font-weight:700;margin-bottom:4px;">Heads up — your call is booked for the middle of the night.</p>
+          <p>Your slot is at <strong id="night-warning-time" style="color:#fff;">your selected time</strong> in your local timezone. That's outside normal hours, so it's easy to miss or sleep through. We strongly recommend picking a daytime slot.</p>
+          <a id="reschedule-btn" href="#" target="_blank" rel="noopener" class="btn-red" style="width:auto;margin-top:12px;padding:10px 18px;font-size:13.5px;">&#128197;&nbsp; Pick a Better Time</a>
+        </div>
+      </div>
+
+      <!-- Urgency banner -->
+      <div class="banner banner-amber fade-up d1" style="margin-top:20px;margin-bottom:28px;align-items:center;">
+        <div class="b-ic">&#9888;</div>
+        <p><strong>Unconfirmed slots expire.</strong> If we don't hear from you on WhatsApp, your time slot may be released to the next applicant.</p>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="fade-up d3">
+        <p class="wa-label">&#128071; Confirm Your Booking Now</p>
+        <a id="whatsapp-btn" href="#" target="_blank" rel="noopener" class="wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span class="lbl">
+            <span>Confirm Your Call on WhatsApp</span>
+            <span class="sub">Tap to secure your booking &rarr;</span>
+          </span>
+        </a>
+        <p class="wa-note">Hit send on the pre-filled message so your specialist knows you're confirmed and can prepare your assessment ahead of the call.</p>
+      </div>
+
+      <!-- Add to calendar (iClosed widget) -->
+      <div class="fade-up d3" style="margin-top:24px;">
+        <div class="call-details-widget" data-url="https://app.iclosed.io/embed" style="width: 100%; height: 340px"></div>
+        <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- How it works -->
+      <div class="fade-up d4">
+        <h2 class="steps-h">How It Works</h2>
+        <div class="step-row green">
+          <div class="num">1</div>
+          <div>
+            <p class="st-title">Confirm via WhatsApp <span class="here">&larr; You are here</span></p>
+            <p class="st-body">Tap the green button above and hit send. This locks in your slot and connects you directly with your specialist.</p>
+          </div>
+        </div>
+        <div class="step-row dim">
+          <div class="num">2</div>
+          <div>
+            <p class="st-title">Add It to Your Calendar</p>
+            <p class="st-body">Use the calendar buttons above to save your time slot. Set a reminder so you're ready when your specialist calls.</p>
+          </div>
+        </div>
+        <div class="step-row dim">
+          <div class="num">3</div>
+          <div>
+            <p class="st-title">Join Your Strategy Call</p>
+            <p class="st-body">Be available at your booked time and expect a call from +1 786-947-4975. Your specialist will walk you through how to build your US business presence within 90 days.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Community CTA -->
+      <div class="community fade-up d5">
+        <p>Join 500+ founders building their US business infrastructure while you wait:</p>
+        <a href="https://www.skool.com/upcredit" target="_blank" rel="noopener" class="btn-outline">
+          &#128101; Join the American Leverage Skool Community <span style="opacity:.6;">&#8599;</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="trust">&#128274; Your information is 100% secure and will never be shared.</p>
+  </div>
+</main>
+
+<footer class="funnel-footer">
+  <div class="foot-links">
+    <a href="#">Privacy Policy</a><span>·</span><a href="#">Terms of Use</a>
+  </div>
+  <p>&copy; 2026 American Leverage LLC. All rights reserved.</p>
+</footer>
+
+<!-- ============================================================ -->
+<!--  LOGIC: Parse URL params & build WhatsApp link               -->
+<!-- ============================================================ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // ── Parse URL parameters from iClosed redirect ──
+    var params = new URLSearchParams(window.location.search);
+
+    var leadName    = params.get('name')       || params.get('iclosedName')   || '';
+    var setterName  = params.get('setter')      || params.get('setterName')    || '';
+    var bookingDate = params.get('date')        || params.get('bookingDate')   || '';
+    var bookingTime = params.get('time')        || params.get('bookingTime')   || '';
+
+    // iClosed forwards the absolute start time and the invitee's (lead's) timezone.
+    var eventStart   = params.get('event_start_time') || params.get('eventStartTime') || params.get('start_time') || '';
+    var leadTimeZone = params.get('timeZone')         || params.get('timezone')       || params.get('tz')         || '';
+
+    // ── Late-night booking check: local hour (0–23) in the lead's timezone, or null ──
+    function getLeadLocalHour() {
+      if (eventStart) {
+        var d = new Date(eventStart);
+        var isAbsolute = /[zZ]|[+-]\d{2}:?\d{2}$/.test(eventStart.trim());
+        if (!isNaN(d) && isAbsolute) {
+          if (leadTimeZone) {
+            try {
+              var h = new Intl.DateTimeFormat('en-GB', { timeZone: leadTimeZone, hour: '2-digit', hour12: false }).format(d);
+              var n = parseInt(h, 10);
+              if (!isNaN(n)) return n % 24;
+            } catch (e) { /* invalid timezone → fall through */ }
+          }
+          return d.getHours();
+        }
+      }
+      var src = bookingTime || eventStart;
+      if (src) {
+        var m = src.match(/(\d{1,2})\s*:\s*\d{2}\s*([ap]\.?m\.?)?/i);
+        if (m) {
+          var hr = parseInt(m[1], 10);
+          var mer = (m[2] || '').toLowerCase();
+          if (mer.indexOf('p') === 0 && hr < 12) hr += 12;
+          if (mer.indexOf('a') === 0 && hr === 12) hr = 0;
+          if (!isNaN(hr)) return hr % 24;
+        }
+      }
+      return null;
+    }
+
+    // Human-readable booked-time string (both 24h and AM/PM).
+    function getBookedTimeLabel() {
+      if (eventStart) {
+        var d = new Date(eventStart);
+        var isAbsolute = /[zZ]|[+-]\d{2}:?\d{2}$/.test(eventStart.trim());
+        if (!isNaN(d) && isAbsolute) {
+          var tz = leadTimeZone || undefined;
+          try {
+            var label24 = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz }).format(d);
+            var time12  = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: tz }).format(d);
+            return label24 + ' (' + time12 + ')';
+          } catch (e) {}
+        }
+      }
+      return [bookingDate, bookingTime].filter(Boolean).join(' at ') || 'your selected time';
+    }
+
+    // Build the reschedule link (prefer the per-booking reschedule URL).
+    function buildRescheduleURL() {
+      var explicit = params.get('reschedule') || params.get('rescheduleUrl') || params.get('reschedule_url');
+      if (explicit) return explicit;
+
+      var callId = params.get('previewId') || params.get('externalCallId');
+      if (callId) return 'https://app.iclosed.io/reschedulings/' + encodeURIComponent(callId);
+
+      var base = 'https://app.iclosed.io/e/up-credit/specialist-phone-call-qualified-application-1';
+      var leadEmail = params.get('email') || params.get('iclosedEmail') || params.get('invitee_email') || '';
+      var leadPhone = params.get('phone') || params.get('iclosedPhone') || params.get('text_reminder_number') || '';
+      var rp = new URLSearchParams();
+      if (leadName)  rp.set('iclosedName',  leadName);
+      if (leadEmail) rp.set('iclosedEmail', leadEmail);
+      if (leadPhone) rp.set('iclosedPhone', leadPhone);
+      var qs = rp.toString();
+      return qs ? base + '?' + qs : base;
+    }
+
+    var leadHour = getLeadLocalHour();
+    if (leadHour !== null && (leadHour >= 22 || leadHour < 6)) {
+      var timeLabel = getBookedTimeLabel();
+      var rescheduleURL = buildRescheduleURL();
+
+      // Persistent in-page banner.
+      var warn = document.getElementById('night-warning');
+      document.getElementById('night-warning-time').textContent = timeLabel;
+      document.getElementById('reschedule-btn').href = rescheduleURL;
+      warn.style.display = 'flex';
+
+      // Forced confirm modal.
+      var modal = document.getElementById('night-modal');
+      document.getElementById('night-modal-time').textContent = timeLabel;
+      document.getElementById('night-modal-reschedule').href = rescheduleURL;
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+
+      document.getElementById('night-modal-keep').addEventListener('click', function () {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+        if (typeof umami !== 'undefined') umami.track('Late Night Booking Kept', { hour: leadHour });
+      });
+      document.getElementById('night-modal-reschedule').addEventListener('click', function () {
+        if (typeof umami !== 'undefined') umami.track('Late Night Booking Reschedule Clicked', { hour: leadHour });
+      });
+
+      if (typeof umami !== 'undefined') umami.track('Late Night Booking Warning Shown', { hour: leadHour });
+    }
+
+    // ── Build WhatsApp deep link ──
+    var waNumber = '17816098944';
+    if (window.location.search.indexOf('assigned_to=True+B') !== -1 || params.get('assigned_to') === 'True B') {
+      waNumber = '17816098944';
+    }
+
+    var greeting = leadName
+      ? 'Hi' + (setterName ? ' ' + setterName.split(' ')[0] : '') + ', this is ' + leadName + '.'
+      : 'Hi' + (setterName ? ' ' + setterName.split(' ')[0] : '') + ', I just booked a call.';
+    var dateInfo = (bookingDate || bookingTime) ? ' My call is scheduled for ' + [bookingDate, bookingTime].filter(Boolean).join(' at ') + '.' : '';
+    var waMessage = greeting + dateInfo + " I'm confirming my American Leverage specialist call. Looking forward to speaking with you!";
+
+    document.getElementById('whatsapp-btn').href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(waMessage);
+
+    // ── Update button text with setter name ──
+    if (setterName) {
+      var btnLabel = document.querySelector('#whatsapp-btn .lbl span:first-child');
+      if (btnLabel) btnLabel.textContent = 'Confirm with ' + setterName.split(' ')[0] + ' on WhatsApp';
+    }
+
+    if (typeof umami !== 'undefined') umami.track('Confirmation Page Viewed');
+  });
+</script>
+</body>
+</html>
