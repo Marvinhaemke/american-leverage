@@ -1091,18 +1091,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     });
   }
 
-  /* ---------- CTA tracking (Lead intent on click) ---------- */
-  document.querySelectorAll('[data-cta]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      if (typeof window.metaTrack === 'function') {
-        window.metaTrack('Lead', {
-          content_name: 'Apply CTA',
-          content_category: el.getAttribute('data-cta'),
-          currency: 'USD'
-        });
-      }
-    });
-  });
+  /* CTA clicks intentionally do NOT fire a Meta Lead event — Lead is sent
+     only when an applicant qualifies in the form (see submitFormAndRoute). */
 })();
 </script>
 
