@@ -431,7 +431,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 .value-cell .h3 { margin: 22px 0 14px; max-width: 18ch; }
 .value-cell p { color: var(--silver); font-size: 15.5px; line-height: 1.62; margin: 0; }
 .value-cell.wide { grid-column: 1 / -1; }
-@media (max-width: 760px) { .value-grid { grid-template-columns: 1fr; } .value-cell.wide { grid-column: auto; } }
+@media (max-width: 760px) { .value-grid { grid-template-columns: 1fr; } .value-cell.wide { grid-column: auto; } #gap .gap-cta { text-align: center; } }
 
 /* ---------------- STAT BAND ---------------- */
 .statband { background: linear-gradient(180deg, var(--navy-900), var(--navy-850)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -772,7 +772,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
       </div>
     </div>
 
-    <div style="margin-top:40px;"><a href="#apply" class="btn btn-platinum" data-cta="gap">Check Your Eligibility <span class="arrow">&rarr;</span></a></div>
+    <div class="gap-cta" style="margin-top:40px;"><a href="#apply" class="btn btn-platinum" data-cta="gap">Check Your Eligibility <span class="arrow">&rarr;</span></a></div>
   </div>
 </section>
 
