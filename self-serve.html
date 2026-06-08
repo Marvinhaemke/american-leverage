@@ -98,6 +98,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 .incl-card h3{font-size:20px;margin-bottom:8px;}
 .incl-card p{margin:0;font-size:14.5px;color:var(--silver-dim);line-height:1.55;}
 .incl-card.wide{grid-column:1 / -1;}
+.incl-card.feature{grid-column:1 / -1;border-color:rgba(242,177,58,0.38);background:linear-gradient(180deg,rgba(242,177,58,0.07),var(--glass));}
+.incl-card.feature .num span{border-color:rgba(242,177,58,0.4);background:rgba(242,177,58,0.12);}
+.incl-card .members{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--accent-1);}
+.incl-card .members b{color:var(--ivory);}
+.pkg-label{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-1);}
+.co-hint{text-align:center;font-size:13px;color:var(--silver-dim);min-height:18px;margin-top:14px;}
 
 /* pricing / checkout */
 .checkout-card{max-width:640px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
@@ -148,7 +154,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
   <div class="wrap hero-inner">
     <p class="eyebrow">Self-Serve US Setup</p>
     <h1 class="h1">Everything you need for your US setup, the <span class="gold">guided self-serve</span> way.</h1>
-    <p class="lede">ITIN, LLC, EIN, US banking know-how and a credit-building roadmap, packaged into one clear do-it-yourself path. You follow the steps at your own pace, we hand you everything you need to get inside the US financial system.</p>
+    <p class="lede">ITIN, LLC, EIN, US banking know-how, a credit-building roadmap and full access to our 6,100-member Skool community, packaged into one clear do-it-yourself path. You follow the steps at your own pace, we hand you everything you need to get inside the US financial system.</p>
 
     <div class="price-row">
       <div class="price-tag">
@@ -169,30 +175,31 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     </div>
 
     <div class="incl-grid">
+      <div class="incl-card feature">
+        <div class="num"><span>&#128101;</span></div>
+        <h3>Full Skool Community Access</h3>
+        <p>Step inside our private Skool community: the complete training library, playbooks, live support and a room full of operators doing exactly what you're doing. This is where the self-serve path actually gets done, with people who have already walked it.</p>
+        <span class="members">&#9733; Join <b>6,100+ members</b> building their US setup</span>
+      </div>
       <div class="incl-card">
-        <div class="num"><span>1</span></div>
+        <div class="num"><span>&#10003;</span></div>
         <h3>ITIN Filing</h3>
-        <p>We file your US tax ID (ITIN) end to end, so you can open accounts and operate legally as a non-resident.</p>
+        <p>We file your US tax ID (ITIN) end to end, so you can open accounts and operate legally as a non-resident. Included in every package.</p>
       </div>
       <div class="incl-card">
-        <div class="num"><span>2</span></div>
-        <h3>Skool Access</h3>
-        <p>Full access to our Skool community plus the complete training material: people, playbooks and support.</p>
-      </div>
-      <div class="incl-card">
-        <div class="num"><span>3</span></div>
+        <div class="num"><span>&#10003;</span></div>
         <h3>U.S. Banking Education</h3>
         <p>Step-by-step guidance on opening and running real US business accounts the right way.</p>
       </div>
       <div class="incl-card">
-        <div class="num"><span>4</span></div>
+        <div class="num"><span>&#10003;</span></div>
         <h3>Credit Building Roadmap</h3>
         <p>A clear roadmap to build US business credit from zero and unlock real funding over time.</p>
       </div>
-      <div class="incl-card wide">
-        <div class="num"><span>5</span></div>
-        <h3>LLC, EIN and ITIN Setup</h3>
-        <p>Get your US company, tax IDs and structure set up correctly. The foundation everything else runs on.</p>
+      <div class="incl-card">
+        <div class="num"><span>&#10003;</span></div>
+        <h3>LLC, EIN &amp; ITIN Setup</h3>
+        <p>We set up your US company, EIN and ITIN correctly. The foundation everything else runs on. Already have your LLC and EIN? See the Basic package below.</p>
       </div>
     </div>
   </div>
@@ -203,7 +210,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
   <div class="wrap">
     <div class="sec-head" style="text-align:center;margin:0 auto;">
       <p class="eyebrow">Your Price</p>
-      <h2 class="h2" style="margin-top:16px;">One package. Pay only for what you need.</h2>
+      <h2 class="h2" style="margin-top:16px;">Pay only for the setup you need.</h2>
     </div>
 
     <div class="checkout-card">
@@ -212,31 +219,26 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       <div class="co-total">
         <span class="cap">Total today</span>
         <div class="amt metal" data-price-total>$0</div>
+        <div class="pkg-label" id="pkg-label">Foundation Package</div>
       </div>
       <p class="co-base" id="co-base"></p>
 
       <div class="disc-head">
-        Already have one of these?
-        <span>Then you only pay for what you need. Tap what you already have.</span>
+        Already have your US LLC and EIN?
+        <span>If you have both, switch to the Basic package and skip the setup. Your ITIN is always included.</span>
       </div>
 
       <div class="opt-toggles" id="opt-toggles">
         <button type="button" class="opt-toggle" data-comp="llc" aria-pressed="false">
           <span class="box">&#10003;</span>
-          <span class="t-label">I already have an LLC</span>
-          <span class="t-amount" data-amount="llc"></span>
+          <span class="t-label">I already have a US LLC</span>
         </button>
         <button type="button" class="opt-toggle" data-comp="ein" aria-pressed="false">
           <span class="box">&#10003;</span>
           <span class="t-label">I already have an EIN</span>
-          <span class="t-amount" data-amount="ein"></span>
-        </button>
-        <button type="button" class="opt-toggle" data-comp="itin" aria-pressed="false">
-          <span class="box">&#10003;</span>
-          <span class="t-label">I already have an ITIN</span>
-          <span class="t-amount" data-amount="itin"></span>
         </button>
       </div>
+      <p class="co-hint" id="co-hint"></p>
 
       <div class="co-btn">
         <button type="button" class="btn btn-platinum btn-block" onclick="startCheckout()">Continue to Checkout <span class="arrow">&rarr;</span></button>
@@ -262,69 +264,71 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 </footer>
 
 <!--
-  ============================================================
-  CHECKOUT NOTES (for Marvin)
-  ============================================================
-  - The price shown on this page is DISPLAY ONLY. The authoritative final
-    amount that is charged MUST be recomputed server-side from `selection`
-    (see api/checkout.js) so it can't be manipulated in the browser.
-  - Persist `selection` (which of LLC / EIN / ITIN the customer already has)
-    together with the order (per-customer signal, gold for upsell + ICP data).
-  - api/checkout.js currently returns the authoritative price + echoes the
-    selection. Wire it to your payment provider (e.g. Stripe Checkout): create
-    a Session with the server-computed amount, persist the selection, and
-    return { url } so the line below can redirect to it.
-  - Set the REAL prices in PRICING below AND (identically) in api/checkout.js.
-    api/checkout.js is the source of truth.
-  ============================================================
+  SELF-SERVE CHECKOUT
+  Two GoHighLevel (fastpaydirect) payment links, picked by the selection:
+    - Basic      : customer already has BOTH a US LLC and an EIN (ITIN always included)
+    - Foundation : everyone else (full setup)
+  The prices in PACKAGES below are for DISPLAY only; the real charge is enforced
+  by the payment links. Make sure the display prices match the links.
 -->
 <script>
-  // ---- PRICING (PLACEHOLDER VALUES, set the real numbers; keep in sync with api/checkout.js) ----
-  var PRICING = {
-    currency: 'USD',
-    base: 1500,                                  // base package price
-    components: { llc: 300, ein: 200, itin: 500 } // amount removed when the customer already has it
+  // ---- PACKAGES ----
+  // Basic applies when the customer already has BOTH a US LLC and an EIN.
+  // ITIN is always included. PRICES BELOW ARE DISPLAY-ONLY PLACEHOLDERS;
+  // confirm they match the GoHighLevel (fastpaydirect) payment links.
+  var CURRENCY = 'USD';
+  var PACKAGES = {
+    foundation: {
+      name: 'Foundation Package',
+      price: 1500, // TODO confirm against the payment link
+      url: 'https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174'
+    },
+    basic: {
+      name: 'Basic Package',
+      price: 500,  // TODO confirm against the payment link
+      url: 'https://link.fastpaydirect.com/payment-link/6a269a7471a0aa761e463857'
+    }
   };
 
-  var selection = { llc: false, ein: false, itin: false };
+  var selection = { llc: false, ein: false };
 
   function money(n){
-    return n.toLocaleString('en-US', { style: 'currency', currency: PRICING.currency, maximumFractionDigits: 0 });
+    return n.toLocaleString('en-US', { style: 'currency', currency: CURRENCY, maximumFractionDigits: 0 });
   }
 
-  function currentTotal(){
-    var t = PRICING.base;
-    Object.keys(selection).forEach(function(k){ if (selection[k]) t -= PRICING.components[k]; });
-    return Math.max(t, 0);
-  }
+  // Basic only when the customer already has BOTH the LLC and the EIN.
+  function currentKey(){ return (selection.llc && selection.ein) ? 'basic' : 'foundation'; }
 
   function render(){
-    var total = currentTotal();
-    document.querySelectorAll('[data-price-total]').forEach(function(el){ el.textContent = money(total); });
+    var pkg = PACKAGES[currentKey()];
+    document.querySelectorAll('[data-price-total]').forEach(function(el){ el.textContent = money(pkg.price); });
+    document.getElementById('pkg-label').textContent = pkg.name;
 
     var base = document.getElementById('co-base');
-    if (total < PRICING.base) {
-      base.innerHTML = 'Full package <s>' + money(PRICING.base) + '</s>. You save ' + money(PRICING.base - total) + '.';
+    if (currentKey() === 'basic') {
+      var save = PACKAGES.foundation.price - PACKAGES.basic.price;
+      base.innerHTML = 'Basic package. You save ' + money(save) + ' vs the Foundation package (' + money(PACKAGES.foundation.price) + ').';
     } else {
-      base.textContent = 'Full package price. Nothing to deduct yet.';
+      base.textContent = 'Full Foundation package, everything included.';
+    }
+
+    // Nudge when exactly one of LLC / EIN is selected.
+    var hint = document.getElementById('co-hint');
+    var n = (selection.llc ? 1 : 0) + (selection.ein ? 1 : 0);
+    if (n === 1) {
+      var missing = selection.llc ? 'an EIN' : 'a US LLC';
+      hint.textContent = 'Already have ' + missing + ' too? Select it to switch to the Basic package.';
+    } else {
+      hint.textContent = '';
     }
   }
 
-  // "From" floor price (lowest possible = everything already owned).
+  // "From" price shown in the nav = the lower (Basic) package.
   (function(){
-    var floor = PRICING.base;
-    Object.keys(PRICING.components).forEach(function(k){ floor -= PRICING.components[k]; });
     var nf = document.getElementById('nav-floor');
-    if (nf) nf.textContent = money(Math.max(floor, 0));
+    if (nf) nf.textContent = money(PACKAGES.basic.price);
   })();
 
-  // Populate the discount labels from PRICING so there's a single source of truth.
-  document.querySelectorAll('[data-amount]').forEach(function(el){
-    var c = el.getAttribute('data-amount');
-    el.innerHTML = '&minus; ' + money(PRICING.components[c]);
-  });
-
-  // Toggle handlers
   document.querySelectorAll('.opt-toggle').forEach(function(btn){
     btn.addEventListener('click', function(){
       var c = btn.getAttribute('data-comp');
@@ -336,33 +340,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
   });
 
   function startCheckout(){
-    var total = currentTotal();
-    var have = Object.keys(selection).filter(function(k){ return selection[k]; });
+    var pkg = PACKAGES[currentKey()];
 
     // Funnel signal (standard event, fired on intent to purchase, not a Lead).
     if (typeof window.metaTrack === 'function') {
       window.metaTrack('InitiateCheckout', {
-        value: total, currency: PRICING.currency,
-        content_name: 'Self-Serve US Setup',
-        num_items: 1, contents: have
+        value: pkg.price, currency: CURRENCY,
+        content_name: pkg.name,
+        contents: Object.keys(selection).filter(function(k){ return selection[k]; })
       });
     } else if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', { value: total, currency: PRICING.currency });
+      fbq('track', 'InitiateCheckout', { value: pkg.price, currency: CURRENCY });
     }
 
-    // Hand the SELECTION (not the price) to the server. The server is the source
-    // of truth for the amount. See api/checkout.js.
-    fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ selection: selection })
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if (data && data.url) { window.location.href = data.url; }
-      else { console.warn('Checkout: no redirect URL returned yet (payment provider not wired).', data); }
-    })
-    .catch(function(err){ console.warn('Checkout request failed:', err); });
+    // Route to the matching GoHighLevel payment link (the link enforces the price).
+    window.location.href = pkg.url;
   }
   window.startCheckout = startCheckout;
 
