@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>American Leverage — Self-Serve US Setup</title>
+<meta name="description" content="The guided do-it-yourself path into the US financial system: ITIN, LLC, EIN, US banking education and a credit-building roadmap, in one package." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+<!-- Meta Pixel (id: 784167687515569) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '784167687515569');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=784167687515569&ev=PageView&noscript=1"/></noscript>
+<script src="/js/meta-capi.js"></script>
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — Self-Serve page (navy + platinum, amber accent)
+   ============================================================ */
+:root{
+  --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
+  --ivory:#f3f1ea; --ivory-dim:#d9d6cc; --silver:#c6cedb; --silver-dim:#9aa4b5; --slate:#7e889a;
+  --silver-text: linear-gradient(100deg,#b6bfce 0%,#ffffff 45%,#a9b3c2 100%);
+  --champagne:#c8a96a;
+  --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow:rgba(240,170,50,0.5); --accent-text:#3a2606;
+  --line:rgba(231,236,245,0.12); --line-strong:rgba(231,236,245,0.22);
+  --glass:rgba(255,255,255,0.035); --glass-2:rgba(255,255,255,0.06);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --maxw:1180px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--navy-800);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;} button{font-family:inherit;}
+::selection{background:var(--champagne);color:var(--navy-1000);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;letter-spacing:-0.01em;}
+.h1{font-size:clamp(34px,5vw,60px);} .h2{font-size:clamp(28px,3.4vw,42px);} .h3{font-size:clamp(19px,2vw,23px);}
+.lede{font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:var(--silver);font-weight:350;}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--silver-dim);}
+.metal{background:var(--silver-text);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.gold{color:var(--champagne);}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:0.03em;padding:17px 34px;border:none;cursor:pointer;border-radius:2px;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
+.btn .arrow{transition:transform .25s ease;} .btn:hover .arrow{transform:translateX(4px);}
+.btn-platinum{background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:var(--accent-text);box-shadow:0 1px 0 rgba(255,255,255,0.22) inset,0 14px 36px -12px var(--accent-glow);}
+.btn-platinum:hover{transform:translateY(-2px);background:linear-gradient(180deg,var(--accent-1),var(--accent-deep));box-shadow:0 1px 0 rgba(255,255,255,0.28) inset,0 22px 50px -12px var(--accent-glow);}
+.btn-block{width:100%;}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(10,20,40,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav .wordmark{display:inline-block;}
+.nav .nav-price{font-size:14px;color:var(--silver-dim);font-weight:500;}
+.nav .nav-price b{color:var(--ivory);font-weight:700;}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,96px) 0 clamp(36px,5vw,64px);background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:32px 32px;opacity:.5;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:760px;}
+.hero h1{margin-top:18px;}
+.hero .lede{margin-top:20px;max-width:62ch;}
+.price-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:34px;}
+.price-tag{display:flex;flex-direction:column;line-height:1.1;}
+.price-tag .cap{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--silver-dim);margin-bottom:4px;}
+.price-tag .amt{font-family:var(--serif);font-size:clamp(40px,6vw,56px);font-weight:600;}
+.price-tag .amt.metal{background:var(--silver-text);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+/* sections */
+.section{padding:clamp(48px,6vw,88px) 0;}
+.section.alt{background:var(--navy-850);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.sec-head{max-width:60ch;}
+.sec-head .h2{margin-top:16px;}
+
+/* included cards */
+.incl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;}
+.incl-card{background:var(--glass);border:1px solid var(--line-strong);border-radius:10px;padding:24px 24px;transition:.2s;}
+.incl-card:hover{border-color:var(--silver);transform:translateY(-2px);}
+.incl-card .num{font-family:var(--serif);font-size:18px;color:var(--accent-1);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.incl-card .num span{display:inline-flex;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-strong);align-items:center;justify-content:center;font-size:14px;color:var(--accent-1);}
+.incl-card h3{font-size:20px;margin-bottom:8px;}
+.incl-card p{margin:0;font-size:14.5px;color:var(--silver-dim);line-height:1.55;}
+.incl-card.wide{grid-column:1 / -1;}
+
+/* pricing / checkout */
+.checkout-card{max-width:640px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
+.checkout-card .top-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent-1),transparent);}
+.co-total{text-align:center;margin-bottom:8px;}
+.co-total .cap{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--silver-dim);}
+.co-total .amt{font-family:var(--serif);font-weight:600;font-size:clamp(48px,9vw,72px);line-height:1.05;margin-top:6px;}
+.co-base{text-align:center;font-size:13.5px;color:var(--slate);min-height:20px;}
+.co-base s{color:var(--slate);}
+.disc-head{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ivory);font-weight:600;text-align:center;}
+.disc-head span{display:block;font-weight:400;color:var(--silver-dim);font-size:13.5px;margin-top:4px;}
+.opt-toggles{display:grid;gap:12px;margin-top:18px;}
+.opt-toggle{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:15px 18px;border:1px solid var(--line-strong);border-radius:8px;background:var(--glass);color:var(--ivory);cursor:pointer;transition:.18s;font-size:15px;}
+.opt-toggle:hover{border-color:var(--silver);}
+.opt-toggle.on{border-color:var(--accent-1);background:rgba(242,177,58,0.08);}
+.opt-toggle .box{width:24px;height:24px;border-radius:6px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.18s;font-size:14px;color:transparent;}
+.opt-toggle.on .box{background:linear-gradient(180deg,var(--accent-1),var(--accent-2));border-color:transparent;color:var(--accent-text);}
+.opt-toggle .t-label{flex:1;font-weight:500;}
+.opt-toggle .t-amount{color:var(--silver-dim);font-weight:600;font-variant-numeric:tabular-nums;}
+.opt-toggle.on .t-amount{color:var(--accent-1);}
+.co-btn{margin-top:24px;}
+.co-note{text-align:center;font-size:12.5px;color:var(--slate);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;}
+
+/* footer */
+.footer{background:var(--navy-1000);border-top:1px solid var(--line);padding:40px 0 32px;}
+.footer .f-inner{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+.footer .f-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--silver-dim);}
+.footer .f-links a:hover{color:var(--ivory);}
+.footer .f-meta{font-size:12px;color:var(--slate);}
+
+@media (max-width:680px){
+  .incl-grid{grid-template-columns:1fr;}
+  .price-row{gap:18px;}
+}
+</style>
+</head>
+<body data-accent="amber">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
+    <span class="nav-price">From <b data-price-total>$0</b></span>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Self-Serve US Setup</p>
+    <h1 class="h1">Everything you need for your US setup &mdash; the <span class="gold">guided self-serve</span> way.</h1>
+    <p class="lede">ITIN, LLC, EIN, US banking know-how and a credit-building roadmap, packaged into one clear do-it-yourself path. You follow the steps at your own pace, we hand you everything you need to get inside the US financial system.</p>
+
+    <div class="price-row">
+      <div class="price-tag">
+        <span class="cap">One-time price</span>
+        <span class="amt metal" data-price-total>$0</span>
+      </div>
+      <button type="button" class="btn btn-platinum" onclick="startCheckout()">Get Started <span class="arrow">&rarr;</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="section" id="included">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What's Included</p>
+      <h2 class="h2">Your complete self-serve toolkit.</h2>
+    </div>
+
+    <div class="incl-grid">
+      <div class="incl-card">
+        <div class="num"><span>1</span></div>
+        <h3>ITIN Filing</h3>
+        <p>We file your US tax ID (ITIN) end to end, so you can open accounts and operate legally as a non-resident.</p>
+      </div>
+      <div class="incl-card">
+        <div class="num"><span>2</span></div>
+        <h3>Skool Access</h3>
+        <p>Full access to our Skool community plus the complete training material &mdash; people, playbooks and support.</p>
+      </div>
+      <div class="incl-card">
+        <div class="num"><span>3</span></div>
+        <h3>U.S. Banking Education</h3>
+        <p>Step-by-step guidance on opening and running real US business accounts the right way.</p>
+      </div>
+      <div class="incl-card">
+        <div class="num"><span>4</span></div>
+        <h3>Credit Building Roadmap</h3>
+        <p>A clear roadmap to build US business credit from zero and unlock real funding over time.</p>
+      </div>
+      <div class="incl-card wide">
+        <div class="num"><span>5</span></div>
+        <h3>LLC, EIN and ITIN Setup</h3>
+        <p>Get your US company, tax IDs and structure set up correctly &mdash; the foundation everything else runs on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING / CHECKOUT ============ -->
+<section class="section alt" id="pricing">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin:0 auto;">
+      <p class="eyebrow">Your Price</p>
+      <h2 class="h2" style="margin-top:16px;">One package. Pay only for what you need.</h2>
+    </div>
+
+    <div class="checkout-card">
+      <div class="top-bar"></div>
+
+      <div class="co-total">
+        <span class="cap">Total today</span>
+        <div class="amt metal" data-price-total>$0</div>
+      </div>
+      <p class="co-base" id="co-base"></p>
+
+      <div class="disc-head">
+        Already have one of these?
+        <span>Then you only pay for what you need &mdash; tap what you already have.</span>
+      </div>
+
+      <div class="opt-toggles" id="opt-toggles">
+        <button type="button" class="opt-toggle" data-comp="llc" aria-pressed="false">
+          <span class="box">&#10003;</span>
+          <span class="t-label">I already have an LLC</span>
+          <span class="t-amount" data-amount="llc"></span>
+        </button>
+        <button type="button" class="opt-toggle" data-comp="ein" aria-pressed="false">
+          <span class="box">&#10003;</span>
+          <span class="t-label">I already have an EIN</span>
+          <span class="t-amount" data-amount="ein"></span>
+        </button>
+        <button type="button" class="opt-toggle" data-comp="itin" aria-pressed="false">
+          <span class="box">&#10003;</span>
+          <span class="t-label">I already have an ITIN</span>
+          <span class="t-amount" data-amount="itin"></span>
+        </button>
+      </div>
+
+      <div class="co-btn">
+        <button type="button" class="btn btn-platinum btn-block" onclick="startCheckout()">Continue to Checkout <span class="arrow">&rarr;</span></button>
+      </div>
+      <p class="co-note">&#128274; Secure checkout &mdash; your final price is confirmed at payment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap f-inner">
+    <a href="index.html" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:28px;width:auto;display:block;" /></a>
+    <div class="f-links">
+      <a href="https://upcredit.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="https://upcredit.org/terms-of-use" target="_blank" rel="noopener">Terms of Use</a>
+      <a href="https://upcredit.org/fulfillment-policy" target="_blank" rel="noopener">Fulfillment Policy</a>
+      <a href="https://upcredit.org/cancellation-policy" target="_blank" rel="noopener">Cancellation Policy</a>
+    </div>
+    <p class="f-meta">Need help? <a href="mailto:support@americanleverage.com" style="color:var(--silver);">support@americanleverage.com</a></p>
+    <p class="f-meta">&copy; 2025 ElevateLLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<!--
+  ============================================================
+  CHECKOUT NOTES (for Marvin)
+  ============================================================
+  - The price shown on this page is DISPLAY ONLY. The authoritative final
+    amount that is charged MUST be recomputed server-side from `selection`
+    (see api/checkout.js) so it can't be manipulated in the browser.
+  - Persist `selection` (which of LLC / EIN / ITIN the customer already has)
+    together with the order — per-customer signal, gold for upsell + ICP data.
+  - api/checkout.js currently returns the authoritative price + echoes the
+    selection. Wire it to your payment provider (e.g. Stripe Checkout): create
+    a Session with the server-computed amount, persist the selection, and
+    return { url } so the line below can redirect to it.
+  - Set the REAL prices in PRICING below AND (identically) in api/checkout.js.
+    api/checkout.js is the source of truth.
+  ============================================================
+-->
+<script>
+  // ---- PRICING (PLACEHOLDER VALUES — set the real numbers; keep in sync with api/checkout.js) ----
+  var PRICING = {
+    currency: 'USD',
+    base: 1500,                                  // base package price
+    components: { llc: 300, ein: 200, itin: 500 } // amount removed when the customer already has it
+  };
+
+  var selection = { llc: false, ein: false, itin: false };
+
+  function money(n){
+    return n.toLocaleString('en-US', { style: 'currency', currency: PRICING.currency, maximumFractionDigits: 0 });
+  }
+
+  function currentTotal(){
+    var t = PRICING.base;
+    Object.keys(selection).forEach(function(k){ if (selection[k]) t -= PRICING.components[k]; });
+    return Math.max(t, 0);
+  }
+
+  function render(){
+    var total = currentTotal();
+    document.querySelectorAll('[data-price-total]').forEach(function(el){ el.textContent = money(total); });
+
+    var base = document.getElementById('co-base');
+    if (total < PRICING.base) {
+      base.innerHTML = 'Full package <s>' + money(PRICING.base) + '</s> &mdash; you save ' + money(PRICING.base - total) + '.';
+    } else {
+      base.textContent = 'Full package — nothing to deduct yet.';
+    }
+  }
+
+  // Populate the discount labels from PRICING so there's a single source of truth.
+  document.querySelectorAll('[data-amount]').forEach(function(el){
+    var c = el.getAttribute('data-amount');
+    el.innerHTML = '&minus; ' + money(PRICING.components[c]);
+  });
+
+  // Toggle handlers
+  document.querySelectorAll('.opt-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var c = btn.getAttribute('data-comp');
+      selection[c] = !selection[c];
+      btn.classList.toggle('on', selection[c]);
+      btn.setAttribute('aria-pressed', selection[c] ? 'true' : 'false');
+      render();
+    });
+  });
+
+  function startCheckout(){
+    var total = currentTotal();
+    var have = Object.keys(selection).filter(function(k){ return selection[k]; });
+
+    // Funnel signal (standard event, fired on intent to purchase — not a Lead).
+    if (typeof window.metaTrack === 'function') {
+      window.metaTrack('InitiateCheckout', {
+        value: total, currency: PRICING.currency,
+        content_name: 'Self-Serve US Setup',
+        num_items: 1, contents: have
+      });
+    } else if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', { value: total, currency: PRICING.currency });
+    }
+
+    // Hand the SELECTION (not the price) to the server. The server is the source
+    // of truth for the amount — see api/checkout.js.
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ selection: selection })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data && data.url) { window.location.href = data.url; }
+      else { console.warn('Checkout: no redirect URL returned yet (payment provider not wired).', data); }
+    })
+    .catch(function(err){ console.warn('Checkout request failed:', err); });
+  }
+  window.startCheckout = startCheckout;
+
+  render();
+</script>
+</body>
+</html>
