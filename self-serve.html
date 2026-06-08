@@ -274,18 +274,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 <script>
   // ---- PACKAGES ----
   // Basic applies when the customer already has BOTH a US LLC and an EIN.
-  // ITIN is always included. PRICES BELOW ARE DISPLAY-ONLY PLACEHOLDERS;
-  // confirm they match the GoHighLevel (fastpaydirect) payment links.
+  // ITIN is always included. The prices below are for display; the real charge
+  // is enforced by the GoHighLevel (fastpaydirect) payment links and must match.
   var CURRENCY = 'USD';
   var PACKAGES = {
     foundation: {
       name: 'Foundation Package',
-      price: 1500, // TODO confirm against the payment link
+      price: 1997, // matches the Foundation payment link
       url: 'https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174'
     },
     basic: {
       name: 'Basic Package',
-      price: 500,  // TODO confirm against the payment link
+      price: 997,  // matches the Basic payment link
       url: 'https://link.fastpaydirect.com/payment-link/6a269a7471a0aa761e463857'
     }
   };
