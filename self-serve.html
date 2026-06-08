@@ -66,10 +66,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
 /* nav */
 .nav{position:sticky;top:0;z-index:60;background:rgba(10,20,40,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:center;gap:16px;}
 .nav .wordmark{display:inline-block;}
-.nav .nav-price{font-size:14px;color:var(--silver-dim);font-weight:500;}
-.nav .nav-price b{color:var(--ivory);font-weight:700;}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,96px) 0 clamp(36px,5vw,64px);background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
@@ -106,7 +104,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 .co-hint{text-align:center;font-size:13px;color:var(--silver-dim);min-height:18px;margin-top:14px;}
 
 /* pricing / checkout */
-.checkout-card{max-width:640px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
+.checkout-card{max-width:720px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
+.opt-toggle.solo{margin-top:18px;}
+.pay-embed{position:relative;margin-top:20px;border-radius:10px;overflow:hidden;background:#fff;min-height:720px;}
+.pay-embed iframe{display:block;width:100%;height:780px;border:0;}
+.pay-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:#f1f1f1;color:var(--navy-800);font-weight:600;font-size:13px;z-index:1;}
+.pay-loader .spin{width:22px;height:22px;border-radius:50%;border:3px solid rgba(18,35,71,0.2);border-top-color:var(--navy-800);animation:sp-spin 0.9s linear infinite;}
+@keyframes sp-spin{to{transform:rotate(360deg);}}
+.co-note a{color:var(--accent-1);} .co-note a:hover{text-decoration:underline;}
 .checkout-card .top-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent-1),transparent);}
 .co-total{text-align:center;margin-bottom:8px;}
 .co-total .cap{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--silver-dim);}
@@ -145,7 +150,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
-    <span class="nav-price">From <b id="nav-floor">$0</b></span>
   </div>
 </header>
 
@@ -161,7 +165,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
         <span class="cap">One-time price</span>
         <span class="amt metal" data-price-total>$0</span>
       </div>
-      <button type="button" class="btn btn-platinum" onclick="startCheckout()">Get Started <span class="arrow">&rarr;</span></button>
+      <a href="#pricing" class="btn btn-platinum">Get Started <span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -176,10 +180,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
     <div class="incl-grid">
       <div class="incl-card feature">
-        <div class="num"><span>&#128101;</span></div>
+        <div class="num"><span>&#10003;</span></div>
         <h3>Full Skool Community Access</h3>
         <p>Step inside our private Skool community: the complete training library, playbooks, live support and a room full of operators doing exactly what you're doing. This is where the self-serve path actually gets done, with people who have already walked it.</p>
-        <span class="members">&#9733; Join <b>6,100+ members</b> building their US setup</span>
+        <span class="members">Join <b>6,100+ members</b> building their US setup</span>
       </div>
       <div class="incl-card">
         <div class="num"><span>&#10003;</span></div>
@@ -223,27 +227,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       </div>
       <p class="co-base" id="co-base"></p>
 
-      <div class="disc-head">
-        Already have your US LLC and EIN?
-        <span>If you have both, switch to the Basic package and skip the setup. Your ITIN is always included.</span>
-      </div>
+      <button type="button" class="opt-toggle solo" id="toggle-both" aria-pressed="false">
+        <span class="box">&#10003;</span>
+        <span class="t-label">I already have a US LLC and EIN</span>
+      </button>
+      <p class="co-hint">ITIN is always included. Tick the box to switch to the Basic package.</p>
 
-      <div class="opt-toggles" id="opt-toggles">
-        <button type="button" class="opt-toggle" data-comp="llc" aria-pressed="false">
-          <span class="box">&#10003;</span>
-          <span class="t-label">I already have a US LLC</span>
-        </button>
-        <button type="button" class="opt-toggle" data-comp="ein" aria-pressed="false">
-          <span class="box">&#10003;</span>
-          <span class="t-label">I already have an EIN</span>
-        </button>
+      <div class="pay-embed">
+        <div class="pay-loader" id="pay-loader"><span class="spin"></span> Loading secure checkout…</div>
+        <iframe id="pay-frame" title="Secure checkout" src="https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174" onload="var l=document.getElementById('pay-loader'); if(l) l.style.display='none';"></iframe>
       </div>
-      <p class="co-hint" id="co-hint"></p>
-
-      <div class="co-btn">
-        <button type="button" class="btn btn-platinum btn-block" onclick="startCheckout()">Continue to Checkout <span class="arrow">&rarr;</span></button>
-      </div>
-      <p class="co-note">&#128274; Secure checkout. Your final price is confirmed at payment.</p>
+      <p class="co-note">&#128274; Secure checkout. Trouble loading? <a id="pay-fallback" href="https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
     </div>
   </div>
 </section>
@@ -265,11 +259,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
 <!--
   SELF-SERVE CHECKOUT
-  Two GoHighLevel (fastpaydirect) payment links, picked by the selection:
-    - Basic      : customer already has BOTH a US LLC and an EIN (ITIN always included)
+  Two GoHighLevel (fastpaydirect) payment links are embedded in an iframe and
+  swapped by the single checkbox:
+    - Basic      : customer already has a US LLC and an EIN (ITIN always included)
     - Foundation : everyone else (full setup)
   The prices in PACKAGES below are for DISPLAY only; the real charge is enforced
   by the payment links. Make sure the display prices match the links.
+  Note: if the links ever send X-Frame-Options/CSP that blocks framing, the
+  "Open it in a new tab" fallback link under the iframe still works.
 -->
 <script>
   // ---- PACKAGES ----
@@ -290,14 +287,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     }
   };
 
-  var selection = { llc: false, ein: false };
+  var hasBoth = false; // customer already has a US LLC + EIN
 
   function money(n){
     return n.toLocaleString('en-US', { style: 'currency', currency: CURRENCY, maximumFractionDigits: 0 });
   }
-
-  // Basic only when the customer already has BOTH the LLC and the EIN.
-  function currentKey(){ return (selection.llc && selection.ein) ? 'basic' : 'foundation'; }
+  function currentKey(){ return hasBoth ? 'basic' : 'foundation'; }
 
   function render(){
     var pkg = PACKAGES[currentKey()];
@@ -305,58 +300,60 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     document.getElementById('pkg-label').textContent = pkg.name;
 
     var base = document.getElementById('co-base');
-    if (currentKey() === 'basic') {
+    if (hasBoth) {
       var save = PACKAGES.foundation.price - PACKAGES.basic.price;
       base.innerHTML = 'Basic package. You save ' + money(save) + ' vs the Foundation package (' + money(PACKAGES.foundation.price) + ').';
     } else {
       base.textContent = 'Full Foundation package, everything included.';
     }
-
-    // Nudge when exactly one of LLC / EIN is selected.
-    var hint = document.getElementById('co-hint');
-    var n = (selection.llc ? 1 : 0) + (selection.ein ? 1 : 0);
-    if (n === 1) {
-      var missing = selection.llc ? 'an EIN' : 'a US LLC';
-      hint.textContent = 'Already have ' + missing + ' too? Select it to switch to the Basic package.';
-    } else {
-      hint.textContent = '';
-    }
   }
 
-  // "From" price shown in the nav = the lower (Basic) package.
-  (function(){
-    var nf = document.getElementById('nav-floor');
-    if (nf) nf.textContent = money(PACKAGES.basic.price);
-  })();
-
-  document.querySelectorAll('.opt-toggle').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var c = btn.getAttribute('data-comp');
-      selection[c] = !selection[c];
-      btn.classList.toggle('on', selection[c]);
-      btn.setAttribute('aria-pressed', selection[c] ? 'true' : 'false');
-      render();
-    });
-  });
-
-  function startCheckout(){
+  // Swap the embedded payment form + summary when the box is toggled.
+  function selectPackage(){
     var pkg = PACKAGES[currentKey()];
-
-    // Funnel signal (standard event, fired on intent to purchase, not a Lead).
-    if (typeof window.metaTrack === 'function') {
-      window.metaTrack('InitiateCheckout', {
-        value: pkg.price, currency: CURRENCY,
-        content_name: pkg.name,
-        contents: Object.keys(selection).filter(function(k){ return selection[k]; })
-      });
-    } else if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', { value: pkg.price, currency: CURRENCY });
+    var frame = document.getElementById('pay-frame');
+    var loader = document.getElementById('pay-loader');
+    var fb = document.getElementById('pay-fallback');
+    if (frame && frame.getAttribute('src') !== pkg.url) {
+      if (loader) loader.style.display = 'flex';
+      frame.src = pkg.url;
     }
-
-    // Route to the matching GoHighLevel payment link (the link enforces the price).
-    window.location.href = pkg.url;
+    if (fb) fb.href = pkg.url;
+    render();
   }
-  window.startCheckout = startCheckout;
+
+  var toggle = document.getElementById('toggle-both');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      hasBoth = !hasBoth;
+      toggle.classList.toggle('on', hasBoth);
+      toggle.setAttribute('aria-pressed', hasBoth ? 'true' : 'false');
+      selectPackage();
+    });
+  }
+
+  // Fire InitiateCheckout once, when the embedded checkout scrolls into view (not a Lead).
+  (function(){
+    var fired = false;
+    function fire(){
+      if (fired) return; fired = true;
+      var pkg = PACKAGES[currentKey()];
+      if (typeof window.metaTrack === 'function') {
+        window.metaTrack('InitiateCheckout', { value: pkg.price, currency: CURRENCY, content_name: pkg.name });
+      } else if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { value: pkg.price, currency: CURRENCY });
+      }
+    }
+    var target = document.getElementById('pricing');
+    if (target && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { fire(); obs.disconnect(); } });
+      }, { threshold: 0.3 });
+      obs.observe(target);
+    } else {
+      fire();
+    }
+  })();
 
   render();
 </script>
