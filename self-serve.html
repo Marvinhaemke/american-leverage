@@ -66,10 +66,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
 /* nav */
 .nav{position:sticky;top:0;z-index:60;background:rgba(10,20,40,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:center;gap:16px;}
 .nav .wordmark{display:inline-block;}
-.nav .nav-price{font-size:14px;color:var(--silver-dim);font-weight:500;}
-.nav .nav-price b{color:var(--ivory);font-weight:700;}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,96px) 0 clamp(36px,5vw,64px);background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
@@ -152,7 +150,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
-    <span class="nav-price">From <b id="nav-floor">$0</b></span>
   </div>
 </header>
 
@@ -183,10 +180,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
     <div class="incl-grid">
       <div class="incl-card feature">
-        <div class="num"><span>&#128101;</span></div>
+        <div class="num"><span>&#10003;</span></div>
         <h3>Full Skool Community Access</h3>
         <p>Step inside our private Skool community: the complete training library, playbooks, live support and a room full of operators doing exactly what you're doing. This is where the self-serve path actually gets done, with people who have already walked it.</p>
-        <span class="members">&#9733; Join <b>6,100+ members</b> building their US setup</span>
+        <span class="members">Join <b>6,100+ members</b> building their US setup</span>
       </div>
       <div class="incl-card">
         <div class="num"><span>&#10003;</span></div>
@@ -310,12 +307,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       base.textContent = 'Full Foundation package, everything included.';
     }
   }
-
-  // "From" price shown in the nav = the lower (Basic) package.
-  (function(){
-    var nf = document.getElementById('nav-floor');
-    if (nf) nf.textContent = money(PACKAGES.basic.price);
-  })();
 
   // Swap the embedded payment form + summary when the box is toggled.
   function selectPackage(){
