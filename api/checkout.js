@@ -1,6 +1,6 @@
 // Vercel Serverless Function: Self-Serve checkout
 // -------------------------------------------------------------------------
-// The browser (self-serve.html) sends ONLY the customer's `selection` — which
+// The browser (self-serve.html) sends ONLY the customer's `selection`, which
 // of LLC / EIN / ITIN they already have. The final amount is computed HERE,
 // server-side, so the price can never be manipulated in the browser.
 //
@@ -10,7 +10,7 @@
 // TODO (Marvin):
 //   1. Create a real payment session (e.g. Stripe Checkout) for `amount` and
 //      return { url } so the frontend can redirect to it.
-//   2. Persist `selection` together with the order (DB / CRM) — per-customer
+//   2. Persist `selection` together with the order (DB / CRM): per-customer
 //      signal of what they already have. Gold for upsell + ICP data.
 //   3. (Optional) set prices via env vars instead of hard-coding.
 
@@ -54,7 +54,7 @@ module.exports = async function handler(req, res) {
   //     line_items: [{
   //       price_data: {
   //         currency: CURRENCY,
-  //         product_data: { name: 'American Leverage — Self-Serve US Setup' },
+  //         product_data: { name: 'American Leverage Self-Serve US Setup' },
   //         unit_amount: amount * 100,            // amount is server-computed
   //       },
   //       quantity: 1,

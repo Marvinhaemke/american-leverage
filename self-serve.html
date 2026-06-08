@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>American Leverage — Self-Serve US Setup</title>
+<title>American Leverage | Self-Serve US Setup</title>
 <meta name="description" content="The guided do-it-yourself path into the US financial system: ITIN, LLC, EIN, US banking education and a credit-building roadmap, in one package." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,7 +32,7 @@
 
 <style>
 /* ============================================================
-   AMERICAN LEVERAGE — Self-Serve page (navy + platinum, amber accent)
+   AMERICAN LEVERAGE - Self-Serve page (navy + platinum, amber accent)
    ============================================================ */
 :root{
   --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
@@ -139,7 +139,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
-    <span class="nav-price">From <b data-price-total>$0</b></span>
+    <span class="nav-price">From <b id="nav-floor">$0</b></span>
   </div>
 </header>
 
@@ -147,7 +147,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 <section class="hero">
   <div class="wrap hero-inner">
     <p class="eyebrow">Self-Serve US Setup</p>
-    <h1 class="h1">Everything you need for your US setup &mdash; the <span class="gold">guided self-serve</span> way.</h1>
+    <h1 class="h1">Everything you need for your US setup, the <span class="gold">guided self-serve</span> way.</h1>
     <p class="lede">ITIN, LLC, EIN, US banking know-how and a credit-building roadmap, packaged into one clear do-it-yourself path. You follow the steps at your own pace, we hand you everything you need to get inside the US financial system.</p>
 
     <div class="price-row">
@@ -177,7 +177,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       <div class="incl-card">
         <div class="num"><span>2</span></div>
         <h3>Skool Access</h3>
-        <p>Full access to our Skool community plus the complete training material &mdash; people, playbooks and support.</p>
+        <p>Full access to our Skool community plus the complete training material: people, playbooks and support.</p>
       </div>
       <div class="incl-card">
         <div class="num"><span>3</span></div>
@@ -192,7 +192,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       <div class="incl-card wide">
         <div class="num"><span>5</span></div>
         <h3>LLC, EIN and ITIN Setup</h3>
-        <p>Get your US company, tax IDs and structure set up correctly &mdash; the foundation everything else runs on.</p>
+        <p>Get your US company, tax IDs and structure set up correctly. The foundation everything else runs on.</p>
       </div>
     </div>
   </div>
@@ -217,7 +217,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
       <div class="disc-head">
         Already have one of these?
-        <span>Then you only pay for what you need &mdash; tap what you already have.</span>
+        <span>Then you only pay for what you need. Tap what you already have.</span>
       </div>
 
       <div class="opt-toggles" id="opt-toggles">
@@ -241,7 +241,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       <div class="co-btn">
         <button type="button" class="btn btn-platinum btn-block" onclick="startCheckout()">Continue to Checkout <span class="arrow">&rarr;</span></button>
       </div>
-      <p class="co-note">&#128274; Secure checkout &mdash; your final price is confirmed at payment.</p>
+      <p class="co-note">&#128274; Secure checkout. Your final price is confirmed at payment.</p>
     </div>
   </div>
 </section>
@@ -269,7 +269,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     amount that is charged MUST be recomputed server-side from `selection`
     (see api/checkout.js) so it can't be manipulated in the browser.
   - Persist `selection` (which of LLC / EIN / ITIN the customer already has)
-    together with the order — per-customer signal, gold for upsell + ICP data.
+    together with the order (per-customer signal, gold for upsell + ICP data).
   - api/checkout.js currently returns the authoritative price + echoes the
     selection. Wire it to your payment provider (e.g. Stripe Checkout): create
     a Session with the server-computed amount, persist the selection, and
@@ -279,7 +279,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
   ============================================================
 -->
 <script>
-  // ---- PRICING (PLACEHOLDER VALUES — set the real numbers; keep in sync with api/checkout.js) ----
+  // ---- PRICING (PLACEHOLDER VALUES, set the real numbers; keep in sync with api/checkout.js) ----
   var PRICING = {
     currency: 'USD',
     base: 1500,                                  // base package price
@@ -304,11 +304,19 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
     var base = document.getElementById('co-base');
     if (total < PRICING.base) {
-      base.innerHTML = 'Full package <s>' + money(PRICING.base) + '</s> &mdash; you save ' + money(PRICING.base - total) + '.';
+      base.innerHTML = 'Full package <s>' + money(PRICING.base) + '</s>. You save ' + money(PRICING.base - total) + '.';
     } else {
-      base.textContent = 'Full package — nothing to deduct yet.';
+      base.textContent = 'Full package price. Nothing to deduct yet.';
     }
   }
+
+  // "From" floor price (lowest possible = everything already owned).
+  (function(){
+    var floor = PRICING.base;
+    Object.keys(PRICING.components).forEach(function(k){ floor -= PRICING.components[k]; });
+    var nf = document.getElementById('nav-floor');
+    if (nf) nf.textContent = money(Math.max(floor, 0));
+  })();
 
   // Populate the discount labels from PRICING so there's a single source of truth.
   document.querySelectorAll('[data-amount]').forEach(function(el){
@@ -331,7 +339,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     var total = currentTotal();
     var have = Object.keys(selection).filter(function(k){ return selection[k]; });
 
-    // Funnel signal (standard event, fired on intent to purchase — not a Lead).
+    // Funnel signal (standard event, fired on intent to purchase, not a Lead).
     if (typeof window.metaTrack === 'function') {
       window.metaTrack('InitiateCheckout', {
         value: total, currency: PRICING.currency,
@@ -343,7 +351,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     }
 
     // Hand the SELECTION (not the price) to the server. The server is the source
-    // of truth for the amount — see api/checkout.js.
+    // of truth for the amount. See api/checkout.js.
     fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
