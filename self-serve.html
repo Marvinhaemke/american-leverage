@@ -104,14 +104,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 .co-hint{text-align:center;font-size:13px;color:var(--silver-dim);min-height:18px;margin-top:14px;}
 
 /* pricing / checkout */
-.checkout-card{max-width:720px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
+.checkout-card{max-width:640px;margin:40px auto 0;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;padding:clamp(26px,4vw,40px);box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);position:relative;overflow:hidden;}
 .opt-toggle.solo{margin-top:18px;}
-.pay-embed{position:relative;margin-top:20px;border-radius:10px;overflow:hidden;background:#fff;min-height:720px;}
-.pay-embed iframe{display:block;width:100%;height:780px;border:0;}
-.pay-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:#f1f1f1;color:var(--navy-800);font-weight:600;font-size:13px;z-index:1;}
-.pay-loader .spin{width:22px;height:22px;border-radius:50%;border:3px solid rgba(18,35,71,0.2);border-top-color:var(--navy-800);animation:sp-spin 0.9s linear infinite;}
-@keyframes sp-spin{to{transform:rotate(360deg);}}
-.co-note a{color:var(--accent-1);} .co-note a:hover{text-decoration:underline;}
 .checkout-card .top-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent-1),transparent);}
 .co-total{text-align:center;margin-bottom:8px;}
 .co-total .cap{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--silver-dim);}
@@ -233,11 +227,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
       </button>
       <p class="co-hint">ITIN is always included. Tick the box to switch to the Basic package.</p>
 
-      <div class="pay-embed">
-        <div class="pay-loader" id="pay-loader"><span class="spin"></span> Loading secure checkout…</div>
-        <iframe id="pay-frame" title="Secure checkout" src="https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174" onload="var l=document.getElementById('pay-loader'); if(l) l.style.display='none';"></iframe>
+      <div class="co-btn">
+        <button type="button" class="btn btn-platinum btn-block" onclick="startCheckout()">Continue to Checkout <span class="arrow">&rarr;</span></button>
       </div>
-      <p class="co-note">&#128274; Secure checkout. Trouble loading? <a id="pay-fallback" href="https://link.fastpaydirect.com/payment-link/6a2699da03b17c94f5715174" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+      <p class="co-note">&#128274; Secure checkout. Your final price is confirmed at payment.</p>
     </div>
   </div>
 </section>
@@ -259,14 +252,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
 
 <!--
   SELF-SERVE CHECKOUT
-  Two GoHighLevel (fastpaydirect) payment links are embedded in an iframe and
-  swapped by the single checkbox:
+  The "Continue to Checkout" button sends the customer to one of two GoHighLevel
+  (fastpaydirect) payment links, chosen by the single checkbox:
     - Basic      : customer already has a US LLC and an EIN (ITIN always included)
     - Foundation : everyone else (full setup)
+  Customers always go through this form first, so the checkbox decides the link.
   The prices in PACKAGES below are for DISPLAY only; the real charge is enforced
   by the payment links. Make sure the display prices match the links.
-  Note: if the links ever send X-Frame-Options/CSP that blocks framing, the
-  "Open it in a new tab" fallback link under the iframe still works.
 -->
 <script>
   // ---- PACKAGES ----
@@ -308,52 +300,28 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.1;lette
     }
   }
 
-  // Swap the embedded payment form + summary when the box is toggled.
-  function selectPackage(){
-    var pkg = PACKAGES[currentKey()];
-    var frame = document.getElementById('pay-frame');
-    var loader = document.getElementById('pay-loader');
-    var fb = document.getElementById('pay-fallback');
-    if (frame && frame.getAttribute('src') !== pkg.url) {
-      if (loader) loader.style.display = 'flex';
-      frame.src = pkg.url;
-    }
-    if (fb) fb.href = pkg.url;
-    render();
-  }
-
   var toggle = document.getElementById('toggle-both');
   if (toggle) {
     toggle.addEventListener('click', function(){
       hasBoth = !hasBoth;
       toggle.classList.toggle('on', hasBoth);
       toggle.setAttribute('aria-pressed', hasBoth ? 'true' : 'false');
-      selectPackage();
+      render();
     });
   }
 
-  // Fire InitiateCheckout once, when the embedded checkout scrolls into view (not a Lead).
-  (function(){
-    var fired = false;
-    function fire(){
-      if (fired) return; fired = true;
-      var pkg = PACKAGES[currentKey()];
-      if (typeof window.metaTrack === 'function') {
-        window.metaTrack('InitiateCheckout', { value: pkg.price, currency: CURRENCY, content_name: pkg.name });
-      } else if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', { value: pkg.price, currency: CURRENCY });
-      }
+  // Send the customer to the matching payment link. They always come through
+  // this form, so the checkbox decides which package (and link) they get.
+  function startCheckout(){
+    var pkg = PACKAGES[currentKey()];
+    if (typeof window.metaTrack === 'function') {
+      window.metaTrack('InitiateCheckout', { value: pkg.price, currency: CURRENCY, content_name: pkg.name });
+    } else if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', { value: pkg.price, currency: CURRENCY });
     }
-    var target = document.getElementById('pricing');
-    if (target && 'IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if (e.isIntersecting) { fire(); obs.disconnect(); } });
-      }, { threshold: 0.3 });
-      obs.observe(target);
-    } else {
-      fire();
-    }
-  })();
+    window.location.href = pkg.url;
+  }
+  window.startCheckout = startCheckout;
 
   render();
 </script>
