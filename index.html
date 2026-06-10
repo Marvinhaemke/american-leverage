@@ -1049,7 +1049,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     </div>
 
     <p class="foot-legal">The American Leverage calculator is for educational and illustrative use only. Points, rewards, and funding figures are estimates based on past client outcomes, not predictions or guarantees for you. This is not financial, legal, or tax advice. Verify independently. American Leverage assumes no liability.</p>
-    <p class="foot-copy">© 2025 ElevateLLC. Empowering entrepreneurs with capital access.</p>
+    <!-- every vault has one loose brick. unhide it, then knock the old way. -->
+    <p class="foot-copy">© 2025 ElevateLLC. Empowering entrepreneurs with capital access. <i id="al-vault" hidden aria-hidden="true" data-knock="alt+shift+click x3" style="font-style:normal;opacity:.45;user-select:none;">▚</i></p>
   </div>
 </footer>
 
@@ -1461,6 +1462,28 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   window.handleStep1 = handleStep1;
   window.submitFormAndRoute = submitFormAndRoute;
   window.nextStep = nextStep;
+</script>
+
+<script>
+(function () {
+  var b = document.getElementById('al-vault');
+  if (!b) return;
+  var armed = false, knocks = 0, last = 0;
+  // arms only when the hidden attribute is removed after load (i.e. via devtools)
+  new MutationObserver(function () { if (!b.hidden) armed = true; })
+    .observe(b, { attributes: true, attributeFilter: ['hidden'] });
+  b.addEventListener('click', function (e) {
+    if (!armed || !e.altKey || !e.shiftKey) return;
+    var now = Date.now();
+    if (now - last > 2000) knocks = 0;
+    last = now;
+    if (++knocks < 3) return;
+    knocks = 0;
+    var s = document.createElement('script');
+    s.src = '/js/vault-breakout.js';
+    document.head.appendChild(s);
+  });
+})();
 </script>
 
 </body>
