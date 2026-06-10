@@ -22,6 +22,16 @@
   var overlay, canvas, ctx, raf = null;
 
   var state, ball, paddle, bricks, score, lives, level, keys = {};
+  var confetti = [];
+  var CONFETTI_COLORS = ['#f2b13a', '#c8a96a', '#eef2f7', '#c4cdd9', '#f3f1ea'];
+
+  var FINAL_LEVEL = 3;
+  // per-level brick layouts: full wall, checkerboard, diamond
+  var LAYOUTS = [
+    function () { return true; },
+    function (r, c) { return (r + c) % 2 === 0; },
+    function (r, c) { return Math.abs(c - 4) + Math.abs(r - 2) <= 4; }
+  ];
 
   function resetBall() {
     ball = { x: paddle.x + paddle.w / 2, y: paddle.y - 9, r: 7, vx: 0, vy: 0, stuck: true };
@@ -31,8 +41,10 @@
     bricks = [];
     var cols = 9, rows = 5, gap = 6, top = 64, side = 28;
     var bw = (W - side * 2 - gap * (cols - 1)) / cols, bh = 20;
+    var keep = LAYOUTS[(level - 1) % LAYOUTS.length];
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
+        if (!keep(r, c)) continue;
         bricks.push({
           x: side + c * (bw + gap), y: top + r * (bh + gap),
           w: bw, h: bh, color: ROW_COLORS[r], alive: true,
@@ -103,6 +115,11 @@
     }
 
     if (bricks.every(function (b) { return !b.alive; })) {
+      if (level >= FINAL_LEVEL) {
+        state = 'won';
+        spawnConfetti();
+        return;
+      }
       level++;
       buildBricks();
       resetBall();
@@ -116,6 +133,53 @@
       resetBall();
       state = 'serve';
     }
+  }
+
+  function spawnConfetti() {
+    confetti = [];
+    for (var i = 0; i < 130; i++) {
+      confetti.push({
+        x: Math.random() * W,
+        y: -Math.random() * H,
+        vx: Math.random() * 1.6 - 0.8,
+        vy: 1.2 + Math.random() * 2.6,
+        s: 4 + Math.random() * 5,
+        rot: Math.random() * Math.PI * 2,
+        vr: Math.random() * 0.16 - 0.08,
+        color: CONFETTI_COLORS[(Math.random() * CONFETTI_COLORS.length) | 0]
+      });
+    }
+  }
+
+  function drawWin() {
+    ctx.fillStyle = 'rgba(6,13,28,0.82)';
+    ctx.fillRect(0, 0, W, H);
+
+    confetti.forEach(function (p) {
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s / 1.5);
+      ctx.restore();
+    });
+
+    var pulse = 1 + Math.sin(Date.now() / 280) * 0.04;
+    ctx.save();
+    ctx.translate(W / 2, H / 2 - 8);
+    ctx.scale(pulse, pulse);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = COLORS.champagne;
+    ctx.font = '600 46px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText('Kuno ist der Beste!', 0, 0);
+    ctx.restore();
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = COLORS.silver;
+    ctx.font = '13px "Hanken Grotesk", system-ui, sans-serif';
+    ctx.fillText('vault cracked  ·  final score ' + score + '  ·  space to play again', W / 2, H / 2 + 30);
   }
 
   function roundRect(x, y, w, h, r) {
@@ -146,7 +210,7 @@
     ctx.fillStyle = COLORS.silverDim;
     ctx.font = '12px "Hanken Grotesk", system-ui, sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText('LVL ' + level + '   ' + '◆ '.repeat(Math.max(0, lives)).trim(), W - 16, 23);
+    ctx.fillText('LVL ' + level + '/' + FINAL_LEVEL + '   ' + '◆ '.repeat(Math.max(0, lives)).trim(), W - 16, 23);
 
     bricks.forEach(function (b) {
       if (!b.alive) return;
@@ -184,6 +248,8 @@
       ctx.fillStyle = COLORS.silver;
       ctx.font = '13px "Hanken Grotesk", system-ui, sans-serif';
       ctx.fillText('final score ' + score + '  ·  space to try again', W / 2, H / 2 + 18);
+    } else if (state === 'won') {
+      drawWin();
     }
   }
 
@@ -198,7 +264,7 @@
     keys[e.key] = true;
     if (e.key === ' ' || e.code === 'Space') {
       e.preventDefault();
-      if (state === 'over') newGame();
+      if (state === 'over' || state === 'won') newGame();
       else { state = 'play'; launch(); }
     }
   }
@@ -211,7 +277,7 @@
   }
 
   function onClick() {
-    if (state === 'over') newGame();
+    if (state === 'over' || state === 'won') newGame();
     else { state = 'play'; launch(); }
   }
 
@@ -267,6 +333,11 @@
     document.body.style.overflow = '';
   }
 
-  window.__alVault = { open: open, close: close };
+  window.__alVault = {
+    open: open,
+    close: close,
+    // QA helper: clears the current level's remaining bricks
+    _skip: function () { bricks.forEach(function (b) { b.alive = false; }); }
+  };
   open();
 })();
