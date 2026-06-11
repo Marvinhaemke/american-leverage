@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Must-Watch Briefing | American Leverage</title>
+<title>Watch Before Your Meeting | American Leverage</title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
 <link rel="icon" href="images/favicon.ico" sizes="any" />
@@ -87,16 +87,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
 .brief-head .lede{margin:14px auto 0;max-width:62ch;}
 .video-card{padding:8px;margin-bottom:26px;}
 .video-frame{position:relative;border-radius:7px;overflow:hidden;background:#000;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05);}
-.video-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 10px 4px;font-size:12.5px;font-weight:500;color:var(--silver-dim);}
+.video-meta{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 10px 4px;font-size:12.5px;font-weight:500;color:var(--silver-dim);}
 .video-meta .ic{font-size:14px;margin-right:5px;}
-@keyframes al-pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
-.pulse{animation:al-pulse 1.8s ease-in-out infinite;}
-.done{text-align:center;display:none;}
-.done.show{display:block;}
-.done-tag{color:var(--champagne);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
-.done-msg{color:var(--silver);font-size:15px;margin:0;}
-@keyframes fade-up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.fade-up-anim{animation:fade-up .55s ease-out;}
 </style>
 </head>
 <body>
@@ -113,8 +105,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
     <!-- Header -->
     <div class="brief-head">
       <span class="pill-alert">&#9888;&nbsp; Action Required</span>
-      <h1 class="h1" style="margin-top:18px;">You Must Watch This <span class="gold">Briefing</span></h1>
-      <p class="lede">Please watch this short presentation from start to finish before you continue.</p>
+      <h1 class="h1" style="margin-top:18px;">You Must Watch This <span class="gold">Explanation</span> Before Your Meeting</h1>
+      <p class="lede">Please watch this short explanation from start to finish before your meeting.</p>
     </div>
 
     <!-- Video -->
@@ -124,14 +116,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
       </div>
       <div class="video-meta">
         <span><span class="ic">&#128266;</span>Ensure your sound is on</span>
-        <span id="progress-text" class="pulse">Awaiting completion…</span>
       </div>
-    </div>
-
-    <!-- Completion confirmation (revealed once the video is watched) -->
-    <div id="done" class="done">
-      <p class="done-tag">&#10003; Briefing complete</p>
-      <p class="done-msg">Thanks for watching. You're all set.</p>
     </div>
   </div>
 </main>
@@ -148,34 +133,5 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
   <p>&copy; 2025 ElevateLLC. All rights reserved.</p>
 </footer>
 
-<script>
-  // ===== Video-progress watcher (polls the Wistia player; ad-blocker resistant) =====
-  var hasCompleted = false;
-  var checkInterval = setInterval(checkProgress, 1000);
-
-  function checkProgress() {
-    if (hasCompleted) { clearInterval(checkInterval); return; }
-    var player = document.querySelector('wistia-player[media-id="swxf7l74qi"]');
-    if (!player) return;
-    var currentTime = player.currentTime;
-    var duration = player.duration;
-    if (typeof duration === 'number' && duration > 0 && typeof currentTime === 'number') {
-      if ((currentTime / duration) >= 0.75) {
-        markComplete();
-        hasCompleted = true;
-        clearInterval(checkInterval);
-      }
-    }
-  }
-
-  function markComplete() {
-    var progressText = document.getElementById('progress-text');
-    progressText.innerHTML = '<span style="color:#7fd1a3;">&#10003; Briefing Complete</span>';
-    progressText.classList.remove('pulse');
-
-    var done = document.getElementById('done');
-    done.classList.add('show', 'fade-up-anim');
-  }
-</script>
 </body>
 </html>
