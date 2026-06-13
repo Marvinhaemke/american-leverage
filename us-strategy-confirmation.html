@@ -142,12 +142,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
     <div class="bar"></div>
     <div class="m-ic">&#127769;</div>
     <h2>That's the middle of the night</h2>
-    <p class="m-body" style="margin-bottom:4px;color:var(--silver);">Your call is booked for</p>
+    <p class="m-body" style="margin-bottom:4px;color:var(--silver);">Your meeting is booked for</p>
     <p id="night-modal-time" class="m-time">your selected time</p>
-    <p class="m-body">in your local timezone. Most people sleep through late-night calls and miss them. Want to pick a time you'll actually be awake for?</p>
+    <p class="m-body">in your local timezone. Most people sleep through late-night meetings and miss them. Want to pick a time you'll actually be awake for?</p>
     <div class="m-actions">
       <a id="night-modal-reschedule" href="#" target="_blank" rel="noopener" class="btn-red">&#128197;&nbsp; Pick a Better Time</a>
-      <button id="night-modal-keep" type="button" class="btn-text">No thanks, keep my late-night call</button>
+      <button id="night-modal-keep" type="button" class="btn-text">No thanks, keep my late-night meeting</button>
     </div>
   </div>
 </div>
@@ -172,7 +172,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
 
       <!-- Headline -->
       <div class="fade-up d1" style="text-align:center;margin-bottom:6px;">
-        <h1 class="h1" style="margin-bottom:12px;">You're Booked! <span class="gold">Your Call Is Confirmed.</span></h1>
+        <h1 class="h1" style="margin-bottom:12px;">You're Booked! <span class="gold">Your Meeting Is Confirmed.</span></h1>
         <p class="lede" style="max-width:48ch;margin:0 auto;">Your time slot is <strong style="color:var(--ivory);font-weight:600;">locked in.</strong> You'll get a confirmation email and calendar invite shortly. Just make sure you're available at your booked time.</p>
       </div>
 
@@ -180,7 +180,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
       <div id="night-warning" class="banner banner-red fade-up d1" style="display:none;margin-top:24px;">
         <div class="b-ic">&#127769;</div>
         <div>
-          <p style="font-weight:700;margin-bottom:4px;">Heads up: your call is booked for the middle of the night.</p>
+          <p style="font-weight:700;margin-bottom:4px;">Heads up: your meeting is booked for the middle of the night.</p>
           <p>Your slot is at <strong id="night-warning-time" style="color:#fff;">your selected time</strong> in your local timezone. That's outside normal hours, so it's easy to miss or sleep through. We strongly recommend picking a daytime slot.</p>
           <a id="reschedule-btn" href="#" target="_blank" rel="noopener" class="btn-red" style="width:auto;margin-top:12px;padding:10px 18px;font-size:13.5px;">&#128197;&nbsp; Pick a Better Time</a>
         </div>
@@ -201,14 +201,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
           <div class="num">1</div>
           <div>
             <p class="st-title">Add It to Your Calendar <span class="here">&larr; You are here</span></p>
-            <p class="st-body">Use the calendar buttons above to save your time slot and set a reminder, so you're ready when we call.</p>
+            <p class="st-body">Use the calendar buttons above to save your time slot and set a reminder, so you're ready when your meeting starts.</p>
           </div>
         </div>
         <div class="step-row dim">
           <div class="num">2</div>
           <div>
-            <p class="st-title">Join Your Call</p>
-            <p class="st-body">Be available at your booked time and expect a call from +1 786-947-4975. We'll review where you are and map out your next steps.</p>
+            <p class="st-title">Join Your Meeting</p>
+            <p class="st-body">Join the Google Meet at your booked time using the link in your calendar invite. We'll review where you are and map out your next steps.</p>
           </div>
         </div>
       </div>
@@ -352,7 +352,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
       if (typeof umami !== 'undefined') umami.track('Late Night Booking Warning Shown', { hour: leadHour });
     }
 
-    if (typeof umami !== 'undefined') umami.track('US Strategy Call Confirmation Viewed');
+    if (typeof umami !== 'undefined') umami.track('US Strategy Meeting Confirmation Viewed');
   });
 </script>
 </body>
