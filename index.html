@@ -911,12 +911,10 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
             </select>
           </div>
           <div class="field">
-            <label for="f-spend">Monthly Spend (Business &amp; Lifestyle) *</label>
+            <label for="f-spend">Monthly Revenue *</label>
             <select id="f-spend" name="spend" required>
-              <option value="" disabled selected>Select spend range…</option>
-              <option value="below_10k">Below $10k</option>
-              <option value="10k_30k">$10k – $30k</option>
-              <option value="30k_50k">$30k – $50k</option>
+              <option value="" disabled selected>Select revenue range…</option>
+              <option value="10k_50k">$10k – $50k</option>
               <option value="50k_100k">$50k – $100k</option>
               <option value="100k_250k">$100k – $250k</option>
               <option value="250k_plus">$250k+</option>
@@ -926,15 +924,23 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
             <label for="f-goal">Goal *</label>
             <select id="f-goal" name="goal" required>
               <option value="" disabled selected>Select your goal…</option>
-              <option>Open real US business bank accounts (Chase, BoA, Amex)</option>
-              <option>Set up my LLC properly and actually use it</option>
-              <option>Accept USD payments and US-based payment processing</option>
-              <option>Run US ad accounts without getting flagged</option>
-              <option>Build the credit foundation to scale into the US market</option>
+              <option>Open real US business banking (Chase, Bank of America, Amex)</option>
+              <option>Set up a US company the right way (LLC, EIN, ITIN)</option>
+              <option>Accept USD and use US payment processing</option>
               <option value="loan_or_funding">Get a loan or money in my country</option>
-              <option>Move off sketchy workarounds onto real US infrastructure</option>
-              <option>Scale my existing business operationally into the US</option>
-              <option>Other</option>
+              <option>Build a US credit profile to access funding and scale</option>
+              <option>Diversify my banking and assets into a stronger system</option>
+              <option>Expand my existing business into the US market</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-experience">What have you done so far to access the US system? *</label>
+            <select id="f-experience" name="experience" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Nothing yet, just starting to look into it</option>
+              <option>Researched it myself but got stuck</option>
+              <option>Tried with another provider or vendor</option>
+              <option>Already have an LLC or EIN, need the rest</option>
             </select>
           </div>
           <div class="form-nav">
@@ -1239,18 +1245,19 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
       country: (document.getElementById('f-country') && document.getElementById('f-country').value || '').trim(),
       travel:  (document.getElementById('f-travel') && document.getElementById('f-travel').value) || '',
       spend:   (document.getElementById('f-spend') && document.getElementById('f-spend').value) || '',
-      goal:    (document.getElementById('f-goal') && document.getElementById('f-goal').value) || ''
+      goal:    (document.getElementById('f-goal') && document.getElementById('f-goal').value) || '',
+      experience: (document.getElementById('f-experience') && document.getElementById('f-experience').value) || ''
     };
   }
 
   // ===== Qualification logic: Spend >= $10k → qualified =====
-  var qualifiedSpend = ['10k_30k', '30k_50k', '50k_100k', '100k_250k', '250k_plus'];
+  var qualifiedSpend = ['100k_250k', '250k_plus']; // $100k+ monthly revenue qualifies
   function isQualified(spend) {
     return qualifiedSpend.indexOf(spend) !== -1;
   }
 
   // Human-readable label maps for webhook payload + booking prefill
-  var spendLabels = { below_10k: 'Below $10k', '10k_30k': '$10k – $30k', '30k_50k': '$30k – $50k', '50k_100k': '$50k – $100k', '100k_250k': '$100k – $250k', '250k_plus': '$250k+' };
+  var spendLabels = { '10k_50k': '$10k – $50k', '50k_100k': '$50k – $100k', '100k_250k': '$100k – $250k', '250k_plus': '$250k+' };
   var travelLabels = { no_not_possible: 'No, not possible currently', yes_plan_ahead: 'Yes, but would need to plan ahead', yes_no_problem: 'Yes, no problem' };
 
   // ===== STEP 1 → STEP 2 =====
@@ -1383,7 +1390,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
       phone:          data.phone,
       country:        data.country,
       can_travel_usa: travelLabels[data.travel] || data.travel,
-      monthly_spend:  spendLabels[data.spend] || data.spend,
+      monthly_revenue: spendLabels[data.spend] || data.spend,
+      us_experience:  data.experience,
       goal:           data.goal,
       qualified:      (data.travel !== 'no_not_possible' && isQualified(data.spend)) ? 'Yes' : 'No',
       routed_to:      data.travel === 'no_not_possible' ? 'Skool (Cannot Travel)' : (isQualified(data.spend) ? 'Call Booking' : 'Skool (Not Qualified)'),
@@ -1408,7 +1416,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     if (data.phone)   params.set('iclosedPhone', data.phone);
     if (data.country) params.set('residency',    data.country);
     if (data.travel)  params.set('travel',       travelLabels[data.travel]);
-    if (data.spend)   params.set('monthlyspend', spendLabels[data.spend] || data.spend);
+    if (data.spend)   params.set('monthlyrevenue', spendLabels[data.spend] || data.spend);
+    if (data.experience) params.set('experience', data.experience);
     if (data.goal)    params.set('directgoal',   data.goal);
 
     var iframe = document.getElementById('iclosed-iframe');
