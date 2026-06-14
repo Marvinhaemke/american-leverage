@@ -906,7 +906,6 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
               <option>Open real US business banking (Chase, Bank of America, Amex)</option>
               <option>Set up a US company the right way (LLC, EIN, ITIN)</option>
               <option>Accept USD and use US payment processing</option>
-              <option value="loan_or_funding">Get a loan or money in my country</option>
               <option>Build a US credit profile to access funding and scale</option>
               <option>Diversify my banking and assets into a stronger system</option>
               <option>Expand my existing business into the US market</option>
@@ -1245,7 +1244,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
       phone:          data.phone,
       country:        data.country,
       can_travel_usa: travelLabels[data.travel] || data.travel,
-      monthly_spend:  spendLabels[data.spend] || data.spend,
+      monthly_revenue: spendLabels[data.spend] || data.spend,
       us_experience:  data.experience,
       goal:           data.goal,
       qualified:      (data.travel !== 'no_not_possible' && isQualified(data.spend)) ? 'Yes' : 'No',
@@ -1271,7 +1270,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     if (data.phone)   params.set('iclosedPhone', data.phone);
     if (data.country) params.set('residency',    data.country);
     if (data.travel)  params.set('travel',       travelLabels[data.travel]);
-    if (data.spend)   params.set('monthlyspend', spendLabels[data.spend] || data.spend);
+    if (data.spend)   params.set('monthlyrevenue', spendLabels[data.spend] || data.spend);
     if (data.experience) params.set('experience', data.experience);
     if (data.goal)    params.set('directgoal',   data.goal);
 
