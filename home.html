@@ -196,44 +196,75 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 .hero {
   position: relative; overflow: hidden;
   background: radial-gradient(130% 100% at 65% -20%, #162b54 0%, var(--navy-1000) 68%);
-  padding: clamp(88px, 12vw, 168px) 0 clamp(72px, 9vw, 128px);
+  padding: clamp(72px, 10vw, 130px) 0 clamp(64px, 8vw, 110px);
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 36px 36px; opacity: .55;
 }
-.hero-inner { position: relative; z-index: 1; max-width: 840px; }
-.hero-inner .eyebrow { margin-bottom: 32px; }
-.hero-inner .display { margin-bottom: 30px; }
-.hero-inner .lede { max-width: 56ch; margin-bottom: 42px; font-size: clamp(16px, 1.3vw, 19px); }
-.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-.hero-trust {
-  display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
-  margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line);
+.hero-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(40px, 5vw, 72px); align-items: center;
 }
-.hero-trust-item { display: flex; flex-direction: column; gap: 5px; }
-.hero-trust-item .val { font-family: var(--serif); font-size: 28px; line-height: 1; }
-.hero-trust-item .lab { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); }
-.hero-sep { width: 1px; height: 42px; background: var(--line-strong); flex: 0 0 auto; }
-@media (max-width: 680px) {
+.hero-copy .eyebrow { margin-bottom: 28px; }
+.hero-copy .display { margin-bottom: 26px; }
+.hero-copy .lede { max-width: 50ch; margin-bottom: 38px; font-size: clamp(16px, 1.3vw, 19px); }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Credential panel */
+.hero-credential {
+  background: linear-gradient(160deg, rgba(18,36,72,0.85), rgba(8,15,30,0.96));
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  padding: clamp(22px, 3vw, 34px);
+  box-shadow: 0 60px 100px -50px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  position: relative; overflow: hidden;
+}
+.hero-credential::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--silver-dim), transparent);
+}
+.hc-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--silver-dim); margin-bottom: 16px; display: block;
+}
+.bank-rows { display: flex; flex-direction: column; gap: 8px; }
+.bank-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 16px; border: 1px solid var(--line-strong); border-radius: 6px;
+  background: rgba(255,255,255,0.025);
+}
+.bank-row .br-name { font-size: 14px; font-weight: 600; color: var(--ivory); }
+.bank-row .br-sub { font-size: 11px; color: var(--silver-dim); margin-top: 2px; }
+.bank-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; background: #4ade80; box-shadow: 0 0 7px rgba(74,222,128,0.6); }
+.hc-divider { height: 1px; background: var(--line); margin: 16px 0; }
+.hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hc-stat { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 6px; padding: 13px 15px; }
+.hc-stat .n { font-family: var(--serif); font-size: 24px; line-height: 1; }
+.hc-stat .l { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver-dim); margin-top: 5px; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-credential { max-width: 480px; }
+}
+@media (max-width: 540px) {
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn { justify-content: center; }
-  .hero-trust { gap: 22px; }
-  .hero-sep { display: none; }
 }
 
 /* ---------- Products ---------- */
 .products-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 22px; margin-top: 56px; align-items: start;
+  gap: 22px; margin-top: 56px;
 }
 .product-card {
   background: var(--glass); border: 1px solid var(--line-strong);
   border-radius: 10px; padding: clamp(26px, 3vw, 38px);
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; height: 100%;
   transition: transform .25s ease, border-color .25s ease;
 }
+.product-card > .btn { margin-top: auto; }
 .product-card:hover { transform: translateY(-4px); border-color: var(--silver); }
 .product-card.featured {
   border-color: rgba(242, 177, 58, 0.40);
@@ -412,35 +443,68 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 <!-- ============ HERO ============ -->
 <section class="hero grain" id="top">
   <div class="wrap">
-    <div class="hero-inner">
-      <p class="eyebrow">American Leverage</p>
-      <h1 class="display">The same leverage<br class="d-br"> American founders<br class="d-br"> take for granted.</h1>
-      <p class="lede">Banking at Chase, Bank of America, and Amex. A properly structured LLC. The business infrastructure to operate and scale inside the US financial system — without relocating. We build the foundation. You run on it.</p>
-      <div class="hero-ctas">
-        <a href="#products" class="btn btn-platinum">View Products <span class="arrow">&rarr;</span></a>
-        <a href="/#apply" class="btn btn-ghost">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
-      </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item">
-          <span class="val metal">500+</span>
-          <span class="lab">Founders onboarded</span>
-        </div>
-        <div class="hero-sep"></div>
-        <div class="hero-trust-item">
-          <span class="val metal">6,100+</span>
-          <span class="lab">Community members</span>
-        </div>
-        <div class="hero-sep"></div>
-        <div class="hero-trust-item">
-          <span class="val metal">Tier-1</span>
-          <span class="lab">Chase &middot; BoA &middot; Amex</span>
-        </div>
-        <div class="hero-sep"></div>
-        <div class="hero-trust-item">
-          <span class="val metal">&lt;90 days</span>
-          <span class="lab">To a US operating presence</span>
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-copy">
+        <p class="eyebrow">American Leverage</p>
+        <h1 class="display">The same leverage American founders take for granted.</h1>
+        <p class="lede">Banking at Chase, Bank of America, and Amex. A properly structured LLC. The infrastructure to operate and scale inside the US financial system — without relocating. We build the foundation. You run on it.</p>
+        <div class="hero-ctas">
+          <a href="#products" class="btn btn-platinum">View Products <span class="arrow">&rarr;</span></a>
+          <a href="/#apply" class="btn btn-ghost">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
         </div>
       </div>
+
+      <!-- Right: credential panel -->
+      <div class="hero-right">
+        <div class="hero-credential">
+          <span class="hc-label">US Banking Access</span>
+          <div class="bank-rows">
+            <div class="bank-row">
+              <div>
+                <div class="br-name">Chase Business</div>
+                <div class="br-sub">Business Checking &amp; Savings</div>
+              </div>
+              <div class="bank-dot"></div>
+            </div>
+            <div class="bank-row">
+              <div>
+                <div class="br-name">Bank of America</div>
+                <div class="br-sub">Business Advantage Account</div>
+              </div>
+              <div class="bank-dot"></div>
+            </div>
+            <div class="bank-row">
+              <div>
+                <div class="br-name">American Express</div>
+                <div class="br-sub">Business Card Access</div>
+              </div>
+              <div class="bank-dot"></div>
+            </div>
+          </div>
+          <div class="hc-divider"></div>
+          <div class="hc-stats">
+            <div class="hc-stat">
+              <div class="n metal">500+</div>
+              <div class="l">Founders onboarded</div>
+            </div>
+            <div class="hc-stat">
+              <div class="n metal">6,100+</div>
+              <div class="l">Community members</div>
+            </div>
+            <div class="hc-stat">
+              <div class="n metal">&lt;90</div>
+              <div class="l">Days to US presence</div>
+            </div>
+            <div class="hc-stat">
+              <div class="n metal">30+</div>
+              <div class="l">Countries served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
