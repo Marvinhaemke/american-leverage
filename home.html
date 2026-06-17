@@ -196,7 +196,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 .hero {
   position: relative; overflow: hidden;
   background: radial-gradient(130% 100% at 65% -20%, #162b54 0%, var(--navy-1000) 68%);
-  padding: clamp(72px, 10vw, 130px) 0 clamp(64px, 8vw, 110px);
+  padding: clamp(40px, 5vw, 72px) 0 clamp(40px, 5vw, 72px);
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -208,9 +208,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
   display: grid; grid-template-columns: 1.1fr 0.9fr;
   gap: clamp(40px, 5vw, 72px); align-items: center;
 }
-.hero-copy .eyebrow { margin-bottom: 28px; }
-.hero-copy .display { margin-bottom: 26px; }
-.hero-copy .lede { max-width: 50ch; margin-bottom: 38px; font-size: clamp(16px, 1.3vw, 19px); }
+.hero-copy .eyebrow { margin-bottom: 18px; }
+.hero-copy .display { font-size: clamp(34px, 3.6vw, 54px); margin-bottom: 20px; }
+.hero-copy .lede { max-width: 50ch; margin-bottom: 28px; font-size: clamp(15px, 1.1vw, 17px); }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* Credential panel */
