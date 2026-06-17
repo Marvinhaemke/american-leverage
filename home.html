@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>American Leverage — US Banking & Business Setup for International Founders</title>
+<meta name="description" content="Chase, Bank of America, and Amex accounts for international founders. LLC, EIN, ITIN, and the business infrastructure to operate inside the US financial system — without relocating." />
+
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel (id: 784167687515569) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '784167687515569');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=784167687515569&ev=PageView&noscript=1"/></noscript>
+<script src="/js/meta-capi.js"></script>
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — Homepage
+   Navy + Platinum, Cormorant Garamond display, Hanken Grotesk body
+   ============================================================ */
+
+:root {
+  --navy-1000: #060d1c;
+  --navy-900:  #0a1428;
+  --navy-850:  #0d1a35;
+  --navy-800:  #122347;
+  --navy-700:  #18305c;
+  --navy-600:  #21406f;
+
+  --ivory:      #f3f1ea;
+  --ivory-dim:  #d9d6cc;
+  --silver:     #c6cedb;
+  --silver-dim: #9aa4b5;
+  --slate:      #7e889a;
+
+  --platinum:      linear-gradient(105deg, #8c97a8 0%, #eef2f7 28%, #c4cdd9 50%, #f6f8fb 70%, #97a2b3 100%);
+  --platinum-soft: linear-gradient(100deg, #aeb8c6 0%, #f2f5f9 40%, #b8c2cf 100%);
+  --silver-text:   linear-gradient(100deg, #b6bfce 0%, #ffffff 45%, #a9b3c2 100%);
+
+  --champagne:     #c8a96a;
+  --champagne-dim: #a98f55;
+
+  --accent-1:    #f2b13a;
+  --accent-2:    #e0931c;
+  --accent-deep: #c47a10;
+  --accent-glow: rgba(240,170,50,0.5);
+  --accent-text: #3a2606;
+
+  --line:        rgba(231, 236, 245, 0.12);
+  --line-strong: rgba(231, 236, 245, 0.22);
+  --glass:       rgba(255, 255, 255, 0.035);
+  --glass-2:     rgba(255, 255, 255, 0.06);
+
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans:  "Hanken Grotesk", system-ui, sans-serif;
+
+  --maxw:   1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--navy-800);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--champagne); color: var(--navy-1000); }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: clamp(80px, 10vw, 140px) 0; position: relative; }
+.section-alt { background: var(--navy-850); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* ---------- Type ---------- */
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-height: 1.09; letter-spacing: -0.01em; }
+.display { font-size: clamp(42px, 6.5vw, 90px); font-weight: 500; line-height: 1.04; letter-spacing: -0.02em; }
+.h2 { font-size: clamp(30px, 4vw, 54px); line-height: 1.1; }
+.h3 { font-size: clamp(20px, 2.2vw, 28px); }
+.lede { font-family: var(--sans); font-size: clamp(16px, 1.25vw, 18.5px); line-height: 1.7; color: var(--silver); font-weight: 350; }
+.eyebrow {
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.34em; text-transform: uppercase; color: var(--silver-dim);
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.eyebrow::before { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, transparent, var(--silver-dim)); }
+.eyebrow.center::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, var(--silver-dim), transparent); }
+
+.metal { background: var(--silver-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gold  { color: var(--champagne); }
+.rule  { height: 1px; background: var(--line); border: 0; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 16px 30px; border: none; cursor: pointer; border-radius: 2px;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn .arrow { transition: transform .25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn-platinum {
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+  color: var(--accent-text);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.22) inset, 0 14px 36px -12px var(--accent-glow);
+}
+.btn-platinum:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-deep));
+  box-shadow: 0 1px 0 rgba(255,255,255,0.28) inset, 0 22px 50px -12px var(--accent-glow);
+}
+.btn-ghost { background: transparent; color: var(--ivory); border: 1px solid var(--line-strong); }
+.btn-ghost:hover { border-color: var(--silver); background: var(--glass-2); }
+.btn-block { width: 100%; justify-content: center; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(10, 20, 40, 0.80);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter);
+  height: 78px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-links { display: flex; gap: 38px; align-items: center; }
+.nav-links a { font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--silver); transition: color .2s; }
+.nav-links a:hover { color: var(--ivory); }
+.nav-right { display: flex; align-items: center; gap: 26px; }
+.nav-cta {
+  position: relative; font-size: 13px !important;
+  padding: 11px 22px 11px 38px; border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.14) inset, 0 10px 26px -10px var(--accent-glow);
+}
+.nav-cta::before {
+  content: ""; position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-text);
+  animation: navpulse 2.4s ease-out infinite;
+}
+@keyframes navpulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+.nav-toggle {
+  display: none; background: transparent; border: 1px solid var(--line-strong);
+  border-radius: 6px; width: 42px; height: 38px; cursor: pointer;
+  padding: 0; align-items: center; justify-content: center;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: ""; display: block; width: 18px; height: 1.5px; background: var(--silver);
+  position: relative; transition: .25s;
+}
+.nav-toggle span::before { position: absolute; top: -6px; }
+.nav-toggle span::after  { position: absolute; top:  6px; }
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute; top: 78px; left: 0; right: 0;
+    flex-direction: column; gap: 0; align-items: stretch;
+    background: rgba(10,20,40,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .3s ease;
+  }
+  .nav-links.open { max-height: 380px; }
+  .nav-links a { padding: 18px var(--gutter); font-size: 15px; border-bottom: 1px solid var(--line); }
+  .nav-toggle { display: inline-flex; order: 3; }
+  .nav-right .nav-cta { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  background: radial-gradient(130% 100% at 65% -20%, #162b54 0%, var(--navy-1000) 68%);
+  padding: clamp(88px, 12vw, 168px) 0 clamp(72px, 9vw, 128px);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 36px 36px; opacity: .55;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 840px; }
+.hero-inner .eyebrow { margin-bottom: 32px; }
+.hero-inner .display { margin-bottom: 30px; }
+.hero-inner .lede { max-width: 56ch; margin-bottom: 42px; font-size: clamp(16px, 1.3vw, 19px); }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-trust {
+  display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
+  margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line);
+}
+.hero-trust-item { display: flex; flex-direction: column; gap: 5px; }
+.hero-trust-item .val { font-family: var(--serif); font-size: 28px; line-height: 1; }
+.hero-trust-item .lab { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver-dim); }
+.hero-sep { width: 1px; height: 42px; background: var(--line-strong); flex: 0 0 auto; }
+@media (max-width: 680px) {
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas .btn { justify-content: center; }
+  .hero-trust { gap: 22px; }
+  .hero-sep { display: none; }
+}
+
+/* ---------- Products ---------- */
+.products-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-top: 56px; align-items: start;
+}
+.product-card {
+  background: var(--glass); border: 1px solid var(--line-strong);
+  border-radius: 10px; padding: clamp(26px, 3vw, 38px);
+  display: flex; flex-direction: column;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.product-card:hover { transform: translateY(-4px); border-color: var(--silver); }
+.product-card.featured {
+  border-color: rgba(242, 177, 58, 0.40);
+  background: linear-gradient(180deg, rgba(242,177,58,0.055), var(--glass));
+  box-shadow: 0 0 0 1px rgba(242,177,58,0.12) inset;
+}
+.product-card.featured:hover { border-color: rgba(242,177,58,0.7); }
+.product-card.flagship {
+  background: linear-gradient(170deg, rgba(200,169,106,0.07), var(--glass));
+  border-color: rgba(200,169,106,0.30);
+}
+.product-card.flagship:hover { border-color: rgba(200,169,106,0.6); }
+
+.product-badge {
+  display: inline-flex; align-items: center;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px; margin-bottom: 20px; width: fit-content;
+  border: 1px solid var(--line-strong); color: var(--silver-dim); background: var(--glass);
+}
+.product-badge.featured { border-color: rgba(242,177,58,0.45); color: var(--accent-1); background: rgba(242,177,58,0.08); }
+.product-badge.flagship { border-color: rgba(200,169,106,0.40); color: var(--champagne); background: rgba(200,169,106,0.08); }
+
+.product-name { font-family: var(--serif); font-size: clamp(22px, 2.3vw, 27px); font-weight: 500; line-height: 1.1; margin-bottom: 10px; }
+.product-for { font-size: 13.5px; color: var(--silver-dim); line-height: 1.5; margin-bottom: 24px; min-height: 40px; }
+
+.product-price { padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 26px; }
+.product-price .amt { font-family: var(--serif); font-size: clamp(38px, 4vw, 50px); line-height: 1; font-weight: 500; }
+.product-price .note { font-size: 12.5px; color: var(--silver-dim); margin-top: 5px; letter-spacing: 0.02em; }
+
+.product-includes { list-style: none; padding: 0; margin: 0 0 30px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.product-includes li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--silver); line-height: 1.5; }
+.product-includes .ck { color: var(--accent-1); flex: 0 0 auto; margin-top: 1px; font-size: 12.5px; font-weight: 700; }
+.flagship .product-includes .ck { color: var(--champagne); }
+
+@media (max-width: 1040px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .product-card.flagship { grid-column: 1 / -1; max-width: none; }
+  .product-card.flagship .product-for { min-height: auto; }
+}
+@media (max-width: 680px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .product-card.flagship { grid-column: auto; }
+  .product-for { min-height: auto; }
+}
+
+/* ---------- What We Do ---------- */
+.company-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 96px); align-items: start; margin-top: 64px;
+}
+.company-copy p { color: var(--silver); font-size: 16px; line-height: 1.8; margin: 0 0 20px; }
+.company-copy p:last-child { margin-bottom: 0; }
+.company-pillars { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.company-pillar { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.company-pillar:first-child { border-top: 1px solid var(--line); }
+.company-pillar .cp-title { font-family: var(--serif); font-size: 20px; color: var(--ivory); margin-bottom: 8px; line-height: 1.15; }
+.company-pillar .cp-desc { font-size: 14.5px; color: var(--silver-dim); line-height: 1.6; margin: 0; }
+@media (max-width: 800px) { .company-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Founder ---------- */
+.founder-grid {
+  display: grid; grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(48px, 6vw, 96px); align-items: start; margin-top: 64px;
+}
+.founder-portrait { position: relative; }
+.founder-portrait img {
+  border-radius: 6px; width: 100%;
+  aspect-ratio: 4/5; object-fit: cover; object-position: center top;
+  box-shadow: 0 60px 100px -40px rgba(0,0,0,0.85), 0 0 0 1px var(--line-strong);
+  display: block;
+}
+.founder-badge {
+  position: absolute; bottom: -20px; left: -16px;
+  background: rgba(9,18,38,0.93); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-strong); border-radius: 8px; padding: 18px 22px;
+  box-shadow: 0 24px 48px -20px rgba(0,0,0,0.9);
+}
+.founder-badge .bn { font-family: var(--serif); font-size: 34px; line-height: 1; margin-bottom: 5px; }
+.founder-badge .bl { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver-dim); }
+.founder-copy { padding-top: 8px; }
+.founder-copy .name-line { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 500; margin: 20px 0 28px; }
+.founder-copy p { color: var(--silver); font-size: 16px; line-height: 1.8; margin: 0 0 18px; }
+.founder-copy p:last-of-type { margin-bottom: 0; }
+.founder-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+.founder-stat { background: var(--glass); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
+.founder-stat .fs-val { font-family: var(--serif); font-size: 28px; line-height: 1; margin-bottom: 5px; }
+.founder-stat .fs-lab { font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver-dim); }
+@media (max-width: 880px) {
+  .founder-grid { grid-template-columns: 1fr; }
+  .founder-portrait { max-width: 380px; margin: 0 auto; }
+  .founder-badge { bottom: -14px; left: -8px; }
+}
+
+/* ---------- Reviews ---------- */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 54px; }
+.review { border: 1px solid var(--line); border-radius: 8px; padding: 28px 26px; background: var(--glass); display: flex; flex-direction: column; }
+.stars { color: var(--champagne); letter-spacing: 2px; font-size: 13px; }
+.review p { font-size: 15px; line-height: 1.65; color: var(--ivory); margin: 16px 0 22px; flex: 1; }
+.review .who .nm { font-size: 14px; font-weight: 600; }
+.review .who .loc { font-size: 12px; color: var(--slate); margin-top: 2px; }
+@media (max-width: 960px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+/* ---------- CTA Band ---------- */
+.cta-band {
+  background: radial-gradient(110% 130% at 50% -10%, #152c54 0%, var(--navy-1000) 65%);
+  text-align: center;
+}
+.cta-band .h2 { max-width: 22ch; margin: 20px auto 0; }
+.cta-band .lede { max-width: 50ch; margin: 22px auto 0; }
+.cta-btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+@media (max-width: 540px) { .cta-btn-row { flex-direction: column; align-items: center; } .cta-btn-row .btn { width: 100%; max-width: 360px; justify-content: center; } }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--navy-1000); border-top: 1px solid var(--line); padding: 64px 0 40px; }
+.foot-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.foot-brand .tagline { font-size: 14px; color: var(--silver-dim); margin-top: 16px; max-width: 32ch; line-height: 1.65; }
+.foot-social { display: flex; gap: 12px; margin-top: 22px; }
+.foot-social a {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center; color: var(--silver-dim); transition: .2s;
+}
+.foot-social a:hover { color: var(--ivory); border-color: var(--silver); }
+.foot-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 13px; color: var(--silver-dim); margin-top: 40px; }
+.foot-links a:hover { color: var(--silver); }
+.foot-legal { font-size: 12px; color: var(--slate); line-height: 1.7; margin-top: 26px; max-width: 86ch; }
+.foot-copy { font-size: 12.5px; color: var(--silver-dim); margin-top: 24px; }
+.disclaimer-box { margin-top: 32px; border: 1px solid var(--line); border-radius: 6px; padding: 24px 28px; background: var(--glass); }
+.disclaimer-box p { font-size: 13px; color: var(--silver-dim); margin: 0 0 8px; line-height: 1.65; }
+.disclaimer-box p:last-child { margin-bottom: 0; }
+.disclaimer-box strong { color: var(--silver); }
+
+/* ---------- Section head helper ---------- */
+.sec-head { max-width: 66ch; }
+.sec-head.center { text-align: center; margin: 0 auto; }
+.sec-head .h2 { margin-top: 16px; }
+.sec-head .lede { margin-top: 18px; }
+
+/* ---------- Grain / Vignette ---------- */
+.grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.45;
+  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav-cta::before { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body data-accent="amber">
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/home" class="wordmark" aria-label="American Leverage">
+      <img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" />
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#company">What We Do</a>
+      <a href="#founder">The Founder</a>
+      <a href="#results">Results</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/" class="btn btn-platinum nav-cta">Apply for a Call</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero grain" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">American Leverage</p>
+      <h1 class="display">The same leverage<br class="d-br"> American founders<br class="d-br"> take for granted.</h1>
+      <p class="lede">Banking at Chase, Bank of America, and Amex. A properly structured LLC. The business infrastructure to operate and scale inside the US financial system — without relocating. We build the foundation. You run on it.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn btn-platinum">View Products <span class="arrow">&rarr;</span></a>
+        <a href="/" class="btn btn-ghost">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <span class="val metal">500+</span>
+          <span class="lab">Founders onboarded</span>
+        </div>
+        <div class="hero-sep"></div>
+        <div class="hero-trust-item">
+          <span class="val metal">6,100+</span>
+          <span class="lab">Community members</span>
+        </div>
+        <div class="hero-sep"></div>
+        <div class="hero-trust-item">
+          <span class="val metal">Tier-1</span>
+          <span class="lab">Chase &middot; BoA &middot; Amex</span>
+        </div>
+        <div class="hero-sep"></div>
+        <div class="hero-trust-item">
+          <span class="val metal">&lt;90 days</span>
+          <span class="lab">To a US operating presence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Our Products</p>
+      <h2 class="h2">Choose the path that fits where you are.</h2>
+      <p class="lede">Two self-serve packages for founders who want to move at their own pace. And a done-for-you setup for established businesses that want direct specialist support from day one.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Card 1: Basic -->
+      <div class="product-card">
+        <div class="product-badge">Self-Serve</div>
+        <div class="product-name">Basic Setup</div>
+        <p class="product-for">You already have a US LLC and EIN. This gets your tax ID filed and your banking knowledge in place so you can start operating properly.</p>
+        <div class="product-price">
+          <div class="amt metal">$997</div>
+          <div class="note">One-time &middot; No subscription</div>
+        </div>
+        <ul class="product-includes">
+          <li><span class="ck">&#10003;</span> ITIN filing, handled end-to-end</li>
+          <li><span class="ck">&#10003;</span> US banking education &amp; step-by-step guidance</li>
+          <li><span class="ck">&#10003;</span> Full Skool community access</li>
+          <li><span class="ck">&#10003;</span> 6,100+ member network of international founders</li>
+          <li><span class="ck">&#10003;</span> Complete training library &amp; playbooks</li>
+          <li><span class="ck">&#10003;</span> Live community support</li>
+        </ul>
+        <a href="/self-serve" class="btn btn-ghost btn-block">Get Started <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <!-- Card 2: Foundation (featured) -->
+      <div class="product-card featured">
+        <div class="product-badge featured">Self-Serve &middot; Most Popular</div>
+        <div class="product-name">Foundation Setup</div>
+        <p class="product-for">Start from zero. We handle the entire US business formation — company, tax IDs, and everything you need to open your first US accounts.</p>
+        <div class="product-price">
+          <div class="amt metal">$1,997</div>
+          <div class="note">One-time &middot; No subscription</div>
+        </div>
+        <ul class="product-includes">
+          <li><span class="ck">&#10003;</span> Florida LLC formation</li>
+          <li><span class="ck">&#10003;</span> EIN (Employer Identification Number)</li>
+          <li><span class="ck">&#10003;</span> ITIN filing, handled end-to-end</li>
+          <li><span class="ck">&#10003;</span> US banking education &amp; step-by-step guidance</li>
+          <li><span class="ck">&#10003;</span> Full Skool community access</li>
+          <li><span class="ck">&#10003;</span> 6,100+ member network of international founders</li>
+          <li><span class="ck">&#10003;</span> Complete training library &amp; playbooks</li>
+          <li><span class="ck">&#10003;</span> Live community support</li>
+        </ul>
+        <a href="/self-serve" class="btn btn-platinum btn-block">Get Started <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <!-- Card 3: Full US Banking Setup (flagship DFY) -->
+      <div class="product-card flagship">
+        <div class="product-badge flagship">Done-For-You</div>
+        <div class="product-name">Full US Banking Setup</div>
+        <p class="product-for">Hands-on execution for established businesses. A dedicated specialist builds your entire US banking presence alongside you, start to finish.</p>
+        <div class="product-price">
+          <div class="amt gold">By application</div>
+          <div class="note">For businesses doing $10k+&thinsp;/&thinsp;month</div>
+        </div>
+        <ul class="product-includes">
+          <li><span class="ck">&#10003;</span> Everything in Foundation Setup</li>
+          <li><span class="ck">&#10003;</span> Personal banking strategy session</li>
+          <li><span class="ck">&#10003;</span> Dedicated specialist support throughout</li>
+          <li><span class="ck">&#10003;</span> Chase, Bank of America &amp; Amex guidance</li>
+          <li><span class="ck">&#10003;</span> Setup reviewed for long-term durability</li>
+          <li><span class="ck">&#10003;</span> Built to hold up under bank review</li>
+        </ul>
+        <a href="/" class="btn btn-ghost btn-block">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="section section-alt" id="company">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What We Do</p>
+      <h2 class="h2">We build the US financial foundation international founders shouldn't have to figure out alone.</h2>
+    </div>
+
+    <div class="company-grid">
+      <div class="company-copy">
+        <p>American Leverage exists because the US financial system is the most powerful operating infrastructure in the world — and most international founders are locked out of it by default.</p>
+        <p>A properly registered LLC, a real US business bank account at Chase or Bank of America, and a structure that holds up under review. For an American founder these are unremarkable starting points. For an international entrepreneur, they have historically been nearly impossible to access without the right framework.</p>
+        <p>We close that gap. We give international founders the filings, the frameworks, and the direct support to enter the US financial system correctly — and stay there for the long term.</p>
+        <p>Every setup we run is built to last. No nominee addresses. No shortcuts that trigger account freezes six months in. Real banking relationships, established properly, that grow in standing over time.</p>
+      </div>
+      <ul class="company-pillars" role="list">
+        <li class="company-pillar">
+          <p class="cp-title">Legitimate from day one</p>
+          <p class="cp-desc">Every setup follows proper US legal and banking requirements. No workarounds, no strategies that depend on loopholes. Built to survive a bank review now and five years from now.</p>
+        </li>
+        <li class="company-pillar">
+          <p class="cp-title">Built for operations, not paperwork</p>
+          <p class="cp-desc">The goal is a working US business infrastructure — accounts you can actually use, a structure that stands up, and banking relationships you can grow on over time.</p>
+        </li>
+        <li class="company-pillar">
+          <p class="cp-title">Direct banking experience</p>
+          <p class="cp-desc">We have walked hundreds of non-resident founders through the exact process US banks use to evaluate international accounts. We know what works and what gets flagged.</p>
+        </li>
+        <li class="company-pillar">
+          <p class="cp-title">For founders already in motion</p>
+          <p class="cp-desc">This is for operators running real businesses who want to expand inside the world's largest market. Not beginners. Not people without revenue. Founders ready to compete on equal footing.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="section" id="founder">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Founder</p>
+      <h2 class="h2">Built by someone who has done this hundreds of times.</h2>
+    </div>
+
+    <div class="founder-grid">
+
+      <div class="founder-portrait">
+        <img src="images/headshot-1.jpeg" alt="Jean-Paul D'Andrea — Founder, American Leverage" />
+        <div class="founder-badge">
+          <div class="bn metal">500+</div>
+          <div class="bl">Founders personally guided</div>
+        </div>
+      </div>
+
+      <div class="founder-copy">
+        <p class="eyebrow">Jean-Paul D'Andrea</p>
+        <h3 class="name-line">Known to clients and the community simply as&nbsp;J.</h3>
+        <p>Jean-Paul D'Andrea built American Leverage after identifying a structural problem at the intersection of international entrepreneurship and US finance: the entire operating infrastructure that American founders take for granted is essentially invisible to everyone else.</p>
+        <p>Founders from Germany, Australia, the UAE, and dozens of other countries were running real, serious businesses — and repeatedly hitting the same wall when they tried to access the US financial system. Not because the door was permanently closed, but because nobody had shown them how to open it correctly.</p>
+        <p>J spent years working through the bank relationships, legal frameworks, and compliance requirements that actually unlock US business banking for non-residents. He turned that work into a methodology his team now applies for founders across more than 30 countries — a systematic, legitimate path into the system that produces real, durable results.</p>
+        <p>To date, that work has produced over 500 completed US setups: working bank accounts at Chase, Bank of America, and Amex; properly structured LLCs; and the banking foundation international founders need to operate at the level their businesses deserve.</p>
+        <p>J also runs the Skool community that has grown to over 6,100 members — founders from around the world who are building their US presence correctly, sharing what works, and supporting each other through the process.</p>
+
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="fs-val metal">500+</div>
+            <div class="fs-lab">US setups completed</div>
+          </div>
+          <div class="founder-stat">
+            <div class="fs-val metal">6,100+</div>
+            <div class="fs-lab">Community members</div>
+          </div>
+          <div class="founder-stat">
+            <div class="fs-val metal">30+</div>
+            <div class="fs-lab">Countries served</div>
+          </div>
+          <div class="founder-stat">
+            <div class="fs-val metal">Tier-1</div>
+            <div class="fs-lab">Chase &middot; BoA &middot; Amex</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="section section-alt" id="results">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center">Client Results</p>
+      <h2 class="h2">What founders say after getting inside the system.</h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I had tried twice before with other providers and ended up with frozen accounts both times. American Leverage set everything up properly from day one. Nine months in, my Chase account is still open, growing, and doing exactly what it should."</p>
+        <div class="who">
+          <div class="nm">Leo Müller</div>
+          <div class="loc">Berlin, Germany</div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The process was far more straightforward than I expected. J's team knew exactly what documentation the bank would need and how to present the business correctly. We had the Chase account open in under six weeks."</p>
+        <div class="who">
+          <div class="nm">Charlotte Reid</div>
+          <div class="loc">London, United Kingdom</div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I was scaling paid media to US audiences and constantly hitting friction with my foreign payment setup. Once the US infrastructure was in place — proper LLC, Chase account, Amex — the whole operation got smoother. Worth every dollar."</p>
+        <div class="who">
+          <div class="nm">James Whitaker</div>
+          <div class="loc">Toronto, Canada</div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The community alone is worth the investment. More than 6,100 founders who have been through exactly the same process. I had every question answered before I even had to ask it out loud."</p>
+        <div class="who">
+          <div class="nm">Oliver Hartley</div>
+          <div class="loc">Sydney, Australia</div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"American Leverage does not cut corners. My LLC, EIN, and ITIN were all filed correctly the first time. My banking setup has survived two reviews and keeps improving as the relationship with the bank matures."</p>
+        <div class="who">
+          <div class="nm">Omar Farooq</div>
+          <div class="loc">Dubai, UAE</div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"As a founder based in Singapore trying to operate inside the US market, having proper Chase and Amex accounts changed the dynamic with US clients and partners immediately. Professional, credible, and completely legitimate."</p>
+        <div class="who">
+          <div class="nm">Daniel Preston</div>
+          <div class="loc">Singapore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section cta-band">
+  <div class="wrap">
+    <p class="eyebrow center" style="justify-content:center;">Get Started</p>
+    <h2 class="h2">Ready to build your US infrastructure?</h2>
+    <p class="lede">Pick a self-serve package and move at your own pace. Or apply for a specialist call and we will build the whole thing with you, from the ground up.</p>
+    <div class="cta-btn-row">
+      <a href="#products" class="btn btn-platinum">View Products <span class="arrow">&rarr;</span></a>
+      <a href="/" class="btn btn-ghost">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/home" aria-label="American Leverage">
+          <img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;" />
+        </a>
+        <p class="tagline">US banking and business infrastructure for international founders.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/jpdandreaa" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://youtube.com/@jeanpauldandrea" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://skool.com/upcredit" target="_blank" rel="noopener" aria-label="Skool Community">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-links">
+      <a href="https://upcredit.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="https://upcredit.org/terms-of-use" target="_blank" rel="noopener">Terms of Use</a>
+      <a href="https://upcredit.org/fulfillment-policy" target="_blank" rel="noopener">Fulfillment Policy</a>
+      <a href="https://upcredit.org/cancellation-policy" target="_blank" rel="noopener">Cancellation Policy</a>
+      <a href="mailto:support@americanleverage.com">support@americanleverage.com</a>
+    </div>
+
+    <div class="disclaimer-box">
+      <p><strong>Not a financial product.</strong> American Leverage provides business setup, LLC formation, filing assistance, and banking education services for international entrepreneurs. We do not provide loans, extend credit, or offer any regulated financial product.</p>
+      <p>Results vary. Past client outcomes are not a guarantee of future results. All figures referenced are estimates based on historical client results.</p>
+    </div>
+
+    <p class="foot-copy">&copy; 2026 Elevate Global LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links  = document.getElementById('navLinks');
+    if (!toggle || !links) return;
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
