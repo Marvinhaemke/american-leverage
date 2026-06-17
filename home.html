@@ -195,62 +195,158 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 /* ---------- Hero ---------- */
 .hero {
   position: relative; overflow: hidden;
-  background: radial-gradient(130% 100% at 65% -20%, #162b54 0%, var(--navy-1000) 68%);
-  padding: clamp(40px, 5vw, 72px) 0 clamp(40px, 5vw, 72px);
+  padding: clamp(52px, 6.5vw, 100px) 0 clamp(56px, 7vw, 104px);
+  background:
+    radial-gradient(58% 64% at 84% 6%, rgba(242,177,58,0.11) 0%, transparent 56%),
+    radial-gradient(54% 60% at 6% 96%, rgba(33,64,111,0.50) 0%, transparent 60%),
+    radial-gradient(135% 115% at 66% -22%, #16294e 0%, var(--navy-1000) 72%);
 }
 .hero::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 36px 36px; opacity: .55;
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px; opacity: .5;
+  -webkit-mask-image: radial-gradient(125% 105% at 72% 0%, #000 32%, transparent 76%);
+          mask-image: radial-gradient(125% 105% at 72% 0%, #000 32%, transparent 76%);
 }
+/* drifting aurora + faint ring for depth */
+.hero-aura {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 760px; height: 760px; top: -290px; right: -190px;
+  background: radial-gradient(circle at center, rgba(242,177,58,0.16), rgba(242,177,58,0.04) 40%, transparent 62%);
+  filter: blur(6px);
+  animation: auraDrift 18s ease-in-out infinite;
+}
+@keyframes auraDrift {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: .85; }
+  50%      { transform: translate(-44px, 38px) scale(1.08); opacity: 1; }
+}
+.hero-ring {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 560px; height: 560px; border-radius: 50%;
+  top: -170px; right: -130px;
+  border: 1px solid rgba(231,236,245,0.10);
+  box-shadow: 0 0 0 64px rgba(231,236,245,0.016) inset;
+}
+
 .hero-grid {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(40px, 5vw, 72px); align-items: center;
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(40px, 5vw, 76px); align-items: center;
 }
-.hero-copy .eyebrow { margin-bottom: 18px; }
-.hero-copy .display { font-size: clamp(34px, 3.6vw, 54px); margin-bottom: 20px; }
-.hero-copy .lede { max-width: 50ch; margin-bottom: 28px; font-size: clamp(15px, 1.1vw, 17px); }
+.hero-copy .eyebrow { margin-bottom: 20px; }
+.hero-copy .display { font-size: clamp(36px, 4.4vw, 62px); line-height: 1.05; margin-bottom: 22px; }
+.hero-copy .display .shimmer { display: inline-block; }
+.hero-copy .lede { max-width: 48ch; margin-bottom: 30px; font-size: clamp(15px, 1.1vw, 17.5px); }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* Credential panel */
-.hero-credential {
-  background: linear-gradient(160deg, rgba(18,36,72,0.85), rgba(8,15,30,0.96));
-  border: 1px solid var(--line-strong); border-radius: 12px;
-  padding: clamp(22px, 3vw, 34px);
-  box-shadow: 0 60px 100px -50px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05) inset;
-  position: relative; overflow: hidden;
+/* shimmering metal headline accent */
+@keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+.shimmer {
+  background: linear-gradient(100deg, #aab4c4 0%, #ffffff 22%, #e6ebf2 34%, #9fa9b9 52%, #ffffff 72%, #aab4c4 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 7s linear infinite;
 }
-.hero-credential::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--silver-dim), transparent);
+
+/* social-proof trust row */
+.hero-trust { display: flex; align-items: center; gap: 16px; margin-top: 32px; }
+.trust-avatars { display: flex; }
+.trust-avatars span {
+  width: 38px; height: 38px; border-radius: 50%; margin-left: -11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11.5px; font-weight: 700; color: var(--ivory);
+  border: 1.5px solid var(--navy-1000);
+  background: linear-gradient(150deg, var(--navy-600), var(--navy-800));
 }
-.hc-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--silver-dim); margin-bottom: 16px; display: block;
+.trust-avatars span:first-child { margin-left: 0; }
+.trust-avatars span.more { background: linear-gradient(150deg, var(--accent-1), var(--accent-2)); color: var(--accent-text); }
+.trust-text { font-size: 13.5px; color: var(--silver-dim); line-height: 1.45; }
+.trust-text strong { color: var(--ivory); font-weight: 600; }
+
+/* Credential console */
+.hero-right { position: relative; }
+.hero-console {
+  position: relative; z-index: 2;
+  background: linear-gradient(165deg, rgba(20,40,78,0.90), rgba(8,15,30,0.97));
+  border: 1px solid var(--line-strong); border-radius: 16px;
+  padding: clamp(22px, 2.4vw, 30px);
+  box-shadow: 0 70px 120px -50px rgba(0,0,0,0.92), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1);
 }
-.bank-rows { display: flex; flex-direction: column; gap: 8px; }
+.hero-console:hover { transform: translateY(-5px); }
+.hero-console::before {
+  content: ""; position: absolute; top: 0; left: 24px; right: 24px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(231,236,245,0.4), transparent);
+}
+.console-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.hc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--silver-dim); }
+.live { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; color: var(--silver); }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.7); animation: livePulse 2.2s ease-out infinite; }
+@keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); } 70% { box-shadow: 0 0 0 7px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
+
+.bank-rows { display: flex; flex-direction: column; gap: 9px; }
 .bank-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 16px; border: 1px solid var(--line-strong); border-radius: 6px;
+  display: flex; align-items: center; gap: 13px;
+  padding: 13px 15px; border: 1px solid var(--line-strong); border-radius: 9px;
   background: rgba(255,255,255,0.025);
+  transition: border-color .25s, background .25s, transform .25s;
 }
+.bank-row:hover { border-color: var(--silver-dim); background: rgba(255,255,255,0.045); transform: translateX(3px); }
+.bank-mono {
+  width: 40px; height: 40px; flex: 0 0 auto; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: var(--ivory);
+  border: 1px solid var(--line-strong);
+}
+.bank-mono[data-b="chase"] { background: linear-gradient(150deg, rgba(38,90,168,0.50), rgba(38,90,168,0.12)); }
+.bank-mono[data-b="boa"]   { background: linear-gradient(150deg, rgba(176,38,48,0.50), rgba(176,38,48,0.12)); }
+.bank-mono[data-b="amex"]  { background: linear-gradient(150deg, rgba(40,110,180,0.50), rgba(40,110,180,0.12)); }
+.br-main { flex: 1; }
 .bank-row .br-name { font-size: 14px; font-weight: 600; color: var(--ivory); }
 .bank-row .br-sub { font-size: 11px; color: var(--silver-dim); margin-top: 2px; }
-.bank-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; background: #4ade80; box-shadow: 0 0 7px rgba(74,222,128,0.6); }
-.hc-divider { height: 1px; background: var(--line); margin: 16px 0; }
-.hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.hc-stat { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 6px; padding: 13px 15px; }
-.hc-stat .n { font-family: var(--serif); font-size: 24px; line-height: 1; }
-.hc-stat .l { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver-dim); margin-top: 5px; }
+.br-state { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 600; color: #4ade80; letter-spacing: 0.04em; }
+.br-state svg { width: 12px; height: 12px; flex: 0 0 auto; }
+
+.hc-divider { height: 1px; background: var(--line); margin: 18px 0; }
+.hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.hc-stat { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 9px; padding: 13px 15px; }
+.hc-stat .n { font-family: var(--serif); font-size: 25px; line-height: 1; }
+.hc-stat .l { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver-dim); margin-top: 5px; }
+
+/* floating accreditation badge */
+.console-badge {
+  position: absolute; z-index: 3; top: -22px; left: -24px;
+  background: linear-gradient(160deg, rgba(13,26,53,0.96), rgba(8,15,30,0.98));
+  border: 1px solid rgba(200,169,106,0.40); border-radius: 12px;
+  padding: 14px 18px; text-align: center;
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,0.9);
+  animation: floatY 6s ease-in-out infinite;
+}
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.console-badge .cb-top { font-family: var(--serif); font-size: 22px; line-height: 1; color: var(--champagne); }
+.console-badge .cb-sub { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver-dim); margin-top: 4px; }
+
+/* entrance animation */
+@keyframes heroUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-copy > * { animation: heroUp .85s cubic-bezier(.2,.7,.2,1) both; }
+.hero-copy > *:nth-child(1) { animation-delay: .05s; }
+.hero-copy > *:nth-child(2) { animation-delay: .14s; }
+.hero-copy > *:nth-child(3) { animation-delay: .23s; }
+.hero-copy > *:nth-child(4) { animation-delay: .32s; }
+.hero-copy > *:nth-child(5) { animation-delay: .41s; }
+.hero-right { animation: heroUp 1s cubic-bezier(.2,.7,.2,1) .3s both; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-credential { max-width: 480px; }
+  .hero-right { max-width: 470px; }
+  .console-badge { left: auto; right: -8px; top: -18px; }
+  .hero-ring, .hero-aura { opacity: .55; }
 }
 @media (max-width: 540px) {
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn { justify-content: center; }
+  .console-badge { display: none; }
+  .hero-trust { flex-wrap: wrap; }
 }
 
 /* ---------- Products ---------- */
@@ -412,8 +508,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .nav-cta::before { animation: none; }
-  * { transition: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -442,45 +537,63 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; line-he
 
 <!-- ============ HERO ============ -->
 <section class="hero grain" id="top">
+  <div class="hero-aura" aria-hidden="true"></div>
+  <div class="hero-ring" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
 
       <!-- Left: copy -->
       <div class="hero-copy">
         <p class="eyebrow">American Leverage</p>
-        <h1 class="display">The same leverage American founders take for granted.</h1>
+        <h1 class="display">The same leverage American founders <span class="shimmer">take for granted.</span></h1>
         <p class="lede">Banking at Chase, Bank of America, and Amex. A properly structured LLC. The infrastructure to operate and scale inside the US financial system, without relocating. We build the foundation. You run on it.</p>
         <div class="hero-ctas">
           <a href="#products" class="btn btn-platinum">View Products <span class="arrow">&rarr;</span></a>
           <a href="/#apply" class="btn btn-ghost">Apply for a Specialist Call <span class="arrow">&rarr;</span></a>
         </div>
+        <div class="hero-trust">
+          <div class="trust-avatars" aria-hidden="true">
+            <span>LM</span><span>CR</span><span>JW</span><span>OH</span><span class="more">+</span>
+          </div>
+          <p class="trust-text"><strong>500+ founders onboarded</strong><br/>across more than 30 countries</p>
+        </div>
       </div>
 
-      <!-- Right: credential panel -->
+      <!-- Right: banking console -->
       <div class="hero-right">
-        <div class="hero-credential">
-          <span class="hc-label">US Banking Access</span>
+        <div class="console-badge" aria-hidden="true">
+          <div class="cb-top">Tier-1</div>
+          <div class="cb-sub">Bank Access</div>
+        </div>
+        <div class="hero-console">
+          <div class="console-head">
+            <span class="hc-label">US Banking Access</span>
+            <span class="live"><span class="live-dot"></span> Active</span>
+          </div>
           <div class="bank-rows">
             <div class="bank-row">
-              <div>
+              <span class="bank-mono" data-b="chase">CH</span>
+              <div class="br-main">
                 <div class="br-name">Chase Business</div>
                 <div class="br-sub">Business Checking &amp; Savings</div>
               </div>
-              <div class="bank-dot"></div>
+              <span class="br-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
             </div>
             <div class="bank-row">
-              <div>
+              <span class="bank-mono" data-b="boa">BA</span>
+              <div class="br-main">
                 <div class="br-name">Bank of America</div>
                 <div class="br-sub">Business Advantage Account</div>
               </div>
-              <div class="bank-dot"></div>
+              <span class="br-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
             </div>
             <div class="bank-row">
-              <div>
+              <span class="bank-mono" data-b="amex">AX</span>
+              <div class="br-main">
                 <div class="br-name">American Express</div>
                 <div class="br-sub">Business Card Access</div>
               </div>
-              <div class="bank-dot"></div>
+              <span class="br-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
             </div>
           </div>
           <div class="hc-divider"></div>
