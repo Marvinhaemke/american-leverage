@@ -604,7 +604,7 @@ body[data-accent="gold"]   { --accent-1:#e6c45c; --accent-2:#caa12e; --accent-de
 }
 #iframe-loader .lbl { color: var(--navy-800); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
 @keyframes al-spin { to { transform: rotate(360deg); } }
-#calendly-inline { width: 100%; height: 100%; border: none; min-height: 600px; display: block; }
+#calendly-inline { width: 100%; min-height: 700px; display: block; }
 .form-success .skool-link { margin-top: 24px; }
 
 /* ---------- Loan clarification modal ---------- */
@@ -960,7 +960,7 @@ body[data-accent="gold"]   { --accent-1:#e6c45c; --accent-2:#caa12e; --accent-de
               <div class="spin"></div>
               <p class="lbl">Loading Calendar...</p>
             </div>
-            <div id="calendly-inline" style="width:100%;height:100%;min-height:600px;"></div>
+            <div id="calendly-inline" style="width:100%;min-height:700px;"></div>
           </div>
         </div>
 
@@ -1409,12 +1409,24 @@ body[data-accent="gold"]   { --accent-1:#e6c45c; --accent-2:#caa12e; --accent-de
   function showCalendlyBooking(data) {
     calendlyLead = data || {};
 
+    // Reveal the booking step FIRST so Calendly can measure a visible,
+    // full-width container — initialising it while hidden renders a blank
+    // calendar.
+    hideAllSteps();
+    document.getElementById('step-3').classList.add('active');
+
     var url = 'https://calendly.com/kevin-upcredit/specialist-phone-call-american-leverage?hide_gdpr_banner=1';
 
-    if (typeof Calendly !== 'undefined' && Calendly.initInlineWidget) {
+    function initWidget() {
+      if (typeof Calendly === 'undefined' || !Calendly.initInlineWidget) {
+        return setTimeout(initWidget, 150);
+      }
+      var el = document.getElementById('calendly-inline');
+      if (el.getAttribute('data-inited')) return;
+      el.setAttribute('data-inited', '1');
       Calendly.initInlineWidget({
         url: url,
-        parentElement: document.getElementById('calendly-inline'),
+        parentElement: el,
         prefill: {
           name:  data.name  || '',
           email: data.email || '',
@@ -1422,9 +1434,7 @@ body[data-accent="gold"]   { --accent-1:#e6c45c; --accent-2:#caa12e; --accent-de
         }
       });
     }
-
-    hideAllSteps();
-    document.getElementById('step-3').classList.add('active');
+    requestAnimationFrame(initWidget);
     document.getElementById('privacy-note').style.display = 'none';
     updateProgress(3);
   }
