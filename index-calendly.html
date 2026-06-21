@@ -1492,12 +1492,21 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 
     // On a completed booking, forward the lead to the confirmation page.
     if (event.data.event === 'calendly.event_scheduled') {
-      var params = new URLSearchParams();
-      if (calendlyLead.name)  params.set('name',          calendlyLead.name);
-      if (calendlyLead.email) params.set('invitee_email', calendlyLead.email);
-      if (calendlyLead.phone) params.set('answer_1',      calendlyLead.phone);
-      var qs = params.toString();
-      window.location.href = 'confirmation-calendly.html' + (qs ? '?' + qs : '');
+      // Prefer Calendly's own redirect: when a confirmation-page redirect is
+      // configured on the event (with "pass event details to your redirected
+      // page" enabled), Calendly loads confirmation-calendly.html inside its
+      // iframe with the full booking details — event_start_time, reschedule_url,
+      // etc. — and that page breaks out to the top window. If no Calendly
+      // redirect is configured, this fallback fires and forwards the lead with
+      // the details we already hold.
+      setTimeout(function () {
+        var params = new URLSearchParams();
+        if (calendlyLead.name)  params.set('name',          calendlyLead.name);
+        if (calendlyLead.email) params.set('invitee_email', calendlyLead.email);
+        if (calendlyLead.phone) params.set('answer_1',      calendlyLead.phone);
+        var qs = params.toString();
+        window.location.href = 'confirmation-calendly.html' + (qs ? '?' + qs : '');
+      }, 3000);
     }
   });
 

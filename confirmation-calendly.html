@@ -290,6 +290,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
 <!-- ============================================================ -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // If Calendly redirected here inside its embed iframe (its configured
+    // confirmation-page redirect), break out to the top window so the full
+    // confirmation — with all the booking details Calendly appended — is shown
+    // instead of a cramped view inside the calendar widget.
+    if (window.top !== window.self) {
+      try { window.top.location.replace(window.location.href); return; }
+      catch (e) { /* cross-origin; keep rendering in place */ }
+    }
+
     // ── Parse URL parameters from the Calendly redirect ──
     // Calendly forwards event details when "Pass event details to your
     // redirected page" is enabled: invitee_full_name, invitee_email,

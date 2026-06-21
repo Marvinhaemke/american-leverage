@@ -258,12 +258,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
     window.addEventListener('message', function (event) {
       if (!isCalendlyEvent(event)) return;
       if (event.data.event === 'calendly.event_scheduled') {
-        var params = new URLSearchParams();
-        if (lead.name)  params.set('name',          lead.name);
-        if (lead.email) params.set('invitee_email', lead.email);
-        if (lead.phone) params.set('answer_1',      lead.phone);
-        var qs = params.toString();
-        window.location.href = 'confirmation-calendly.html' + (qs ? '?' + qs : '');
+        // Prefer Calendly's own redirect (carries full event details and breaks
+        // out of the iframe); fall back to a manual redirect if none is set.
+        setTimeout(function () {
+          var params = new URLSearchParams();
+          if (lead.name)  params.set('name',          lead.name);
+          if (lead.email) params.set('invitee_email', lead.email);
+          if (lead.phone) params.set('answer_1',      lead.phone);
+          var qs = params.toString();
+          window.location.href = 'confirmation-calendly.html' + (qs ? '?' + qs : '');
+        }, 3000);
       }
     });
   })();
