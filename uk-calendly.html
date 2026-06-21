@@ -40,6 +40,8 @@
 <script src="/js/meta-capi.js"></script>
 
 <!-- Calendly inline-widget assets -->
+<link rel="preconnect" href="https://calendly.com" />
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin />
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
@@ -1185,6 +1187,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     document.getElementById('phone-error').classList.remove('visible');
 
     umami.track('Form Step 1');
+    preloadCalendly();
     nextStep(2);
   }
 
@@ -1268,37 +1271,63 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   // The setter call ("Specialist Phone Call") prefills name + email, and the
   // phone number into custom question 1 (a1).
   var calendlyLead = {};
+  var CALENDLY_URL = 'https://calendly.com/kevin-upcredit/specialist-phone-call-american-leverage?hide_gdpr_banner=1';
+
+  // Mount the inline widget into #calendly-inline (once). The container must be
+  // laid out with real dimensions when this runs, or Calendly renders blank.
+  function mountCalendly(data) {
+    if (typeof Calendly === 'undefined' || !Calendly.initInlineWidget) {
+      return setTimeout(function () { mountCalendly(data); }, 150);
+    }
+    var el = document.getElementById('calendly-inline');
+    if (!el || el.getAttribute('data-inited')) return;
+    el.setAttribute('data-inited', '1');
+    Calendly.initInlineWidget({
+      url: CALENDLY_URL,
+      parentElement: el,
+      prefill: {
+        name:  data.name  || '',
+        email: data.email || '',
+        customAnswers: { a1: data.phone || '' }
+      }
+    });
+  }
+
+  // Warm the calendar after step 1 (name/email/phone are already captured) by
+  // mounting it into the booking step while that step is parked off-screen with
+  // real dimensions — so it's fully loaded by the time the user reaches it.
+  function preloadCalendly() {
+    var el = document.getElementById('calendly-inline');
+    if (!el || el.getAttribute('data-inited')) return;
+    var step3 = document.getElementById('step-3');
+    var form  = step3.parentElement;
+    var w = (form && form.clientWidth) ? form.clientWidth : 600;
+    step3.style.display    = 'block';
+    step3.style.position   = 'absolute';
+    step3.style.left       = '-99999px';
+    step3.style.top        = '0';
+    step3.style.width      = w + 'px';
+    mountCalendly(getFormData());
+  }
+
   function showCalendlyBooking(data) {
     calendlyLead = data || {};
 
-    // Reveal the booking step FIRST so Calendly can measure a visible,
-    // full-width container — initialising it while hidden renders a blank
-    // calendar.
+    // Clear any off-screen preload styling and reveal the booking step.
+    var step3 = document.getElementById('step-3');
+    step3.style.position = '';
+    step3.style.left     = '';
+    step3.style.top      = '';
+    step3.style.width    = '';
+    step3.style.display  = '';
+
     hideAllSteps();
-    document.getElementById('step-3').classList.add('active');
+    step3.classList.add('active');
     document.getElementById('privacy-note').style.display = 'none';
     updateProgress(3);
 
-    var url = 'https://calendly.com/kevin-upcredit/specialist-phone-call-american-leverage?hide_gdpr_banner=1';
-
-    function initWidget() {
-      if (typeof Calendly === 'undefined' || !Calendly.initInlineWidget) {
-        return setTimeout(initWidget, 150);
-      }
-      var el = document.getElementById('calendly-inline');
-      if (el.getAttribute('data-inited')) return;
-      el.setAttribute('data-inited', '1');
-      Calendly.initInlineWidget({
-        url: url,
-        parentElement: el,
-        prefill: {
-          name:  data.name  || '',
-          email: data.email || '',
-          customAnswers: { a1: data.phone || '' }
-        }
-      });
-    }
-    requestAnimationFrame(initWidget);
+    // Already mounted during preload; this is a no-op fallback if not.
+    requestAnimationFrame(function () { mountCalendly(data); });
   }
 
   // ===== Skool Redirect (non-qualified) =====
