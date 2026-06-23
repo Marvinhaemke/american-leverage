@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cancellation Policy | American Leverage</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
+  --ivory:#f3f1ea; --ivory-dim:#d9d6cc; --silver:#c6cedb; --silver-dim:#9aa4b5; --slate:#7e889a;
+  --platinum:linear-gradient(105deg,#8c97a8 0%,#eef2f7 28%,#c4cdd9 50%,#f6f8fb 70%,#97a2b3 100%);
+  --silver-text:linear-gradient(100deg,#b6bfce 0%,#ffffff 45%,#a9b3c2 100%);
+  --champagne:#c8a96a;
+  --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow:rgba(240,170,50,0.5); --accent-text:#3a2606;
+  --line:rgba(231,236,245,0.12); --line-strong:rgba(231,236,245,0.22);
+  --glass:rgba(255,255,255,0.035);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --maxw:860px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--navy-800);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+
+.wordmark{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em;white-space:nowrap;line-height:1;display:inline-block;}
+.wordmark .am{color:var(--ivory);}
+.wordmark .lev{background:var(--silver-text);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+.topbar{border-bottom:1px solid var(--line);padding:18px var(--gutter);display:flex;justify-content:space-between;align-items:center;background:var(--navy-900);}
+.back-link{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--silver-dim);transition:color .2s;}
+.back-link:hover{color:var(--ivory);}
+
+.policy-hero{background:radial-gradient(120% 80% at 50% 0%,#16294f 0%,var(--navy-900) 70%);border-bottom:1px solid var(--line);padding:clamp(56px,8vw,100px) 0 clamp(44px,6vw,72px);}
+.eyebrow{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:0.34em;text-transform:uppercase;color:var(--silver-dim);display:inline-flex;align-items:center;gap:14px;}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--silver-dim));}
+.policy-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,72px);line-height:1.06;letter-spacing:-0.015em;margin:20px 0 16px;}
+.policy-hero .updated{font-size:13px;color:var(--slate);}
+
+.policy-body{flex:1;padding:clamp(48px,7vw,96px) 0;}
+
+.prose h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.18;letter-spacing:-0.01em;margin:52px 0 14px;color:var(--ivory);}
+.prose h2:first-child{margin-top:0;}
+.prose h3{font-family:var(--serif);font-weight:500;font-size:clamp(18px,2vw,22px);line-height:1.2;margin:32px 0 10px;color:var(--ivory);}
+.prose p{color:var(--silver);font-size:16px;line-height:1.72;margin:0 0 16px;}
+.prose strong{color:var(--ivory);}
+.prose ul{color:var(--silver);font-size:16px;line-height:1.72;margin:0 0 16px;padding-left:22px;}
+.prose ul li{margin-bottom:8px;}
+.prose a{color:var(--champagne);text-decoration:underline;text-underline-offset:3px;}
+.prose a:hover{color:var(--ivory);}
+.prose hr{border:0;height:1px;background:var(--line);margin:48px 0;}
+
+.highlight-box{background:rgba(240,170,50,0.06);border:1px solid rgba(240,170,50,0.2);border-radius:6px;padding:24px 28px;margin:28px 0;}
+.highlight-box p{margin:0;font-size:15px;}
+
+.footer{background:var(--navy-1000);border-top:1px solid var(--line);padding:56px 0 36px;}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;max-width:1240px;margin:0 auto;padding:0 var(--gutter);}
+.foot-social{display:flex;gap:14px;}
+.foot-social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--silver-dim);transition:.2s;}
+.foot-social a:hover{color:var(--ivory);border-color:var(--silver);}
+.foot-bottom{max-width:1240px;margin:32px auto 0;padding:0 var(--gutter);}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--silver-dim);}
+.foot-links a{transition:color .2s;}
+.foot-links a:hover{color:var(--silver);}
+.foot-links a.active{color:var(--ivory);}
+.foot-copy{font-size:12px;color:var(--slate);margin-top:20px;}
+.rule{height:1px;background:var(--line);border:0;max-width:1240px;margin:32px auto;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:28px;width:auto;display:block;" /></a>
+  <a href="/" class="back-link">← Back to Home</a>
+</header>
+
+<section class="policy-hero">
+  <div class="wrap">
+    <p class="eyebrow">Legal</p>
+    <h1>Cancellation Policy</h1>
+    <p class="updated">Last updated: June 26, 2025</p>
+  </div>
+</section>
+
+<main class="policy-body">
+  <div class="wrap">
+    <div class="prose">
+
+      <p>This Cancellation Policy outlines your rights and our procedures for cancelling services purchased from Elevate Global LLC (doing business as American Leverage). We are committed to being transparent and fair. Please read this policy carefully before purchasing.</p>
+
+      <h2>1. Cancellation Window</h2>
+      <div class="highlight-box">
+        <p><strong>You have three (3) business days from the date you sign your service agreement or make your purchase to cancel without penalty and receive a full refund.</strong> This applies to all consulting and programme engagements.</p>
+      </div>
+      <p>Business days are Monday through Friday, excluding US federal holidays. The cancellation window begins at the time of your purchase or signature, whichever is earlier.</p>
+
+      <h2>2. How to Cancel</h2>
+      <p>To cancel within the three-day window, you must notify us in writing by sending an email to <a href="mailto:support@americanleverage.com">support@americanleverage.com</a> with the subject line:</p>
+      <p><strong>Notice of Cancellation – [Your Full Name]</strong></p>
+      <p>Your notice must be sent before midnight (Eastern Time) on the third business day following your purchase. We recommend requesting a read receipt or confirmation of delivery for your records.</p>
+
+      <h2>3. Refund Structure</h2>
+
+      <h3>Within the Three-Day Window</h3>
+      <p>If you cancel within three (3) business days of purchase and no material services have been delivered beyond onboarding or initial scheduling, you are entitled to a <strong>full refund</strong>. Refunds will be processed within seven (7) business days to the original payment method.</p>
+
+      <h3>After Services Have Commenced</h3>
+      <p>If services have been materially commenced (including completed strategy calls, access to proprietary resources, or custom documentation prepared on your behalf), no refund will be issued for completed work.</p>
+      <p>For ongoing or multi-session programmes, if you cancel after the three-day window but before all sessions are delivered, we will evaluate refund eligibility on a case-by-case basis, taking into account the proportion of services already rendered.</p>
+
+      <h3>Exceptional Circumstances</h3>
+      <p>We understand that situations change. If you experience a genuine hardship or extenuating circumstance after the cancellation window has passed, please contact us at <a href="mailto:support@americanleverage.com">support@americanleverage.com</a>. We will review your case with compassion and good faith, though we cannot guarantee a refund outside the standard policy.</p>
+
+      <h2>4. Session Cancellations and Rescheduling</h2>
+      <p>For individual consulting sessions already booked:</p>
+      <ul>
+        <li>Cancellations or rescheduling requests made <strong>at least 24 hours</strong> before a scheduled session will be accommodated at no charge</li>
+        <li>Cancellations made <strong>less than 24 hours</strong> before a session, or no-shows without notice, will be counted as a used session</li>
+        <li>We will make reasonable efforts to reschedule if you provide timely notice</li>
+      </ul>
+
+      <h2>5. No Advance Fee Policy</h2>
+      <p>American Leverage does not charge advance fees for services that have not yet commenced. All fees are associated with specific services you have agreed to receive. We do not collect payment and then delay starting work without cause.</p>
+
+      <h2>6. What We Cannot Refund</h2>
+      <p>The following are non-refundable under all circumstances:</p>
+      <ul>
+        <li>Fees paid to third parties on your behalf (e.g., state filing fees, registered agent fees)</li>
+        <li>Custom work already completed and delivered (e.g., prepared documentation, customised plans)</li>
+        <li>Sessions already conducted</li>
+      </ul>
+
+      <h2>7. How to Contact Us</h2>
+      <p>For any questions about cancellation or to initiate a cancellation request, please contact us:</p>
+      <ul>
+        <li>Email: <a href="mailto:support@americanleverage.com">support@americanleverage.com</a></li>
+        <li>Phone: +1 786 628 7370</li>
+      </ul>
+      <p>We aim to respond to all cancellation requests within one (1) business day.</p>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="foot-top">
+    <a href="/" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:28px;width:auto;display:block;" /></a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/jpdandreaa" target="_blank" rel="noopener" aria-label="Instagram"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/instagram-dark.svg" alt="Instagram" style="width:18px;height:18px;filter:brightness(0) invert(0.78);"></a>
+      <a href="https://www.youtube.com/@jeanpauldandrea" target="_blank" rel="noopener" aria-label="YouTube"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/youtube-dark.svg" alt="YouTube" style="width:18px;height:18px;filter:brightness(0) invert(0.78);"></a>
+      <a href="https://skool.com/upcredit" target="_blank" rel="noopener" aria-label="Skool"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/website-dark.svg" alt="Skool" style="width:18px;height:18px;filter:brightness(0) invert(0.78);"></a>
+    </div>
+  </div>
+  <hr class="rule" style="margin-top:28px;" />
+  <div class="foot-bottom">
+    <div class="foot-links">
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-of-use">Terms of Use</a>
+      <a href="/fulfillment-policy">Fulfillment Policy</a>
+      <a href="/cancellation-policy" class="active">Cancellation Policy</a>
+    </div>
+    <p class="foot-copy">&copy; 2026 Elevate Global LLC. Empowering entrepreneurs with capital access.</p>
+  </div>
+</footer>
+
+</body>
+</html>
