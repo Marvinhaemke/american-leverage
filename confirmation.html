@@ -401,6 +401,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;lett
       waNumber = '17816098944';
     }
 
+    // If the booking data forwarded by iClosed/Calendly references Priya
+    // (e.g. setter / assigned specialist), route the confirmation to her number.
+    var mentionsPriya = false;
+    params.forEach(function (value) {
+      if (value && value.toLowerCase().indexOf('priya') !== -1) mentionsPriya = true;
+    });
+    if (mentionsPriya) {
+      waNumber = '447378912699';
+    }
+
     var greeting = leadName
       ? 'Hi' + (setterName ? ' ' + setterName.split(' ')[0] : '') + ', this is ' + leadName + '.'
       : 'Hi' + (setterName ? ' ' + setterName.split(' ')[0] : '') + ', I just booked a call.';
