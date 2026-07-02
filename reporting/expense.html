@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Report a Client Expense | American Leverage</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+<link rel="icon" href="/images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — funnel page system (shared core)
+   ============================================================ */
+:root{
+  --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
+  --ivory:#f3f1ea; --ivory-dim:#d9d6cc; --silver:#c6cedb; --silver-dim:#9aa4b5; --slate:#7e889a;
+  --silver-text: linear-gradient(100deg,#b6bfce 0%,#ffffff 45%,#a9b3c2 100%);
+  --champagne:#c8a96a; --champagne-dim:#a98f55;
+  --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow:rgba(240,170,50,0.5); --accent-text:#3a2606;
+  --line:rgba(231,236,245,0.12); --line-strong:rgba(231,236,245,0.22);
+  --glass:rgba(255,255,255,0.035); --glass-2:rgba(255,255,255,0.06);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --maxw:1240px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--navy-800);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+::selection{background:var(--champagne);color:var(--navy-1000);}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;letter-spacing:-0.01em;}
+.h1{font-size:clamp(30px,4.4vw,46px);} .h2{font-size:clamp(24px,3vw,34px);}
+.lede{font-size:clamp(15px,1.2vw,18px);line-height:1.66;color:var(--silver);font-weight:350;}
+.gold{color:var(--champagne);}
+.wordmark{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em;white-space:nowrap;line-height:1;display:inline-block;font-size:26px;}
+.topbar{border-bottom:1px solid var(--line);padding:16px var(--gutter);display:flex;justify-content:center;align-items:center;position:relative;z-index:20;background:var(--navy-900);}
+.shell{position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(36px,6vw,72px) var(--gutter);overflow:hidden;background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
+.shell::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;opacity:.55;z-index:0;}
+.glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;}
+.glow-a{top:30%;left:50%;transform:translate(-50%,-50%);width:680px;height:480px;background:rgba(40,74,134,0.3);}
+.glow-b{bottom:0;right:10%;width:340px;height:340px;background:rgba(240,170,50,0.06);}
+
+/* ---------- Report form ---------- */
+.report-wrap{max-width:600px;width:100%;position:relative;z-index:1;}
+.report-head{text-align:center;margin-bottom:32px;}
+.report-head .eyebrow{font-size:12.5px;font-weight:700;color:var(--champagne);letter-spacing:0.14em;text-transform:uppercase;margin:0 0 14px;}
+.report-head .lede{max-width:46ch;margin:14px auto 0;}
+.form-card{background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);}
+.gold-bar{height:2px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+.form-body{padding:clamp(26px,3.4vw,40px);}
+.field{margin-bottom:22px;}
+.field label{display:block;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--silver-dim);margin-bottom:9px;}
+.field input,.field textarea{width:100%;background:rgba(0,0,0,0.22);border:1px solid var(--line-strong);border-radius:4px;padding:15px 16px;color:var(--ivory);font-family:var(--sans);font-size:15px;}
+.field textarea{resize:vertical;min-height:96px;line-height:1.5;}
+.field input::placeholder,.field textarea::placeholder{color:var(--slate);}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--silver);}
+.field input.err,.field textarea.err{border-color:#d98a8a;}
+.field .hint{font-size:12px;color:var(--slate);margin:8px 0 0;}
+.amount-wrap{position:relative;}
+.amount-wrap .cur{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--silver-dim);font-size:15px;pointer-events:none;}
+.amount-wrap input{padding-left:32px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.04em;padding:16px 30px;border:none;cursor:pointer;border-radius:2px;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
+.btn-platinum{background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:var(--accent-text);box-shadow:0 1px 0 rgba(255,255,255,0.22) inset,0 14px 36px -12px var(--accent-glow);}
+.btn-platinum:hover{transform:translateY(-2px);background:linear-gradient(180deg,var(--accent-1),var(--accent-deep));box-shadow:0 1px 0 rgba(255,255,255,0.28) inset,0 22px 50px -12px var(--accent-glow);}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.form-note{text-align:center;font-size:12px;color:var(--slate);margin-top:18px;}
+.form-error{display:none;background:rgba(216,138,138,0.1);border:1px solid rgba(216,138,138,0.3);color:#e7b9b9;border-radius:8px;padding:12px 14px;font-size:13.5px;margin-bottom:20px;}
+.form-error.visible{display:block;}
+.form-success{display:none;text-align:center;padding:14px 0;}
+.form-success.visible{display:block;}
+.form-success .check{width:64px;height:64px;border-radius:50%;margin:0 auto 22px;background:linear-gradient(180deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;color:var(--accent-text);font-size:30px;}
+.form-success h2{font-size:30px;margin-bottom:12px;}
+.form-success p{color:var(--silver);margin:0 auto;max-width:42ch;}
+.form-success .btn-again{margin-top:24px;display:inline-block;font-size:13.5px;color:var(--champagne);border-bottom:1px solid rgba(200,169,106,0.4);padding-bottom:2px;cursor:pointer;}
+.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;z-index:-1;pointer-events:none;}
+.tabs{display:flex;gap:10px;justify-content:center;margin-bottom:26px;}
+.tabs a{font-size:13px;font-weight:600;letter-spacing:0.03em;padding:9px 18px;border-radius:999px;border:1px solid var(--line-strong);color:var(--silver-dim);}
+.tabs a.on{background:rgba(200,169,106,0.15);border-color:rgba(200,169,106,0.4);color:var(--champagne);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="wordmark" aria-label="American Leverage"><img src="/images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
+</header>
+
+<main class="shell">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+
+  <div class="report-wrap">
+    <div class="report-head">
+      <p class="eyebrow">Internal Reporting</p>
+      <h1 class="h1">Report a <span class="gold">Client Expense</span></h1>
+      <p class="lede">Log an expense or purchase made on behalf of a client. This record is sent straight to our reporting workflow.</p>
+    </div>
+
+    <div class="tabs">
+      <a href="/reporting/purchase">Purchase</a>
+      <a href="/reporting/expense" class="on">Expense</a>
+    </div>
+
+    <div class="form-card">
+      <div class="gold-bar"></div>
+      <div class="form-body">
+        <div id="form-error" class="form-error"></div>
+
+        <form id="report-form" novalidate>
+          <div class="field">
+            <label for="f-email">Client Email *</label>
+            <input id="f-email" type="email" name="email" placeholder="client@company.com" autocomplete="off" required />
+          </div>
+          <div class="field">
+            <label for="f-item">What Was Purchased *</label>
+            <textarea id="f-item" name="item" placeholder="e.g. State filing fee, registered agent" required></textarea>
+          </div>
+          <div class="field">
+            <label for="f-amount">Amount *</label>
+            <div class="amount-wrap">
+              <span class="cur">$</span>
+              <input id="f-amount" type="text" name="amount" inputmode="decimal" placeholder="0.00" required />
+            </div>
+            <p class="hint">Enter the total amount for this expense.</p>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="f-company-url">Company Website</label>
+            <input type="text" id="f-company-url" name="company_url" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-platinum">Submit Expense</button>
+          <p class="form-note">&#128274; Internal use only. Records are stored securely.</p>
+        </form>
+
+        <div id="form-success" class="form-success">
+          <div class="check">&#10003;</div>
+          <h2>Expense Logged</h2>
+          <p>The expense has been recorded and sent to our reporting workflow.</p>
+          <span class="btn-again" id="log-another">Log another expense</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var form = document.getElementById('report-form');
+    var errorBox = document.getElementById('form-error');
+    var successBox = document.getElementById('form-success');
+    var submitBtn = document.getElementById('submit-btn');
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('visible');
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      errorBox.classList.remove('visible');
+
+      var email = form.email.value.trim();
+      var item = form.item.value.trim();
+      var amount = form.amount.value.trim();
+
+      form.email.classList.toggle('err', !EMAIL_RE.test(email));
+      form.item.classList.toggle('err', !item);
+      var amountNum = parseFloat(amount.replace(/[^0-9.\-]/g, ''));
+      form.amount.classList.toggle('err', !amount || isNaN(amountNum));
+
+      if (!EMAIL_RE.test(email)) return showError('Please enter a valid client email.');
+      if (!item) return showError('Please enter what was purchased.');
+      if (!amount || isNaN(amountNum)) return showError('Please enter a valid amount.');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        var res = await fetch('/api/reporting', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'expense',
+            email: email,
+            item: item,
+            amount: amount,
+            company_url: form.company_url.value,
+          }),
+        });
+        if (!res.ok) {
+          var data = await res.json().catch(function () { return {}; });
+          throw new Error(data.error || 'Something went wrong. Please try again.');
+        }
+        form.style.display = 'none';
+        successBox.classList.add('visible');
+      } catch (err) {
+        showError(err.message || 'Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Expense';
+      }
+    });
+
+    document.getElementById('log-another').addEventListener('click', function () {
+      form.reset();
+      successBox.classList.remove('visible');
+      form.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Expense';
+    });
+  })();
+</script>
+</body>
+</html>
