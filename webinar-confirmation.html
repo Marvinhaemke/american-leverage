@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>You're Registered | American Leverage Webinar</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel (id: 784167687515569) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '784167687515569');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=784167687515569&ev=PageView&noscript=1"/></noscript>
+<!-- Meta CAPI bridge -->
+<script src="/js/meta-capi.js"></script>
+
+<style>
+/* ============================================================
+   AMERICAN LEVERAGE — funnel page system (shared core)
+   ============================================================ */
+:root{
+  --navy-1000:#060d1c; --navy-900:#0a1428; --navy-850:#0d1a35; --navy-800:#122347; --navy-700:#18305c; --navy-600:#21406f;
+  --ivory:#f3f1ea; --ivory-dim:#d9d6cc; --silver:#c6cedb; --silver-dim:#9aa4b5; --slate:#7e889a;
+  --silver-text: linear-gradient(100deg,#b6bfce 0%,#ffffff 45%,#a9b3c2 100%);
+  --champagne:#c8a96a; --champagne-dim:#a98f55;
+  --accent-1:#f2b13a; --accent-2:#e0931c; --accent-deep:#c47a10; --accent-glow:rgba(240,170,50,0.5); --accent-text:#3a2606;
+  --line:rgba(231,236,245,0.12); --line-strong:rgba(231,236,245,0.22);
+  --glass:rgba(255,255,255,0.035); --glass-2:rgba(255,255,255,0.06);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --maxw:1240px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--navy-800);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+::selection{background:var(--champagne);color:var(--navy-1000);}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;letter-spacing:-0.01em;}
+.h1{font-size:clamp(30px,4.4vw,46px);} .h2{font-size:clamp(24px,3vw,34px);} .h3{font-size:clamp(19px,2vw,24px);}
+.lede{font-size:clamp(15px,1.2vw,18px);line-height:1.66;color:var(--silver);font-weight:350;}
+.gold{color:var(--champagne);}
+.wordmark{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em;white-space:nowrap;line-height:1;display:inline-block;font-size:26px;}
+.topbar{border-bottom:1px solid var(--line);padding:16px var(--gutter);display:flex;justify-content:center;align-items:center;position:relative;z-index:20;background:var(--navy-900);}
+.shell{position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(36px,6vw,72px) var(--gutter);overflow:hidden;background:radial-gradient(120% 90% at 70% -10%,#16294f 0%,var(--navy-900) 72%);}
+.shell::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;opacity:.55;z-index:0;}
+.glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;}
+.glow-a{top:30%;left:50%;transform:translate(-50%,-50%);width:680px;height:480px;background:rgba(40,74,134,0.3);}
+.glow-b{bottom:0;right:10%;width:340px;height:340px;background:rgba(240,170,50,0.06);}
+.glow-c{top:14%;left:5%;width:220px;height:220px;background:rgba(46,160,110,0.05);}
+.card{position:relative;z-index:1;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:14px;box-shadow:0 50px 100px -50px rgba(0,0,0,0.9);overflow:hidden;}
+.funnel-footer{background:var(--navy-1000);border-top:1px solid var(--line);text-align:center;padding:26px var(--gutter);}
+.funnel-footer .foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--silver-dim);margin-bottom:10px;}
+.funnel-footer a:hover{color:var(--ivory);}
+.funnel-footer p{font-size:12px;color:var(--slate);margin:0;}
+.funnel-footer .foot-social{display:flex;gap:16px;justify-content:center;margin-bottom:16px;}
+.funnel-footer .foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;transition:.2s;}
+.funnel-footer .foot-social a:hover{border-color:var(--silver);}
+.funnel-footer .foot-social img{width:16px;height:16px;filter:brightness(0) invert(0.78);}
+
+/* ---------- Confirmation specifics ---------- */
+.conf-wrap{max-width:660px;width:100%;position:relative;z-index:1;}
+.conf-card{padding:clamp(24px,4vw,44px);}
+.gold-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+
+@keyframes scale-in{0%{transform:scale(0);opacity:0;}60%{transform:scale(1.12);opacity:1;}100%{transform:scale(1);opacity:1;}}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.ring{animation:scale-in .5s ease-out forwards;}
+.draw{animation:draw .5s ease-out .4s forwards;}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;animation:fade-up .6s ease-out forwards;}
+.d1{animation-delay:.15s;} .d2{animation-delay:.3s;} .d3{animation-delay:.45s;} .d4{animation-delay:.6s;} .d5{animation-delay:.75s;}
+
+/* Event detail block */
+.event-box{display:flex;align-items:center;gap:16px;border:1px solid var(--line-strong);background:var(--glass);border-radius:12px;padding:18px 20px;margin-top:26px;}
+.event-box .cal-ic{width:48px;height:48px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(200,169,106,0.14);color:var(--champagne);font-size:22px;}
+.event-box .ev-label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--silver-dim);margin:0 0 4px;}
+.event-box .ev-when{font-family:var(--serif);font-size:clamp(19px,2.4vw,24px);color:var(--ivory);line-height:1.2;margin:0;}
+.event-box .ev-tz{font-size:12.5px;color:var(--silver-dim);margin:5px 0 0;}
+
+/* Calendar + join actions */
+.actions{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:17px 24px;background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:var(--accent-text);font-family:var(--sans);font-weight:700;font-size:clamp(15px,2vw,17px);border:none;border-radius:12px;cursor:pointer;box-shadow:0 1px 0 rgba(255,255,255,0.22) inset,0 14px 36px -12px var(--accent-glow);transition:transform .2s ease,box-shadow .2s ease,background .2s ease;}
+.btn-primary:hover{transform:translateY(-2px);background:linear-gradient(180deg,var(--accent-1),var(--accent-deep));box-shadow:0 1px 0 rgba(255,255,255,0.28) inset,0 22px 50px -12px var(--accent-glow);}
+.btn-primary svg{width:20px;height:20px;flex-shrink:0;}
+.btn-outline{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 24px;border-radius:12px;border:1px solid var(--line-strong);color:var(--ivory);font-family:var(--sans);font-weight:600;font-size:15px;background:transparent;cursor:pointer;transition:border-color .2s ease,background .2s ease;}
+.btn-outline:hover{border-color:var(--silver);background:var(--glass-2);}
+.btn-outline svg{width:18px;height:18px;flex-shrink:0;}
+
+/* Add-to-calendar dropdown */
+.cal-wrap{position:relative;}
+.cal-menu{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:10;background:var(--navy-850);border:1px solid var(--line-strong);border-radius:12px;padding:6px;box-shadow:0 30px 60px -24px rgba(0,0,0,0.9);}
+.cal-menu.open{display:block;}
+.cal-menu a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;font-size:14.5px;font-weight:500;color:var(--ivory);cursor:pointer;transition:background .15s ease;}
+.cal-menu a:hover{background:var(--glass-2);}
+.cal-menu a .em{width:22px;text-align:center;}
+
+.pw-note{margin-top:14px;text-align:center;font-size:13px;color:var(--silver-dim);}
+.pw-note code{font-family:var(--sans);font-weight:700;color:var(--champagne);letter-spacing:0.04em;background:rgba(200,169,106,0.12);padding:2px 8px;border-radius:6px;}
+
+.divider{height:1px;background:var(--line);border:0;margin:30px 0;}
+
+.steps-h{font-family:var(--serif);font-size:22px;text-align:center;margin-bottom:22px;color:var(--ivory);}
+.step-row{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.step-row .num{width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;background:rgba(200,169,106,0.15);color:var(--champagne);}
+.step-row.green .num{background:rgba(37,211,102,0.15);color:#3ddc7f;}
+.step-row .st-title{font-weight:700;font-size:14.5px;color:var(--ivory);margin:0 0 2px;}
+.step-row .st-body{font-size:13.5px;color:var(--silver-dim);margin:0;line-height:1.5;}
+.step-row.dim{opacity:.5;}
+.here{color:var(--champagne);font-size:12px;font-weight:500;margin-left:6px;}
+
+.community{text-align:center;}
+.community p{font-size:13.5px;color:var(--silver-dim);margin:0 0 16px;}
+.btn-community{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:8px;border:1px solid rgba(200,169,106,0.4);color:var(--champagne);font-weight:600;font-size:14px;transition:background .25s ease,border-color .25s ease;}
+.btn-community:hover{background:rgba(200,169,106,0.1);border-color:rgba(200,169,106,0.6);}
+
+.trust{text-align:center;font-size:12px;color:var(--slate);margin-top:18px;display:flex;align-items:center;justify-content:center;gap:7px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="wordmark" aria-label="American Leverage"><img src="images/logo3-trimmed.png" alt="American Leverage" style="height:30px;width:auto;display:block;" /></a>
+</header>
+
+<!-- ===== MAIN CONFIRMATION CONTENT ===== -->
+<main class="shell">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="glow glow-c"></div>
+
+  <div class="conf-wrap">
+    <div class="card conf-card">
+      <div class="gold-bar"></div>
+
+      <!-- Animated confirmed checkmark -->
+      <div class="fade-up" style="display:flex;justify-content:center;margin-bottom:22px;">
+        <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle class="ring" cx="44" cy="44" r="42" stroke="#c8a96a" stroke-width="4" fill="rgba(200,169,106,0.06)"/>
+          <path class="draw" d="M28 45 L40 57 L62 33" stroke="#c8a96a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke-dasharray:62;stroke-dashoffset:62;"/>
+        </svg>
+      </div>
+
+      <!-- Headline -->
+      <div class="fade-up d1" style="text-align:center;margin-bottom:6px;">
+        <h1 class="h1" style="margin-bottom:12px;">You're Registered<span id="lead-name"></span>! <span class="gold">Your Seat Is Saved.</span></h1>
+        <p class="lede" style="max-width:48ch;margin:0 auto;">We've reserved your spot for the webinar. Add it to your calendar now so you don't miss it — a confirmation email with your join link is on its way too.</p>
+      </div>
+
+      <!-- Event date/time -->
+      <div id="event-box" class="event-box fade-up d2" style="display:none;">
+        <div class="cal-ic">&#128197;</div>
+        <div>
+          <p class="ev-label">Your Webinar</p>
+          <p class="ev-when" id="ev-when">your scheduled time</p>
+          <p class="ev-tz" id="ev-tz"></p>
+        </div>
+      </div>
+
+      <!-- Actions: Add to calendar + Join -->
+      <div class="actions fade-up d3">
+        <div class="cal-wrap" id="cal-wrap" style="display:none;">
+          <button type="button" class="btn-primary" id="cal-toggle" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Add to Calendar</span>
+          </button>
+          <div class="cal-menu" id="cal-menu" role="menu">
+            <a id="cal-google" target="_blank" rel="noopener" role="menuitem"><span class="em">&#128197;</span> Google Calendar</a>
+            <a id="cal-apple" role="menuitem"><span class="em">&#63743;</span> Apple Calendar</a>
+            <a id="cal-outlook" target="_blank" rel="noopener" role="menuitem"><span class="em">&#128231;</span> Outlook</a>
+            <a id="cal-ics" role="menuitem"><span class="em">&#11015;</span> Download .ics file</a>
+          </div>
+        </div>
+
+        <a id="join-btn" class="btn-outline" target="_blank" rel="noopener" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>Your Webinar Join Link</span>
+        </a>
+      </div>
+
+      <!-- Room password (shown only if provided) -->
+      <p id="pw-note" class="pw-note fade-up d3" style="display:none;">Room password: <code id="pw-value"></code></p>
+
+      <hr class="divider" />
+
+      <!-- What happens next -->
+      <div class="fade-up d4">
+        <h2 class="steps-h">What Happens Next</h2>
+        <div class="step-row green">
+          <div class="num">1</div>
+          <div>
+            <p class="st-title">Add It to Your Calendar <span class="here">&larr; You are here</span></p>
+            <p class="st-body">Tap "Add to Calendar" above and set a reminder so you're ready when the webinar goes live.</p>
+          </div>
+        </div>
+        <div class="step-row dim">
+          <div class="num">2</div>
+          <div>
+            <p class="st-title">Watch Your Inbox</p>
+            <p class="st-body">We've emailed your confirmation and unique join link. Check spam if you don't see it within a few minutes.</p>
+          </div>
+        </div>
+        <div class="step-row dim">
+          <div class="num">3</div>
+          <div>
+            <p class="st-title">Show Up Live</p>
+            <p class="st-body">Join a few minutes early using the button above or the link in your email. See you there!</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Community CTA -->
+      <div class="community fade-up d5">
+        <p>Join 500+ founders building their US business infrastructure while you wait:</p>
+        <a href="https://www.skool.com/upcredit" target="_blank" rel="noopener" class="btn-community">
+          &#128101; Join the American Leverage Skool Community <span style="opacity:.6;">&#8599;</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="trust">&#128274; Your information is 100% secure and will never be shared.</p>
+  </div>
+</main>
+
+<footer class="funnel-footer">
+  <div class="foot-social">
+    <a href="https://www.instagram.com/jpdandreaa" target="_blank" rel="noopener" aria-label="Instagram"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/instagram-dark.svg" alt="Instagram"></a>
+    <a href="https://www.youtube.com/@jeanpauldandrea" target="_blank" rel="noopener" aria-label="YouTube"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/youtube-dark.svg" alt="YouTube"></a>
+    <a href="https://skool.com/upcredit" target="_blank" rel="noopener" aria-label="Skool"><img src="https://stcdn.leadconnectorhq.com/funnel/icons/dark/website-dark.svg" alt="Skool"></a>
+  </div>
+  <div class="foot-links">
+    <a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-of-use">Terms of Use</a>
+  </div>
+  <p>&copy; 2026 Elevate Global LLC. All rights reserved.</p>
+</footer>
+
+<!-- ============================================================ -->
+<!--  LOGIC: Parse WebinarJam confirmation params + calendar       -->
+<!-- ============================================================ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // ── Editable defaults ──
+    // WebinarJam does not pass the webinar's title, so set it here.
+    var WEBINAR_TITLE = 'American Leverage Live Webinar';
+    var DURATION_MINUTES = 60; // WebinarJam sends no end time; assume 60 min.
+
+    // ── Parse WebinarJam params (query string, UTF-8, always present) ──
+    // Ref: WebinarJam "Use an external confirmation page for your registration".
+    var params = new URLSearchParams(window.location.search);
+    var firstName = (params.get('wj_lead_first_name') || '').trim();
+    var joinLink  = (params.get('wj_lead_unique_link_live_room') || '').trim();
+    var roomPass  = (params.get('wj_room_password') || '').trim();
+    var eventTs   = parseInt(params.get('wj_event_ts') || '', 10); // Unix seconds (UTC)
+    var eventTz   = (params.get('wj_event_tz') || '').trim();       // IANA tz, e.g. America/Los_Angeles
+    var nextDate  = (params.get('wj_next_event_date') || '').trim();       // e.g. "Monday, 31 August 2020"
+    var nextTime  = (params.get('wj_next_event_time') || '').trim();       // e.g. "1:45 AM"
+    var nextTzLbl = (params.get('wj_next_event_timezone') || '').trim();   // e.g. "Pacific Time (US and Canada) GMT -7"
+
+    var hasTs = !isNaN(eventTs) && eventTs > 0;
+    var startDate = hasTs ? new Date(eventTs * 1000) : null;
+    var endDate   = hasTs ? new Date((eventTs + DURATION_MINUTES * 60) * 1000) : null;
+
+    // ── Greet the attendee by first name ──
+    if (firstName) {
+      document.getElementById('lead-name').textContent = ', ' + firstName;
+    }
+
+    // ── Show the human-readable event date/time ──
+    function whenLabel() {
+      if (nextDate || nextTime) return [nextDate, nextTime].filter(Boolean).join(' · ');
+      if (hasTs) {
+        try {
+          return new Intl.DateTimeFormat('en-GB', {
+            weekday: 'long', day: 'numeric', month: 'long',
+            hour: '2-digit', minute: '2-digit', hour12: false,
+            timeZone: eventTz || undefined
+          }).format(startDate);
+        } catch (e) {}
+      }
+      return '';
+    }
+    var when = whenLabel();
+    if (when) {
+      document.getElementById('ev-when').textContent = when;
+      var tzText = nextTzLbl || eventTz || '';
+      document.getElementById('ev-tz').textContent = tzText ? 'Time zone: ' + tzText : '';
+      document.getElementById('event-box').style.display = 'flex';
+    }
+
+    // ── Join link button ──
+    if (joinLink) {
+      var jb = document.getElementById('join-btn');
+      jb.href = joinLink;
+      jb.style.display = 'flex';
+    }
+
+    // ── Room password ──
+    if (roomPass) {
+      document.getElementById('pw-value').textContent = roomPass;
+      document.getElementById('pw-note').style.display = 'block';
+    }
+
+    // ── Add-to-calendar (only when we have a real start time) ──
+    if (hasTs) {
+      // Format a Date as UTC "YYYYMMDDTHHMMSSZ" for Google / ICS.
+      function toUTC(d) {
+        function p(n) { return (n < 10 ? '0' : '') + n; }
+        return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) +
+               'T' + p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + 'Z';
+      }
+      // ISO 8601 in UTC for Outlook (e.g. 2020-08-31T08:45:00Z).
+      function toISO(d) { return d.toISOString().split('.')[0] + 'Z'; }
+
+      var descLines = [];
+      if (joinLink) descLines.push('Join here: ' + joinLink);
+      if (roomPass) descLines.push('Room password: ' + roomPass);
+      var description = descLines.join('\n');
+      var location = joinLink || '';
+
+      // Google Calendar
+      var g = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + encodeURIComponent(WEBINAR_TITLE)
+        + '&dates=' + toUTC(startDate) + '/' + toUTC(endDate)
+        + '&details=' + encodeURIComponent(description)
+        + '&location=' + encodeURIComponent(location);
+      document.getElementById('cal-google').href = g;
+
+      // Outlook.com
+      var o = 'https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent'
+        + '&subject=' + encodeURIComponent(WEBINAR_TITLE)
+        + '&startdt=' + encodeURIComponent(toISO(startDate))
+        + '&enddt=' + encodeURIComponent(toISO(endDate))
+        + '&body=' + encodeURIComponent(description)
+        + '&location=' + encodeURIComponent(location);
+      document.getElementById('cal-outlook').href = o;
+
+      // ICS (Apple Calendar / Outlook desktop / download)
+      function icsEscape(s) { return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); }
+      function buildICS() {
+        var uid = 'wj-' + eventTs + '-' + Math.random().toString(36).slice(2) + '@americanleverage';
+        return [
+          'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//American Leverage//Webinar//EN',
+          'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+          'BEGIN:VEVENT',
+          'UID:' + uid,
+          'DTSTAMP:' + toUTC(new Date()),
+          'DTSTART:' + toUTC(startDate),
+          'DTEND:' + toUTC(endDate),
+          'SUMMARY:' + icsEscape(WEBINAR_TITLE),
+          'DESCRIPTION:' + icsEscape(description),
+          'LOCATION:' + icsEscape(location),
+          'BEGIN:VALARM', 'TRIGGER:-PT15M', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEscape(WEBINAR_TITLE),
+          'END:VALARM',
+          'END:VEVENT', 'END:VCALENDAR'
+        ].join('\r\n');
+      }
+      function downloadICS(e) {
+        if (e) e.preventDefault();
+        var blob = new Blob([buildICS()], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'american-leverage-webinar.ics';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }
+      document.getElementById('cal-apple').addEventListener('click', downloadICS);
+      document.getElementById('cal-ics').addEventListener('click', downloadICS);
+
+      // Dropdown toggle
+      var wrap = document.getElementById('cal-wrap');
+      var toggle = document.getElementById('cal-toggle');
+      var menu = document.getElementById('cal-menu');
+      wrap.style.display = 'block';
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+      });
+    }
+
+    if (typeof umami !== 'undefined') umami.track('Webinar Registration Confirmed');
+  });
+</script>
+</body>
+</html>
