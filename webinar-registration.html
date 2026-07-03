@@ -1144,63 +1144,61 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
      ============================================================ -->
 <script>
 (function () {
-  // Webinar recurs weekly: Sunday 19:00 in Europe/Berlin (CET/CEST).
-  var WEBINAR_TZ = 'Europe/Berlin';
-  var WEBINAR_DOW = 0;   // 0 = Sunday
-  var WEBINAR_HOUR = 19; // 19:00 local Berlin time
+  // Webinar recurs weekly: Sunday 19:00 in Berlin (CET/CEST).
+  // The occurrence is derived entirely from UTC math + the EU DST rule — we
+  // never ask the browser what time it is "in Berlin", so a visitor whose
+  // timezone is spoofed/overridden still gets the correct absolute instant.
+  // Only the final label is rendered in the visitor's own timezone.
+  var WEBINAR_HOUR_BERLIN = 19; // 19:00 Berlin local
   var WEBINAR_MIN = 0;
   var SUFFIX = ' · Free live session · Limited seats';
 
-  // Offset (ms) between a tz's wall clock and UTC at a given instant.
-  function tzOffsetMs(tz, date) {
-    var dtf = new Intl.DateTimeFormat('en-US', {
-      timeZone: tz, hourCycle: 'h23',
-      year: 'numeric', month: '2-digit', day: '2-digit',
-      hour: '2-digit', minute: '2-digit', second: '2-digit'
-    });
-    var p = {};
-    dtf.formatToParts(date).forEach(function (x) { if (x.type !== 'literal') p[x.type] = x.value; });
-    var asUTC = Date.UTC(+p.year, p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
-    return asUTC - date.getTime();
+  // Last Sunday of a given month (monthIdx: 2 = March, 9 = October), in UTC.
+  function lastSundayDate(year, monthIdx) {
+    var d = new Date(Date.UTC(year, monthIdx + 1, 0)); // last day of the month
+    d.setUTCDate(d.getUTCDate() - d.getUTCDay());       // step back to Sunday
+    return d.getUTCDate();
   }
-  // Absolute instant for a wall-clock time in a given tz (DST-safe).
-  function zonedWallToUtc(y, mo, d, h, mi, tz) {
-    var guess = Date.UTC(y, mo, d, h, mi, 0);
-    var off = tzOffsetMs(tz, new Date(guess));
-    off = tzOffsetMs(tz, new Date(guess - off)); // refine across DST boundaries
-    return new Date(guess - off);
+  // Is Berlin on summer time (CEST, UTC+2) at this instant? EU rule: from the
+  // last Sunday of March 01:00 UTC to the last Sunday of October 01:00 UTC.
+  function berlinIsDST(instant) {
+    var y = instant.getUTCFullYear();
+    var start = Date.UTC(y, 2, lastSundayDate(y, 2), 1, 0, 0);
+    var end   = Date.UTC(y, 9, lastSundayDate(y, 9), 1, 0, 0);
+    var t = instant.getTime();
+    return t >= start && t < end;
+  }
+  // Berlin 19:00 on a given UTC Sunday = 17:00 UTC (CEST) or 18:00 UTC (CET).
+  function berlinSlotUtc(year, monthIdx, day) {
+    var noon = new Date(Date.UTC(year, monthIdx, day, 12));
+    var offsetHours = berlinIsDST(noon) ? 2 : 1;
+    return new Date(Date.UTC(year, monthIdx, day, WEBINAR_HOUR_BERLIN - offsetHours, WEBINAR_MIN, 0));
   }
 
   function nextWebinar() {
     var now = new Date();
-    // Current Berlin calendar date + weekday + hour.
-    var parts = {};
-    new Intl.DateTimeFormat('en-CA', {
-      timeZone: WEBINAR_TZ, weekday: 'short', hourCycle: 'h23',
-      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit'
-    }).formatToParts(now).forEach(function (x) { if (x.type !== 'literal') parts[x.type] = x.value; });
-
-    var dowMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-    var dow = dowMap[parts.weekday];
-    var hr = +parts.hour;
-    var add = (7 + WEBINAR_DOW - dow) % 7;
-    if (add === 0 && hr >= WEBINAR_HOUR) add = 7; // today's session already started → next week
-
-    // Advance the Berlin calendar date by `add` days.
-    var base = new Date(Date.UTC(+parts.year, parts.month - 1, +parts.day));
-    base.setUTCDate(base.getUTCDate() + add);
-    return zonedWallToUtc(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate(), WEBINAR_HOUR, WEBINAR_MIN, WEBINAR_TZ);
+    // Walk forward from today; the webinar is on Sundays (UTC Sunday == Berlin
+    // Sunday, since 17:00/18:00 UTC never crosses midnight).
+    for (var i = 0; i < 14; i++) {
+      var d = new Date(now.getTime() + i * 86400000);
+      if (d.getUTCDay() !== 0) continue; // 0 = Sunday
+      var cand = berlinSlotUtc(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+      if (cand.getTime() > now.getTime()) return cand;
+    }
+    return null;
   }
 
   try {
     var when = nextWebinar();
-    // Localize to the visitor's own timezone + locale format (12h/24h auto).
-    var label = new Intl.DateTimeFormat(undefined, {
-      weekday: 'long', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
-    }).format(when); // e.g. "Sunday, 7:00 PM GMT+2" or "Sonntag, 19:00 MESZ"
+    if (when) {
+      // Render in the visitor's own timezone + locale format (12h/24h auto).
+      var label = new Intl.DateTimeFormat(undefined, {
+        weekday: 'long', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+      }).format(when); // e.g. "Sunday, 1:00 PM EDT" or "Sonntag, 19:00 MESZ"
 
-    document.querySelectorAll('[data-webinar-datetime]').forEach(function (el) { el.textContent = label; });
-    document.querySelectorAll('[data-webinar-full]').forEach(function (el) { el.textContent = label + SUFFIX; });
+      document.querySelectorAll('[data-webinar-datetime]').forEach(function (el) { el.textContent = label; });
+      document.querySelectorAll('[data-webinar-full]').forEach(function (el) { el.textContent = label + SUFFIX; });
+    }
   } catch (e) { /* keep the static CET fallback already in the markup */ }
 })();
 </script>
