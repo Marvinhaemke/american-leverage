@@ -246,6 +246,30 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
    (sections.css inlined)
    ============================================================ */
 
+/* ---------------- TOP PROMO BAR ---------------- */
+.topbar-promo {
+  display: flex; align-items: center; justify-content: center; gap: 8px 16px; flex-wrap: wrap;
+  padding: 8px 18px; text-align: center; line-height: 1.4;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent-2) 55%, var(--accent-1));
+  color: var(--accent-text);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+}
+.topbar-promo .tp-sep { opacity: .55; }
+.topbar-promo .tp-time { font-weight: 700; }
+@media (max-width: 560px) { .topbar-promo { font-size: 10.5px; letter-spacing: 0.08em; gap: 4px 10px; } }
+
+/* Webinar time line (placed above CTAs) */
+.webinar-when {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 13.5px; font-weight: 600; letter-spacing: 0.03em;
+  color: var(--accent-1); margin: 0 0 16px;
+}
+.webinar-when.center { justify-content: center; }
+.webinar-when .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-1);
+  box-shadow: 0 0 0 4px rgba(240,170,50,0.16); flex-shrink: 0;
+}
+
 /* ---------------- NAV ---------------- */
 .nav {
   position: sticky; top: 0; z-index: 60;
@@ -381,6 +405,7 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   .hero3 .display { order: 2; margin-top: 14px; font-size: 38px; max-width: none; }
   .hero3 .lede { order: 3; margin-top: 16px; }
   .hero3-video { order: 4; margin-top: 26px; }
+  .hero3 .webinar-when { order: 5; }
   .hero3-video .float-stat { display: none; }
   .hero3 .cta-row { order: 5; margin-top: 22px; flex-direction: column; align-items: stretch; gap: 12px; }
   .hero3 .cta-row .btn { width: 100%; justify-content: center; }
@@ -662,6 +687,13 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
 </head>
 <body data-accent="amber">
 
+<!-- ============ TOP PROMO BAR ============ -->
+<div class="topbar-promo">
+  <span>FREE LIVE TRAINING &middot; FOR FOUNDERS OUTSIDE THE US</span>
+  <span class="tp-sep">&middot;</span>
+  <span class="tp-time" data-webinar-datetime>Sunday, 19:00 CET</span>
+</div>
+
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="nav-inner">
@@ -688,8 +720,9 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
       <div class="hero3-grid">
         <div class="hero3-copy">
           <p class="eyebrow">American Infrastructure, Earned Properly</p>
-          <h1 class="display">The same leverage American founders take for granted.</h1>
-          <p class="lede">The access American founders start with, built for the ones who weren't. Real US business banking, a structure that holds up under review, and the credibility to scale into the US market on your own merits. No relocation. We build the foundation, you operate on it.</p>
+          <h1 class="display">Learn to access the same leverage American founders take for granted</h1>
+          <p class="lede">In this free training we break down how founders outside the US set up real US business banking and the credibility to scale into the US market, without relocating. Live walkthrough plus your questions answered. We build the foundation, you operate on it.</p>
+          <p class="webinar-when"><span class="dot"></span><span data-webinar-full>Sunday, 19:00 CET &middot; Free live session &middot; Limited seats</span></p>
           <div class="cta-row">
             <a href="#register" class="btn btn-platinum" data-cta="hero">Reserve My Seat <span class="arrow">&rarr;</span></a>
             <a href="#results" class="btn btn-ghost">See the Results</a>
@@ -839,7 +872,8 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
   <div class="wrap">
     <p class="eyebrow center" style="justify-content:center;">The Window Is Closing</p>
     <h2 class="h2" style="margin-top:24px;">US banks tighten non-resident onboarding every quarter. Get plugged in the right way, before the door closes.</h2>
-    <div style="margin-top:38px;"><a href="#register" class="btn btn-platinum" data-cta="urgency">Reserve My Seat <span class="arrow">&rarr;</span></a></div>
+    <p class="webinar-when center" style="margin-top:28px;justify-content:center;"><span class="dot"></span><span data-webinar-full>Sunday, 19:00 CET &middot; Free live session &middot; Limited seats</span></p>
+    <div style="margin-top:16px;"><a href="#register" class="btn btn-platinum" data-cta="urgency">Reserve My Seat <span class="arrow">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -1102,6 +1136,72 @@ body[data-accent="emerald"]{ --accent-1:#27c07a; --accent-2:#149a5c; --accent-de
     s.src = '/js/vault-breakout.js';
     document.head.appendChild(s);
   });
+})();
+</script>
+
+<!-- ============================================================
+     Webinar time — localize "Sunday 19:00 CET" to the visitor
+     ============================================================ -->
+<script>
+(function () {
+  // Webinar recurs weekly: Sunday 19:00 in Europe/Berlin (CET/CEST).
+  var WEBINAR_TZ = 'Europe/Berlin';
+  var WEBINAR_DOW = 0;   // 0 = Sunday
+  var WEBINAR_HOUR = 19; // 19:00 local Berlin time
+  var WEBINAR_MIN = 0;
+  var SUFFIX = ' · Free live session · Limited seats';
+
+  // Offset (ms) between a tz's wall clock and UTC at a given instant.
+  function tzOffsetMs(tz, date) {
+    var dtf = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hourCycle: 'h23',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    var p = {};
+    dtf.formatToParts(date).forEach(function (x) { if (x.type !== 'literal') p[x.type] = x.value; });
+    var asUTC = Date.UTC(+p.year, p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+    return asUTC - date.getTime();
+  }
+  // Absolute instant for a wall-clock time in a given tz (DST-safe).
+  function zonedWallToUtc(y, mo, d, h, mi, tz) {
+    var guess = Date.UTC(y, mo, d, h, mi, 0);
+    var off = tzOffsetMs(tz, new Date(guess));
+    off = tzOffsetMs(tz, new Date(guess - off)); // refine across DST boundaries
+    return new Date(guess - off);
+  }
+
+  function nextWebinar() {
+    var now = new Date();
+    // Current Berlin calendar date + weekday + hour.
+    var parts = {};
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone: WEBINAR_TZ, weekday: 'short', hourCycle: 'h23',
+      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit'
+    }).formatToParts(now).forEach(function (x) { if (x.type !== 'literal') parts[x.type] = x.value; });
+
+    var dowMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var dow = dowMap[parts.weekday];
+    var hr = +parts.hour;
+    var add = (7 + WEBINAR_DOW - dow) % 7;
+    if (add === 0 && hr >= WEBINAR_HOUR) add = 7; // today's session already started → next week
+
+    // Advance the Berlin calendar date by `add` days.
+    var base = new Date(Date.UTC(+parts.year, parts.month - 1, +parts.day));
+    base.setUTCDate(base.getUTCDate() + add);
+    return zonedWallToUtc(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate(), WEBINAR_HOUR, WEBINAR_MIN, WEBINAR_TZ);
+  }
+
+  try {
+    var when = nextWebinar();
+    // Localize to the visitor's own timezone + locale format (12h/24h auto).
+    var label = new Intl.DateTimeFormat(undefined, {
+      weekday: 'long', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+    }).format(when); // e.g. "Sunday, 7:00 PM GMT+2" or "Sonntag, 19:00 MESZ"
+
+    document.querySelectorAll('[data-webinar-datetime]').forEach(function (el) { el.textContent = label; });
+    document.querySelectorAll('[data-webinar-full]').forEach(function (el) { el.textContent = label + SUFFIX; });
+  } catch (e) { /* keep the static CET fallback already in the markup */ }
 })();
 </script>
 
