@@ -1,0 +1,30 @@
+# Netlify configuration for the American Leverage landing page.
+# Static HTML at the repo root (no build step) + two serverless functions.
+
+[build]
+  publish = "."
+  # There is nothing to compile. An explicit no-op keeps Netlify's framework
+  # detection from inventing a build command because package.json exists.
+  command = "echo 'No build step - static site'"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+# The browser posts to /api/meta-capi and /api/reporting (same paths the Vercel
+# deployment used). Each function also declares its own `config.path`; this
+# rewrite is the belt-and-braces fallback and keeps the mapping visible here.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Long-lived caching for fingerprint-free static assets. HTML stays uncached so
+# copy edits go live on the next request.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

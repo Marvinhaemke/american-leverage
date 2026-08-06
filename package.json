@@ -2,9 +2,9 @@
   "name": "american-leverage",
   "version": "1.0.0",
   "private": true,
-  "description": "American Leverage landing page (static site + Meta CAPI serverless function), hosted on Vercel.",
+  "description": "American Leverage landing page (static site + Meta CAPI serverless function), hosted on Netlify.",
   "scripts": {
-    "dev": "vercel dev",
-    "deploy": "vercel --prod"
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod"
   }
 }

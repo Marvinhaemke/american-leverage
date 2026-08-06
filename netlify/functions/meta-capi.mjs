@@ -1,19 +1,26 @@
-// Vercel Serverless Function: Meta Conversions API (CAPI) bridge
+// Netlify Function (Functions 2.0): Meta Conversions API (CAPI) bridge
 // Receives events from the browser (js/meta-capi.js) and forwards them to
 // Meta's CAPI with the same `event_id` used by the Pixel so Meta can
 // deduplicate the browser and server events.
 //
-// Required env vars (set in Vercel → Project → Settings → Environment Variables):
+// Required env vars (set in Netlify → Site configuration → Environment variables):
 //   META_ACCESS_TOKEN     - long-lived CAPI access token (REQUIRED, secret)
 //   META_PIXEL_ID         - defaults to 953868717628214 if unset
 //   META_TEST_EVENT_CODE  - (optional) for the "Test Events" tab in Events Manager
 
-const crypto = require('crypto');
+import crypto from 'node:crypto';
 
-const PIXEL_ID = process.env.META_PIXEL_ID || '953868717628214';
-const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
-const TEST_EVENT_CODE = process.env.META_TEST_EVENT_CODE;
 const GRAPH_VERSION = 'v19.0';
+
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+function json(body, status = 200) {
+  return Response.json(body, { status, headers: CORS });
+}
 
 function sha256(value) {
   if (value === undefined || value === null) return undefined;
@@ -28,23 +35,32 @@ function normalizePhone(value) {
   return digits || undefined;
 }
 
-function getClientIp(req) {
-  const xff = req.headers['x-forwarded-for'];
-  if (xff) return String(xff).split(',')[0].trim();
-  return req.headers['x-real-ip'] || req.socket?.remoteAddress || undefined;
+function getClientIp(req, context) {
+  if (context?.ip) return context.ip;
+  const nf = req.headers.get('x-nf-client-connection-ip');
+  if (nf) return nf;
+  const xff = req.headers.get('x-forwarded-for');
+  if (xff) return xff.split(',')[0].trim();
+  return undefined;
 }
 
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+export default async function handler(req, context) {
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
+  if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  if (!ACCESS_TOKEN) return res.status(500).json({ error: 'Server misconfigured: META_ACCESS_TOKEN missing' });
+  const PIXEL_ID = process.env.META_PIXEL_ID || '953868717628214';
+  const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
+  const TEST_EVENT_CODE = process.env.META_TEST_EVENT_CODE;
 
-  let body = req.body;
-  if (typeof body === 'string') { try { body = JSON.parse(body); } catch { body = {}; } }
+  if (!ACCESS_TOKEN) return json({ error: 'Server misconfigured: META_ACCESS_TOKEN missing' }, 500);
+
+  // navigator.sendBeacon posts a Blob, so don't trust the Content-Type header.
+  let body;
+  try {
+    body = await req.json();
+  } catch {
+    body = {};
+  }
   body = body || {};
 
   const {
@@ -59,12 +75,12 @@ module.exports = async function handler(req, res) {
   } = body;
 
   if (!event_name || !event_id) {
-    return res.status(400).json({ error: 'event_name and event_id are required' });
+    return json({ error: 'event_name and event_id are required' }, 400);
   }
 
   const userData = {
-    client_ip_address: getClientIp(req),
-    client_user_agent: req.headers['user-agent'],
+    client_ip_address: getClientIp(req, context),
+    client_user_agent: req.headers.get('user-agent') || undefined,
   };
   if (fbp) userData.fbp = fbp;
   if (fbc) userData.fbc = fbc;
@@ -85,7 +101,7 @@ module.exports = async function handler(req, res) {
     event_time: Math.floor(Date.now() / 1000),
     event_id,
     action_source,
-    event_source_url: event_source_url || req.headers.referer,
+    event_source_url: event_source_url || req.headers.get('referer') || undefined,
     user_data: userData,
     custom_data,
   };
@@ -103,10 +119,12 @@ module.exports = async function handler(req, res) {
     });
     const result = await response.json();
     if (!response.ok) {
-      return res.status(response.status).json({ error: 'Meta CAPI error', details: result });
+      return json({ error: 'Meta CAPI error', details: result }, response.status);
     }
-    return res.status(200).json({ ok: true, meta: result });
+    return json({ ok: true, meta: result });
   } catch (err) {
-    return res.status(502).json({ error: 'Failed to reach Meta CAPI', message: err.message });
+    return json({ error: 'Failed to reach Meta CAPI', message: err.message }, 502);
   }
-};
+}
+
+export const config = { path: '/api/meta-capi' };
